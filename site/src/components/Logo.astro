@@ -1,0 +1,15 @@
+---
+import Runner from '@/assets/logo-runner.svg';
+interface Props { class?: string; size?: 'sm' | 'md' }
+const { class: cls = '', size = 'md' } = Astro.props;
+const h = size === 'sm' ? 26 : 34;
+---
+<a href="/" class={`logo inline-flex items-center gap-2.5 ${cls}`} aria-label="RunCare — accueil">
+  <Runner height={h} width={h * 1.09} aria-hidden="true" class="shrink-0" />
+  <span class="leading-none" style="font-family: var(--font-logo)">
+    <span class:list={['block font-semibold tracking-[-0.01em]', size === 'sm' ? 'text-[1.15rem]' : 'text-[1.45rem]']}>Run<span class="text-accent">Care</span></span>
+    <span class="logo-tag block mt-[3px] text-[0.5rem] font-medium tracking-[0.3em] uppercase opacity-75 flex items-center gap-1.5">
+      <span class="h-px w-3 bg-current opacity-60"></span>Kiné &amp; Coach<span class="h-px w-3 bg-current opacity-60"></span>
+    </span>
+  </span>
+</a>

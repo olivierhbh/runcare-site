@@ -1,0 +1,14 @@
+# Sources brutes du client (photos WhatsApp, générations IA, PDF) — non versionnées
+*.jpeg
+*.jpg
+*.pdf
+Gemini_Generated_*
+.DS_Store
+.playwright-mcp/
+# Le site
+site/node_modules
+site/dist
+site/.astro
+site/.vercel
+site/.env*
+!site/src/assets/photos/**

@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import CtaBand from '@/components/CtaBand.astro';
+const articles = (await getCollection('articles')).sort((a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime());
+---
+<Base title="Conseils aux coureurs" description="Nos articles pour comprendre les blessures, la foulée, la charge d'entraînement et progresser durablement en course à pied.">
+  <section class="container pt-14 md:pt-20 pb-12">
+    <p class="eyebrow mb-4">Conseils</p>
+    <h1 class="text-[clamp(2.4rem,5.5vw,4rem)] max-w-[16ch]">Comprendre pour mieux courir.</h1>
+    <p class="mt-6 text-lg muted max-w-[58ch]">Blessures, foulée, charge d’entraînement, progression : nos réponses aux questions que se posent les coureurs.</p>
+  </section>
+  <section class="container pb-20 grid gap-5 md:grid-cols-2">{articles.map((a) => <ArticleCard article={a} />)}</section>
+  <CtaBand />
+</Base>

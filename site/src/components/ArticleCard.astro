@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { serviceLabels } from '@/lib/settings';
+interface Props { article: CollectionEntry<'articles'> }
+const { article } = Astro.props;
+const d = article.data;
+const date = d.publishedDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<a href={`/blog/${article.id}`} class="group block bg-surface border hairline rounded-brand p-7 hover:border-accent transition-colors">
+  <p class="text-xs muted mb-3 flex gap-2 items-center"><span class="text-accent font-semibold uppercase tracking-[0.12em]">{serviceLabels[d.service]}</span><span>·</span><time>{date}</time></p>
+  <h3 class="text-[1.35rem] leading-snug group-hover:text-accent transition-colors">{d.title}</h3>
+  <p class="muted mt-3 text-[0.95rem] leading-relaxed">{d.description}</p>
+  <p class="mt-4 text-sm font-medium text-accent">Lire l’article →</p>
+</a>

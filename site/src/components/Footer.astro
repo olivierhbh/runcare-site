@@ -1,0 +1,42 @@
+---
+import Logo from './Logo.astro';
+import { nav, settings, telHref, whatsappUrl } from '@/lib/settings';
+const year = new Date().getFullYear();
+---
+<footer class="border-t hairline mt-auto">
+  <div class="container py-14 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <div>
+      <Logo />
+      <p class="muted mt-4 max-w-xs text-sm leading-relaxed">Cabinet de kinésithérapie dédié à la prise en charge du coureur à pied, à Bordeaux.</p>
+    </div>
+    <div>
+      <p class="eyebrow mb-3">Services</p>
+      <ul class="space-y-2 text-sm">{nav.slice(0, 4).map((n) => <li><a class="hover:text-accent" href={n.href}>{n.label}</a></li>)}</ul>
+    </div>
+    <div>
+      <p class="eyebrow mb-3">Cabinet</p>
+      <ul class="space-y-2 text-sm">
+        <li><a class="hover:text-accent" href="/equipe">L’équipe</a></li>
+        <li><a class="hover:text-accent" href="/blog">Conseils</a></li>
+        <li><a class="hover:text-accent" href="/contact">Contact &amp; FAQ</a></li>
+        <li><a class="hover:text-accent" href="/profil-coureur">Quel coureur êtes-vous ?</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow mb-3">Contact</p>
+      <address class="not-italic text-sm space-y-2">
+        <p>{settings.adresse}<br />{settings.codePostal} {settings.ville}</p>
+        <p><a class="hover:text-accent" href={telHref}>{settings.telephone}</a></p>
+        <p><a class="hover:text-accent" href={whatsappUrl()} rel="noopener">WhatsApp</a></p>
+        <p><a class="hover:text-accent" href={settings.doctolibRomain} rel="noopener">Doctolib</a></p>
+      </address>
+    </div>
+  </div>
+  <div class="border-t hairline">
+    <div class="container py-5 flex flex-wrap gap-x-6 gap-y-2 text-xs muted">
+      <span>© {year} RunCare</span>
+      <a class="hover:text-accent" href="/mentions-legales">Mentions légales</a>
+      <a class="hover:text-accent" href="/politique-de-confidentialite">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>

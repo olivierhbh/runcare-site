@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+interface Props { href: string; besoin: string; titre: string; accroche: string; photo?: ImageMetadata; index: number }
+const { href, besoin, titre, accroche, photo, index } = Astro.props;
+---
+<a href={href} class={`group flex flex-col svc-${index} rounded-brand overflow-hidden bg-surface border hairline hover:border-[var(--svc)] transition-colors`}>
+  <div class="aspect-[4/3] overflow-hidden bg-bg-2">
+    {photo && <Image src={photo} alt={titre} width={800} class="w-full h-full object-cover img-tone transition-transform duration-700 group-hover:scale-[1.03]" />}
+  </div>
+  <div class="p-6 flex flex-col flex-1">
+    <p class="text-xs font-semibold tracking-[0.12em] uppercase mb-3" style="color: var(--svc)">{besoin}</p>
+    <h3 class="text-[1.4rem] mb-2">{titre}</h3>
+    <p class="muted text-[0.95rem] leading-relaxed">{accroche}</p>
+    <p class="mt-auto pt-5 text-sm font-medium flex items-center gap-1.5" style="color: var(--svc)">En savoir plus <span class="transition-transform group-hover:translate-x-1">→</span></p>
+  </div>
+</a>

@@ -1,0 +1,21 @@
+---
+interface Props { items: { question: string; reponse: string }[] }
+const { items } = Astro.props;
+---
+<div class="divide-y hairline border-y">
+  {items.map((f) => (
+    <details class="group py-5">
+      <summary class="flex items-start justify-between gap-6 text-[1.1rem] font-medium">
+        <span>{f.question}</span>
+        <span class="chev shrink-0 mt-1 text-accent transition-transform text-xl leading-none">+</span>
+      </summary>
+      <div class="muted mt-3 max-w-[62ch] leading-relaxed space-y-3">
+        {f.reponse.split(/\n\n+/).map((p) => <p>{p}</p>)}
+      </div>
+    </details>
+  ))}
+</div>
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: items.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.reponse } })),
+})} />

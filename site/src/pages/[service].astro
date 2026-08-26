@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import PageHero from '@/components/PageHero.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import Flag from '@/components/Flag.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import { ctaHref } from '@/lib/settings';
+import bilanAnalyse from '@/assets/photos/bilan-analyse.jpg';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.filter((s) => s.id !== 'coaching').map((s) => ({ params: { service: s.id }, props: { entry: s } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const subjects: Record<string, string> = {
+  'analyse-de-foulee': 'réserver une analyse de foulée',
+  'bilan-runcare': 'réserver un Bilan Diagnostic RunCare',
+};
+const href = ctaHref(d.ctaType, d.ctaUrl, subjects[entry.id]);
+const heroPhoto = entry.id === 'bilan-runcare' ? bilanAnalyse : d.photo;
+const articles = (await getCollection('articles')).filter((a) => a.data.service === entry.id);
+---
+<Base title={d.titre} description={d.accroche} ogImage={d.photo?.src}>
+  <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={heroPhoto} photoAlt={d.titre} />
+  <section class="container pb-20 grid gap-12 lg:grid-cols-[1fr_20rem] items-start">
+    <div class="prose"><Content /></div>
+    <aside class="lg:sticky lg:top-24 bg-surface border hairline rounded-brand p-6 space-y-5">
+      <dl class="space-y-4 text-sm">
+        {d.format && <div><dt class="eyebrow !text-[0.65rem] mb-1">Format</dt><dd>{d.format}</dd></div>}
+        {d.duree && <div><dt class="eyebrow !text-[0.65rem] mb-1">Durée</dt><dd>{d.duree}</dd></div>}
+        {d.tarif && <div><dt class="eyebrow !text-[0.65rem] mb-1">Tarif</dt><dd class="serif text-2xl">{d.tarif}</dd>{d.tarifNote && <dd class="muted mt-1">{d.tarifNote}</dd>}</div>}
+      </dl>
+      <a href={href} class="btn btn-primary w-full justify-center" rel="noopener">{d.ctaLabel}</a>
+      {entry.id === 'reeducation' && (
+        <p class="text-xs muted"><Flag note="Le brief propose de mentionner « remboursé par la sécu ». Formulé ici de façon neutre ; à valider avec les règles de communication de l'Ordre. Un second lien Doctolib pour Lelio sera à ajouter.">Prise en charge Assurance Maladie sur prescription.</Flag></p>
+      )}
+      {entry.id === 'bilan-runcare' && (
+        <p class="text-xs muted"><Flag note="Le brief mentionne une « page de vente RunCare » à part. Non rédigée : la réservation passe par WhatsApp pour l'instant. À définir : paiement en ligne (Stripe) ou formulaire.">Réservation par message ; paiement à préciser.</Flag></p>
+      )}
+    </aside>
+  </section>
+  {articles.length > 0 && (
+    <section class="section bg-bg-2">
+      <div class="container">
+        <p class="eyebrow mb-4">Pour aller plus loin</p>
+        <div class="grid gap-5 md:grid-cols-2">{articles.map((a) => <ArticleCard article={a} />)}</div>
+      </div>
+    </section>
+  )}
+  <CtaBand />
+</Base>

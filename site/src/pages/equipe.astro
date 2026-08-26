@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import Flag from '@/components/Flag.astro';
+import duo from '@/assets/photos/duo.jpg';
+import studio from '@/assets/photos/studio.jpg';
+const equipe = (await getCollection('equipe')).sort((a, b) => a.data.ordre - b.data.ordre);
+const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
+---
+<Base title="L’équipe" description="Romain et Lelio, kinésithérapeutes du sport, coachs running et coureurs, fondateurs de RunCare à Bordeaux." ogImage={duo.src}>
+  <section class="container pt-14 md:pt-20 pb-12">
+    <p class="eyebrow mb-4">Qui sommes-nous ?</p>
+    <h1 class="text-[clamp(2.4rem,5.5vw,4rem)] max-w-[18ch]">Deux expertises complémentaires, une même passion.</h1>
+    <p class="mt-6 text-lg md:text-xl muted max-w-[58ch]">Répondre au véritable défi du coureur : progresser durablement sans être freiné par les blessures.</p>
+  </section>
+  <div class="container"><div class="rounded-brand overflow-hidden aspect-[3/2] bg-bg-2"><Image src={duo} alt="Lelio et Romain au cabinet" width={1600} class="w-full h-full object-cover img-tone" /></div></div>
+
+  {equipe.map((m, i) => (
+    <section class="section">
+      <div class:list={['container grid gap-10 lg:grid-cols-2 items-center', i % 2 && 'lg:[&>*:first-child]:order-2']}>
+        <div class="grid grid-cols-[1.2fr_1fr] gap-3">
+          {m.data.portrait && <div class="rounded-brand overflow-hidden aspect-[3/4] bg-bg-2"><Image src={m.data.portrait} alt={`Portrait de ${cap(m.id)}`} width={800} class="w-full h-full object-cover img-tone" /></div>}
+          {m.data.photoAction && <div class="rounded-brand overflow-hidden aspect-[3/4] bg-bg-2 self-end"><Image src={m.data.photoAction} alt={`${cap(m.id)} en course`} width={800} class="w-full h-full object-cover img-tone" /></div>}
+        </div>
+        <div>
+          <p class="eyebrow mb-3">{m.data.titres.join(' · ')}</p>
+          <h2 class="text-[clamp(2rem,4vw,3rem)]">{cap(m.id)} {m.data.nom}{m.id === 'lelio' && <Flag note="Nom de famille de Lelio non fourni dans le brief."> </Flag>}</h2>
+          <p class="mt-4 muted text-lg leading-relaxed">{m.data.bio}</p>
+          <blockquote class="mt-6 serif italic text-2xl leading-snug border-l-2 border-accent pl-5">{m.data.philosophie}</blockquote>
+          <div class="mt-8 grid sm:grid-cols-2 gap-6 text-sm">
+            <div>
+              <p class="eyebrow !text-[0.65rem] mb-2">Coureur</p>
+              <ul class="space-y-1">{m.data.palmares.map((p) => <li>{p}</li>)}</ul>
+              {m.id === 'lelio' && <p class="mt-2"><Flag note="Aucun chrono ni référence fournis pour Lelio ; ajouter s'ils le souhaitent (chronos, cote ITRA, courses marquantes).">Références à compléter</Flag></p>}
+            </div>
+            <div>
+              <p class="eyebrow !text-[0.65rem] mb-2">Au cabinet</p>
+              <ul class="space-y-1">{m.data.services.map((s) => <li>{s}</li>)}</ul>
+            </div>
+          </div>
+          <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            {m.data.doctolib && <a href={m.data.doctolib} class="btn btn-ghost" rel="noopener">Prendre rendez-vous avec {cap(m.id)}</a>}
+            {!m.data.doctolib && <p class="text-sm"><Flag note="Lien Doctolib de Lelio à fournir.">Lien Doctolib à venir</Flag></p>}
+            {m.data.strava && <a href={m.data.strava} class="text-sm font-medium text-accent hover:underline" rel="noopener">Suivre {cap(m.id)} sur Strava →</a>}
+            {!m.data.strava && <p class="text-sm"><Flag note="Profil Strava à fournir (optionnel) — affiché ici s'il est renseigné.">Strava : lien à fournir</Flag></p>}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+  <section class="container pb-20">
+    <div class="rounded-brand overflow-hidden aspect-[21/9] bg-bg-2"><Image src={studio} alt="Le cabinet RunCare" width={1800} class="w-full h-full object-cover img-tone" /></div>
+    <p class="mt-4 text-sm muted">Le cabinet, 130 cours de l’Argonne à Bordeaux.</p>
+  </section>
+  <CtaBand />
+</Base>

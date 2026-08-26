@@ -1,0 +1,59 @@
+---
+/**
+ * Sélecteur de thème + interrupteur des notes de relecture.
+ * Outil de maquette uniquement : à retirer une fois la direction choisie.
+ */
+const themes = [
+  { id: 'sapin', label: 'Sapin', hint: 'Un seul accent, vert du logo (recommandé)' },
+  { id: 'argile', label: 'Argile', hint: 'Chaleureux, couleurs par service (brief)' },
+  { id: 'marine', label: 'Marine', hint: 'Bleu profond, signal menthe' },
+  { id: 'craie', label: 'Craie', hint: 'Noir & blanc, orange pour l’action' },
+];
+---
+<div id="theme-picker" class="fixed bottom-4 right-4 z-50 text-[0.8rem] font-sans" style="color:#111">
+  <details class="bg-white/95 backdrop-blur shadow-xl border border-black/10 rounded-lg w-64">
+    <summary class="px-3.5 py-2.5 font-semibold flex items-center justify-between">
+      <span>Maquette · thème</span><span class="chev inline-block transition-transform">+</span>
+    </summary>
+    <div class="px-3.5 pb-3.5 space-y-1.5">
+      {themes.map((t) => (
+        <button data-theme-id={t.id} class="theme-opt w-full text-left rounded px-2.5 py-2 hover:bg-black/5 flex items-start gap-2.5">
+          <span class="swatch mt-0.5 w-3.5 h-3.5 rounded-full border border-black/10 shrink-0" data-swatch={t.id}></span>
+          <span><span class="font-medium block">{t.label}</span><span class="opacity-60 leading-tight block">{t.hint}</span></span>
+        </button>
+      ))}
+      <label class="flex items-center gap-2 pt-2.5 mt-1 border-t border-black/10 cursor-pointer">
+        <input type="checkbox" id="notes-toggle" /> <span>Afficher les notes de relecture</span>
+      </label>
+    </div>
+  </details>
+</div>
+<style>
+  [data-swatch='sapin'] { background: #1f5e3a; }
+  [data-swatch='argile'] { background: #b5502b; }
+  [data-swatch='marine'] { background: #0e1c33; }
+  [data-swatch='craie'] { background: #e5531f; }
+  .theme-opt[aria-current='true'] { background: rgba(0,0,0,.06); }
+</style>
+<script>
+  const html = document.documentElement;
+  const opts = document.querySelectorAll<HTMLButtonElement>('.theme-opt');
+  const notes = document.getElementById('notes-toggle') as HTMLInputElement;
+  const sync = () => {
+    const cur = html.dataset.theme || 'sapin';
+    opts.forEach((o) => o.setAttribute('aria-current', String(o.dataset.themeId === cur)));
+    notes.checked = html.dataset.notes === 'on';
+  };
+  opts.forEach((o) =>
+    o.addEventListener('click', () => {
+      html.dataset.theme = o.dataset.themeId!;
+      try { localStorage.setItem('rc-theme', o.dataset.themeId!); } catch {}
+      sync();
+    }),
+  );
+  notes.addEventListener('change', () => {
+    html.dataset.notes = notes.checked ? 'on' : 'off';
+    try { localStorage.setItem('rc-notes', html.dataset.notes); } catch {}
+  });
+  sync();
+</script>

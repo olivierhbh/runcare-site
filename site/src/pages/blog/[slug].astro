@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import { Image } from 'astro:assets';
+import CtaBand from '@/components/CtaBand.astro';
+import { serviceLabels } from '@/lib/settings';
+import ArticleCardLite from '@/components/ArticleCard.astro';
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((a) => ({ params: { slug: a.id }, props: { entry: a } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const date = d.publishedDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const others = (await getCollection('articles')).filter((a) => a.id !== entry.id).slice(0, 3);
+const ctaByService: Record<string, { label: string; href: string }> = {
+  'reeducation': { label: 'Découvrir la rééducation du coureur', href: '/reeducation' },
+  'bilan-runcare': { label: 'Découvrir le Bilan Diagnostic RunCare', href: '/bilan-runcare' },
+  'analyse-de-foulee': { label: 'Découvrir l’analyse de foulée', href: '/analyse-de-foulee' },
+  'coaching': { label: 'Découvrir nos formules de coaching', href: '/coaching' },
+};
+---
+<Base title={d.title} description={d.description}>
+  <article class="container pt-14 md:pt-20 pb-20">
+    <div class="max-w-[62ch]">
+      <p class="text-xs muted mb-4 flex gap-2"><a class="text-accent font-semibold uppercase tracking-[0.12em]" href={ctaByService[d.service].href}>{serviceLabels[d.service]}</a><span>·</span><time>{date}</time></p>
+      <h1 class="text-[clamp(2.2rem,5vw,3.6rem)]">{d.title}</h1>
+      <p class="mt-6 text-lg muted leading-relaxed">{d.description}</p>
+    </div>
+    {d.cover && <div class="rounded-brand overflow-hidden aspect-[21/9] bg-bg-2 mt-10 max-w-4xl"><Image src={d.cover} alt="" width={1600} class="w-full h-full object-cover img-tone" /></div>}
+    <div class="prose mt-12"><Content /></div>
+    <div class="max-w-[62ch] mt-14 rounded-brand bg-accent-soft p-7">
+      <p class="eyebrow mb-2">Aller plus loin</p>
+      <p class="mb-5">Vous vous reconnaissez dans cet article ? Nous pouvons vous aider.</p>
+      <a href={ctaByService[d.service].href} class="btn btn-primary">{ctaByService[d.service].label}</a>
+    </div>
+  </article>
+  <section class="section bg-bg-2 pt-14">
+    <div class="container">
+      <p class="eyebrow mb-4">À lire aussi</p>
+      <div class="grid gap-5 md:grid-cols-3">{others.map((a) => <ArticleCardLite article={a} />)}</div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

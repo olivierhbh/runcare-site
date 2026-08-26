@@ -1,0 +1,24 @@
+nom: Performance
+ordre: 3
+sousTitre: "Accompagnement complet"
+pourQui: "Optimiser l'ensemble de sa progression"
+description: "La formule la plus complète, pour les coureurs qui souhaitent un suivi individualisé de leur entraînement et de leur préparation physique, avec un accompagnement régulier à distance."
+inclus:
+  - Planification individualisée de l'entraînement sur Nolio
+  - Programme de préparation physique
+  - Suivi et ajustement de votre entraînement
+  - Débrief hebdomadaire
+  - Réponse à vos messages sous 48 h
+  - Conseils personnalisés en fonction de votre progression
+  - Fiches éducatives
+format: "À distance"
+engagement: 3 mois
+tarif: 120 €/mois
+tarifDetail: Bilan RunCare préalable à 60 € au lieu de 90 €
+idealSi: "Vous recherchez un véritable accompagnement personnalisé pour structurer votre entraînement, votre préparation physique et votre progression."
+misEnAvant: true
+tableau:
+  programme: "Individualisé sur Nolio"
+  planification: "Complète (course + renforcement)"
+  suivi: "Débrief hebdomadaire"
+  ajustement: "Régulier, réponse sous 48 h"

@@ -1,0 +1,31 @@
+---
+import Base from '@/layouts/Base.astro';
+import Flag from '@/components/Flag.astro';
+import { settings } from '@/lib/settings';
+---
+<Base title="Politique de confidentialité" description="Politique de confidentialité et protection des données personnelles du site RunCare.">
+  <section class="container pt-14 md:pt-20 pb-24">
+    <h1 class="text-[clamp(2rem,4.5vw,3.2rem)] mb-10">Politique de confidentialité</h1>
+    <div class="prose">
+      <p>RunCare attache une grande importance à la protection de vos données personnelles. Cette page décrit les données collectées via ce site, leur usage et vos droits, conformément au Règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés.</p>
+      <h2>Responsable du traitement</h2>
+      <p>RunCare, {settings.adresse}, {settings.codePostal} {settings.ville} — {settings.email}.</p>
+      <h2>Données collectées</h2>
+      <p>Ce site est un site vitrine : il ne dépose aucun cookie de suivi et ne contient aucun formulaire de collecte de données<Flag note="À mettre à jour si un formulaire de contact, un outil de statistiques ou le quiz « profil de coureur » (capture d'e-mail) est ajouté."> à ce jour</Flag>. Les échanges se font via des services tiers que vous choisissez d’utiliser :</p>
+      <ul>
+        <li><strong>Doctolib</strong> pour la prise de rendez-vous : les données saisies sont traitées par Doctolib selon sa propre politique de confidentialité.</li>
+        <li><strong>WhatsApp</strong> pour nous écrire : les messages sont traités par WhatsApp (Meta) selon sa politique de confidentialité. Nous vous invitons à ne pas y transmettre d’informations médicales détaillées ; celles-ci seront recueillies lors de la consultation.</li>
+        <li><strong>E-mail et téléphone</strong> : les informations que vous nous communiquez sont utilisées uniquement pour répondre à votre demande.</li>
+      </ul>
+      <h2>Données de santé</h2>
+      <p>Les données de santé recueillies dans le cadre d’une prise en charge (au cabinet, lors d’un bilan ou d’un accompagnement) sont couvertes par le secret professionnel. Elles sont conservées dans le dossier patient conformément aux obligations légales applicables aux professionnels de santé et ne sont jamais transmises à des tiers sans votre accord, hors obligations légales.</p>
+      <h2>Hébergement et mesures techniques</h2>
+      <p>Le site est hébergé par <Flag note="À adapter selon l'hébergeur retenu.">Vercel</Flag>. Des journaux techniques (adresse IP, pages consultées) peuvent être conservés temporairement par l’hébergeur à des fins de sécurité.</p>
+      <h2>Durée de conservation</h2>
+      <p>Les demandes de contact sont conservées le temps nécessaire à leur traitement, puis au maximum trois ans après le dernier échange. Les dossiers patients sont conservés selon les durées légales (20 ans à compter de la dernière consultation).</p>
+      <h2>Vos droits</h2>
+      <p>Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation et d’opposition sur vos données, ainsi que du droit à la portabilité. Pour l’exercer, écrivez-nous à {settings.email}. Vous pouvez également introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
+      <p class="muted text-sm">Dernière mise à jour : août 2026.</p>
+    </div>
+  </section>
+</Base>
