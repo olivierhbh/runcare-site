@@ -2,7 +2,7 @@ import { config, fields, collection, singleton } from '@keystatic/core';
 
 // Mode GitHub dès que la GitHub App est configurée (variables KEYSTATIC_* /
 // PUBLIC_KEYSTATIC_GITHUB_APP_SLUG), sinon mode local pour le développement.
-const github = Boolean(import.meta.env.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG);
+const github = Boolean(import.meta.env.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG || import.meta.env.PUBLIC_KEYSTATIC_GITHUB_MODE);
 
 export default config({
   storage: github
