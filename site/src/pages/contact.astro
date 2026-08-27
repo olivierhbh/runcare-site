@@ -2,8 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Faq from '@/components/Faq.astro';
-import Flag from '@/components/Flag.astro';
-import { settings, telHref, whatsappUrl } from '@/lib/settings';
+import { settings, telHref, whatsappUrl, whatsappCoachingUrl } from '@/lib/settings';
 const faq = (await getCollection('faq')).sort((a, b) => a.data.ordre - b.data.ordre);
 const mapQuery = encodeURIComponent(`${settings.adresse}, ${settings.codePostal} ${settings.ville}`);
 ---
@@ -20,21 +19,21 @@ const mapQuery = encodeURIComponent(`${settings.adresse}, ${settings.codePostal}
       <h2 class="text-2xl mb-3">Au cabinet</h2>
       <p class="muted text-sm leading-relaxed mb-5">Séances de kinésithérapie, analyse de foulée et séances de préparation physique.</p>
       <a href={settings.doctolibRomain} class="btn btn-primary w-full justify-center" rel="noopener">Doctolib — Romain</a>
-      <p class="mt-3 text-xs muted"><Flag note="Lien Doctolib de Lelio à ajouter dès qu'il est disponible.">Doctolib — Lelio (à venir)</Flag></p>
+      <a href={settings.doctolibLelio} class="btn btn-ghost w-full justify-center mt-2" rel="noopener">Doctolib — Lelio</a>
     </div>
     <div class="bg-surface border hairline rounded-brand p-7">
       <p class="eyebrow mb-3">Bilan, foulée, coaching</p>
       <h2 class="text-2xl mb-3">Par message</h2>
       <p class="muted text-sm leading-relaxed mb-5">Le plus simple pour réserver un bilan, une analyse de foulée ou parler coaching.</p>
       <a href={whatsappUrl('Bonjour, je souhaite vous décrire ma situation.')} class="btn btn-primary w-full justify-center" rel="noopener">Écrire sur WhatsApp</a>
-      <p class="mt-3 text-xs muted"><Flag note="Numéro WhatsApp et téléphone : placeholders à remplacer dans src/content/settings.yaml.">Numéro à confirmer</Flag></p>
+      <a href={whatsappCoachingUrl('Bonjour, je souhaite échanger sur un accompagnement coaching.')} class="btn btn-ghost w-full justify-center mt-2" rel="noopener">WhatsApp coaching</a>
     </div>
     <div class="bg-surface border hairline rounded-brand p-7">
       <p class="eyebrow mb-3">Cabinet</p>
       <h2 class="text-2xl mb-3">{settings.ville}</h2>
       <address class="not-italic text-sm leading-relaxed space-y-1.5">
         <p>{settings.adresse}<br />{settings.codePostal} {settings.ville}</p>
-        <p><a class="text-accent" href={telHref}>{settings.telephone}</a></p>
+        <p>Romain : <a class="text-accent" href={telHref}>{settings.telephone}</a><br />Lelio : <a class="text-accent" href={`tel:+33${settings.telephoneLelio.replace(/\D/g, '').replace(/^0/, '')}`}>{settings.telephoneLelio}</a></p>
         <p><a class="text-accent" href={`mailto:${settings.email}`}>{settings.email}</a></p>
         <p class="muted whitespace-pre-line">{settings.horaires}</p>
       </address>

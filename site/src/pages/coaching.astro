@@ -7,7 +7,7 @@ import CtaBand from '@/components/CtaBand.astro';
 import ArticleCard from '@/components/ArticleCard.astro';
 import Flag from '@/components/Flag.astro';
 import FlagBlock from '@/components/FlagBlock.astro';
-import { whatsappUrl } from '@/lib/settings';
+import { whatsappCoachingUrl } from '@/lib/settings';
 import nolio from '@/assets/photos/nolio.jpg';
 import coachingTel from '@/assets/photos/coaching-tel.jpg';
 
@@ -50,7 +50,7 @@ const cell = (f: (typeof formules)[0], key: (typeof rows)[0]['key']) =>
             <p class="text-sm muted">{f.data.format} · {f.data.engagement}</p>
             <p class="text-xs muted mt-1">{f.data.tarifDetail}</p>
           </div>
-          <a href={whatsappUrl(`Bonjour, je suis intéressé(e) par la formule ${f.data.nom}.`)} class="btn btn-primary w-full justify-center" rel="noopener">Choisir {f.data.nom}</a>
+          <a href={whatsappCoachingUrl(`Bonjour, je suis intéressé(e) par la formule ${f.data.nom}.`)} class="btn btn-primary w-full justify-center" rel="noopener">Choisir {f.data.nom}</a>
           <p class="text-sm border-t pt-4" style="border-color: color-mix(in srgb, currentColor 15%, transparent)"><span class="font-semibold">Idéal si :</span> {f.data.idealSi}</p>
         </article>
       ))}
@@ -101,5 +101,5 @@ const cell = (f: (typeof formules)[0], key: (typeof rows)[0]['key']) =>
       </div>
     </section>
   )}
-  <CtaBand title="Envie d’en parler ?" text="Décrivez-nous votre objectif et votre situation : nous vous dirons quelle formule a du sens pour vous." />
+  <CtaBand title="Envie d’en parler ?" text="Décrivez-nous votre objectif et votre situation : nous vous dirons quelle formule a du sens pour vous." whatsapp={whatsappCoachingUrl('Bonjour, je souhaite échanger sur un accompagnement coaching.')} />
 </Base>

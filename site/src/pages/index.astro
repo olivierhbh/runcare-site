@@ -7,6 +7,7 @@ import Faq from '@/components/Faq.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import Flag from '@/components/Flag.astro';
 import FlagBlock from '@/components/FlagBlock.astro';
+import { settings } from '@/lib/settings';
 import duo from '@/assets/photos/duo.jpg';
 import quai from '@/assets/photos/bordeaux-quai.jpg';
 
@@ -104,8 +105,7 @@ const steps = ['Comprendre', 'Évaluer', 'Hiérarchiser', 'Agir', 'Adapter'];
           <p class="muted mt-4 max-w-[50ch]">Quelques minutes pour déterminer votre profil et recevoir nos premiers conseils adaptés.</p>
         </div>
         <div class="md:justify-self-end">
-          <a href="/profil-coureur" class="btn btn-primary">Déterminer mon profil</a>
-          <p class="mt-3 text-xs muted"><Flag note="Le lien du test (lead magnet) n'est pas fourni : une page d'attente /profil-coureur a été créée en attendant l'outil (Typeform, Tally, formulaire maison…).">Lien à définir</Flag></p>
+          <a href={settings.leadMagnetUrl || '/profil-coureur'} class="btn btn-primary" rel="noopener">Déterminer mon profil</a>
         </div>
       </div>
     </div>

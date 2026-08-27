@@ -1,4 +1,4 @@
-nom: ""
+nom: Renault
 ordre: 2
 titres:
   - Kinésithérapeute du sport
@@ -13,5 +13,5 @@ philosophie: "Les sensations du coureur font partie des données dont il doit te
 bio: "Kiné du sport et coach, Lelio court sur route et en trail. Il prend en charge la rééducation des coureurs blessés, le bilan et le coaching."
 portrait: '/src/assets/photos/equipe/lelio/lelio.jpg'
 photoAction: '/src/assets/photos/equipe/lelio/lelio-trail.jpg'
-doctolib: ""
+doctolib: https://www.doctolib.fr/masseur-kinesitherapeute/bordeaux/lelio-renault
 strava: ""

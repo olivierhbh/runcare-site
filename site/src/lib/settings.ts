@@ -2,7 +2,7 @@ import { load } from 'js-yaml';
 
 export type Settings = {
   nom: string; baseline: string; adresse: string; codePostal: string; ville: string;
-  telephone: string; whatsapp: string; email: string;
+  telephone: string; whatsapp: string; whatsappCoaching: string; telephoneLelio: string; email: string;
   doctolibRomain: string; doctolibLelio: string; instagram: string;
   horaires: string; leadMagnetUrl: string;
 };
@@ -10,14 +10,17 @@ export type Settings = {
 import raw from '../content/settings.yaml?raw';
 export const settings = load(raw) as Settings;
 
-export const whatsappUrl = (text?: string) =>
-  `https://wa.me/${settings.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
+export const whatsappUrl = (text?: string, number: string = settings.whatsapp) =>
+  `https://wa.me/${number}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
+
+/** WhatsApp dédié au coaching (numéro de Lelio). */
+export const whatsappCoachingUrl = (text?: string) => whatsappUrl(text, settings.whatsappCoaching);
 
 export const telHref = `tel:+33${settings.telephone.replace(/\D/g, '').replace(/^0/, '')}`;
 
 export function ctaHref(type: 'doctolib' | 'whatsapp' | 'contact' | 'url', url?: string | null, subject?: string) {
   switch (type) {
-    case 'doctolib': return settings.doctolibRomain;
+    case 'doctolib': return url || settings.doctolibRomain;
     case 'whatsapp': return whatsappUrl(subject ? `Bonjour, je souhaite ${subject}.` : undefined);
     case 'url': return url ?? '#';
     default: return '/contact';

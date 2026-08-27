@@ -19,7 +19,7 @@ const year = new Date().getFullYear();
         <li><a class="hover:text-accent" href="/equipe">L’équipe</a></li>
         <li><a class="hover:text-accent" href="/blog">Conseils</a></li>
         <li><a class="hover:text-accent" href="/contact">Contact &amp; FAQ</a></li>
-        <li><a class="hover:text-accent" href="/profil-coureur">Quel coureur êtes-vous ?</a></li>
+        <li><a class="hover:text-accent" href={settings.leadMagnetUrl || '/profil-coureur'} rel="noopener">Quel coureur êtes-vous ?</a></li>
       </ul>
     </div>
     <div>

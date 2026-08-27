@@ -137,10 +137,9 @@ concernés sont surlignés en jaune avec une infobulle.
 
 ## Points en suspens (à fournir par RunCare)
 
-1. E-mail et horaires (téléphone et WhatsApp = 06 69 70 46 53, numéro de Romain, déjà intégrés).
-2. Lien Doctolib de Lelio ; nom de famille et références de Lelio.
-3. Le test « Quel coureur êtes-vous ? » : outil (Tally/Typeform/quiz maison) et
-   capture d'e-mail (Brevo ?).
+1. E-mail et horaires. (Intégrés : 06 69 70 46 53 Romain = WhatsApp général ; 06 46 66 66 21 Lelio = WhatsApp coaching ; Doctolib de Romain et de Lelio ; test « Quel coureur êtes-vous ? » et page de vente du bilan sur systeme.io.)
+2. Références (chronos) et Strava de Lelio.
+3. —
 4. Tarif Force (120 € forfait ou par mois).
 5. Formulation « remboursé par la sécu » et affichage des tarifs : à vérifier vis-à-vis
    des règles de communication de l'Ordre.

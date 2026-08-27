@@ -1,17 +1,5 @@
 ---
-import Base from '@/layouts/Base.astro';
-import FlagBlock from '@/components/FlagBlock.astro';
-import { whatsappUrl } from '@/lib/settings';
+import { settings } from '@/lib/settings';
+// Le test « Quel coureur êtes-vous ? » est hébergé sur systeme.io : on redirige.
+return Astro.redirect(settings.leadMagnetUrl, 301);
 ---
-<Base title="Quel coureur êtes-vous face aux risques de blessure ?" description="Un test rapide pour déterminer votre profil de coureur et recevoir nos premiers conseils.">
-  <section class="container pt-14 md:pt-20 pb-24 max-w-3xl">
-    <p class="eyebrow mb-4">Test gratuit</p>
-    <h1 class="text-[clamp(2.4rem,5.5vw,4rem)]">Quel coureur êtes-vous face aux risques de blessure ?</h1>
-    <p class="mt-6 text-lg muted leading-relaxed">Charge d’entraînement, récupération, capacités physiques, antécédents : quelques questions pour situer votre profil et recevoir des conseils adaptés.</p>
-    <FlagBlock>Le test (lead magnet) n’est pas fourni dans le brief. Cette page l’accueillera : formulaire externe embarqué (Tally, Typeform) ou quiz maison avec capture d’e-mail (Brevo). À définir avec RunCare.</FlagBlock>
-    <div class="mt-10 rounded-brand border-2 border-dashed hairline p-10 text-center muted">
-      <p>Le test sera disponible ici prochainement.</p>
-      <a href={whatsappUrl('Bonjour, je souhaite déterminer mon profil de coureur.')} class="btn btn-primary mt-6" rel="noopener">En attendant, décrivez-nous votre situation</a>
-    </div>
-  </section>
-</Base>
