@@ -133,7 +133,7 @@ concernés sont surlignés en jaune avec une infobulle.
   tapis. Photos de scène ajoutées : coureur en visio (bilan), Romain analysant des données
   (bilan), coureur consultant son plan sur téléphone (coaching), quais de Bordeaux au petit
   matin (accueil), chaussures (article foulée), salle vide (page équipe).
-- Inchangées : photo duo, Lelio en trail, capture Nolio.
+- Photo duo remplacée par une version retouchée dans le vrai cabinet ; Lelio en trail retouché. Capture Nolio inchangée. La « salle vide » générée par IA a été retirée (trop artificielle) — une vraie photo du cabinet pourra la remplacer.
 
 ## Points en suspens (à fournir par RunCare)
 

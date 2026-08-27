@@ -5,7 +5,6 @@ import Base from '@/layouts/Base.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import Flag from '@/components/Flag.astro';
 import duo from '@/assets/photos/duo.jpg';
-import studio from '@/assets/photos/studio.jpg';
 const equipe = (await getCollection('equipe')).sort((a, b) => a.data.ordre - b.data.ordre);
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 ---
@@ -15,7 +14,7 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
     <h1 class="text-[clamp(2.4rem,5.5vw,4rem)] max-w-[18ch]">Deux expertises complémentaires, une même passion.</h1>
     <p class="mt-6 text-lg md:text-xl muted max-w-[58ch]">Répondre au véritable défi du coureur : progresser durablement sans être freiné par les blessures.</p>
   </section>
-  <div class="container"><div class="rounded-brand overflow-hidden aspect-[3/2] bg-bg-2"><Image src={duo} alt="Lelio et Romain au cabinet" width={1600} class="w-full h-full object-cover img-tone" /></div></div>
+  <div class="container"><div class="rounded-brand overflow-hidden aspect-[3/2] bg-bg-2"><Image src={duo} alt="Romain et Lelio au cabinet" width={1600} class="w-full h-full object-cover img-tone" /></div></div>
 
   {equipe.map((m, i) => (
     <section class="section">
@@ -50,9 +49,5 @@ const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
       </div>
     </section>
   ))}
-  <section class="container pb-20">
-    <div class="rounded-brand overflow-hidden aspect-[21/9] bg-bg-2"><Image src={studio} alt="Le cabinet RunCare" width={1800} class="w-full h-full object-cover img-tone" /></div>
-    <p class="mt-4 text-sm muted">Le cabinet, 130 cours de l’Argonne à Bordeaux.</p>
-  </section>
   <CtaBand />
 </Base>
