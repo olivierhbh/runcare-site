@@ -1,7 +1,7 @@
 # RunCare — journal des modifications de contenu
 
 Ce fichier liste ce qui a été modifié ou ajouté par rapport au brief fourni par RunCare
-(`brief.md` et `autres_instructions.md`). Objectif : que Romain et Lelio voient d'un coup
+(`sources/brief/brief.md` et `sources/brief/autres_instructions.md`). Objectif : que Romain et Lelio voient d'un coup
 d'œil ce qui a changé et puissent valider ou corriger.
 
 Les points à trancher sont aussi visibles directement dans la maquette : bouton
@@ -139,7 +139,7 @@ concernés sont surlignés en jaune avec une infobulle.
 
 1. E-mail et horaires. (Intégrés : 06 69 70 46 53 Romain = WhatsApp général ; 06 46 66 66 21 Lelio = WhatsApp coaching ; Doctolib de Romain et de Lelio ; test « Quel coureur êtes-vous ? » et page de vente du bilan sur systeme.io.)
 2. Références (chronos) et Strava de Lelio.
-3. —
+3. Nom de domaine : **argonnekinesportsante.fr** (confirmé par Romain le 28/08/2026). Reste à le rattacher au projet Vercel et à configurer le DNS. L'e-mail `contact@argonnekinesportsante.fr` est un placeholder tant que l'adresse réelle n'est pas fournie.
 4. Tarif Force (120 € forfait ou par mois).
 5. Formulation « remboursé par la sécu » et affichage des tarifs : à vérifier vis-à-vis
    des règles de communication de l'Ordre.
