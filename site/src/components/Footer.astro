@@ -1,13 +1,13 @@
 ---
 import Logo from './Logo.astro';
-import { settings, telHref, whatsappUrl, runcareNav, cabinet } from '@/lib/settings';
+import { settings, telHref, whatsappUrl, runcareNav, cabinet, mapsHref } from '@/lib/settings';
 const year = new Date().getFullYear();
 ---
 <footer class="border-t hairline mt-auto">
   <div class="container py-14 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
     <div>
       <Logo />
-      <p class="muted mt-4 max-w-xs text-sm leading-relaxed">Cabinet de kinésithérapie du sport à Bordeaux. RunCare est notre programme dédié au coureur à pied.</p>
+      <p class="muted mt-4 max-w-xs text-sm leading-relaxed">Cabinet de kinésithérapie du sport et du coureur à Bordeaux. RunCare est notre programme dédié au coureur à pied.</p>
     </div>
     <div>
       <p class="eyebrow mb-3">Cabinet</p>
@@ -29,7 +29,7 @@ const year = new Date().getFullYear();
     <div>
       <p class="eyebrow mb-3">Contact</p>
       <address class="not-italic text-sm space-y-2">
-        <p>{settings.adresse}<br />{settings.codePostal} {settings.ville}</p>
+        <p><a class="hover:text-accent" href={mapsHref} rel="noopener">{settings.adresse}<br />{settings.codePostal} {settings.ville}</a></p>
         <p><a class="hover:text-accent" href={telHref}>{settings.telephone}</a></p>
         <p><a class="hover:text-accent" href={whatsappUrl()} rel="noopener">WhatsApp</a></p>
         <p><a class="hover:text-accent" href={settings.doctolibRomain} rel="noopener">Doctolib</a></p>

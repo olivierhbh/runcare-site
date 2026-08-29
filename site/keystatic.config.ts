@@ -16,7 +16,7 @@ export default config({
       format: { data: 'yaml' },
       schema: {
         nom: fields.text({ label: 'Nom du cabinet', defaultValue: 'Argonne Kiné Sport Santé' }),
-        baseline: fields.text({ label: 'Baseline', defaultValue: 'Kinésithérapie du sport · Bordeaux' }),
+        baseline: fields.text({ label: 'Baseline', defaultValue: 'Kiné du sport & du coureur · Bordeaux' }),
         adresse: fields.text({ label: 'Adresse' }),
         codePostal: fields.text({ label: 'Code postal' }),
         ville: fields.text({ label: 'Ville' }),
@@ -29,6 +29,7 @@ export default config({
         doctolibLelio: fields.url({ label: 'Doctolib — Lelio' }),
         instagram: fields.url({ label: 'Instagram' }),
         horaires: fields.text({ label: 'Horaires', multiline: true }),
+        googleMaps: fields.url({ label: 'Fiche Google Maps du cabinet' }),
         leadMagnetUrl: fields.url({ label: 'Lien du test « Quel coureur êtes-vous ? »' }),
       },
     }),

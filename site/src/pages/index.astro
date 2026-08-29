@@ -6,10 +6,12 @@ import ServiceCard from '@/components/ServiceCard.astro';
 import Faq from '@/components/Faq.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import Logo from '@/components/Logo.astro';
-import Flag from '@/components/Flag.astro';
-import { settings, servicePath, cabinet } from '@/lib/settings';
+import { settings, servicePath, cabinet, mapsHref } from '@/lib/settings';
 import duo from '@/assets/photos/duo.jpg';
 import quai from '@/assets/photos/bordeaux-quai.jpg';
+import salleTapis from '@/assets/photos/cabinet/salle-tapis.jpg';
+import salleEspaliers from '@/assets/photos/cabinet/salle-espaliers.jpg';
+import salleVelos from '@/assets/photos/cabinet/salle-velos.jpg';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.ordre - b.data.ordre);
 const kine = services.find((s) => s.id === 'reeducation')!;
@@ -17,16 +19,16 @@ const runcareServices = services.filter((s) => s.id !== 'reeducation');
 const equipe = (await getCollection('equipe')).sort((a, b) => a.data.ordre - b.data.ordre);
 const faq = (await getCollection('faq')).filter((f) => f.data.accueil).sort((a, b) => a.data.ordre - b.data.ordre);
 ---
-<Base title={`${cabinet.nom} — kinésithérapie du sport à Bordeaux`} description="Cabinet de kinésithérapie du sport à Bordeaux (130 cours de l'Argonne) : rééducation des sportifs et RunCare, notre programme dédié au coureur à pied — bilan, analyse de foulée, coaching.">
+<Base title={`${cabinet.nom} — kinésithérapie du sport à Bordeaux`} description="Cabinet de kinésithérapie du sport dédié au coureur à pied, à Bordeaux (130 cours de l'Argonne) : rééducation des blessures de course, et RunCare — bilan, analyse de foulée, coaching. Traiter la blessure, prévenir la récidive, progresser durablement.">
   <!-- Hero -->
   <section class="container pt-16 md:pt-24 pb-14">
-    <p class="eyebrow mb-5">Cabinet de kinésithérapie du sport · Bordeaux</p>
-    <h1 class="text-[clamp(2.6rem,6.5vw,5rem)] max-w-[15ch]">Soigner, prévenir, <em>et vous remettre en mouvement.</em></h1>
+    <p class="eyebrow mb-5">Cabinet de kinésithérapie du sport & du coureur · Bordeaux</p>
+    <h1 class="text-[clamp(2.6rem,6.5vw,5rem)] max-w-[15ch]">Traiter la blessure, prévenir la récidive, <em>progresser durablement.</em></h1>
     <div class="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
-      <p class="text-lg md:text-xl muted max-w-[52ch] leading-relaxed"><Flag note="Texte de présentation du cabinet à valider ou remplacer par Romain et Lelio : spécialités, publics accueillis (sportifs, tous publics ?), particularités du cabinet.">Kinésithérapeutes du sport et sportifs nous-mêmes, nous prenons en charge vos blessures et vos douleurs au cabinet, cours de l’Argonne, avec une approche centrée sur la personne et sur le retour à la pratique.</Flag></p>
+      <p class="text-lg md:text-xl muted max-w-[52ch] leading-relaxed">Kinésithérapeutes du sport, coureurs et passionnés, nous mettons notre expertise clinique et notre expérience de terrain au service de votre pratique — au cabinet pour vous soigner, avec RunCare pour vous faire progresser.</p>
       <div class="flex flex-wrap gap-3">
-        <a href={settings.doctolibRomain} class="btn btn-primary" rel="noopener">Prendre rendez-vous</a>
-        <a href="/runcare" class="btn btn-ghost">Vous êtes coureur ?</a>
+        <a href="/kinesitherapie" class="btn btn-primary">Je suis blessé</a>
+        <a href="/runcare" class="btn btn-ghost">Je veux progresser</a>
       </div>
     </div>
     <div class="mt-12 rounded-brand overflow-hidden aspect-[16/8] md:aspect-[21/9] bg-bg-2">
@@ -38,7 +40,7 @@ const faq = (await getCollection('faq')).filter((f) => f.data.accueil).sort((a, 
   <section class="section bg-bg-2">
     <div class="container grid gap-10 lg:grid-cols-[1fr_1fr] items-center">
       <div>
-        <p class="eyebrow mb-4">Kinésithérapie</p>
+        <p class="eyebrow mb-4">Rééducation du coureur</p>
         <h2 class="text-[clamp(1.9rem,4vw,3rem)]">Comprendre votre douleur, retrouver votre pratique.</h2>
         <p class="muted mt-5 text-lg leading-relaxed max-w-[50ch]">{kine.data.accroche} Séances sur prescription médicale, prises en charge par l’Assurance Maladie.</p>
         <div class="mt-8 flex flex-wrap gap-3">
@@ -65,6 +67,25 @@ const faq = (await getCollection('faq')).filter((f) => f.data.accueil).sort((a, 
         {runcareServices.map((s, i) => (
           <ServiceCard href={servicePath[s.id]} besoin={s.data.besoin} titre={s.data.titre} accroche={s.data.accroche} photo={s.data.photo} index={i + 2} />
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Le cabinet -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-8">
+        <div class="max-w-2xl">
+          <p class="eyebrow mb-4">Le cabinet</p>
+          <h2 class="text-[clamp(1.9rem,4vw,3rem)]">Un plateau technique pensé pour le coureur.</h2>
+          <p class="muted mt-4 text-lg leading-relaxed max-w-[52ch]">Tapis de course, vélos, espaliers, charges libres : de quoi évaluer, rééduquer et renforcer, au 130 cours de l’Argonne.</p>
+        </div>
+        <a href={mapsHref} class="btn btn-ghost" rel="noopener">Itinéraire &amp; avis Google</a>
+      </div>
+      <div class="grid gap-4 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div class="rounded-brand overflow-hidden aspect-[4/3] md:aspect-auto md:row-span-2 bg-bg-2"><Image src={salleVelos} alt="Salle de rééducation du cabinet : vélos, espaliers et charges" width={1400} class="w-full h-full object-cover img-tone" /></div>
+        <div class="rounded-brand overflow-hidden aspect-[4/3] bg-bg-2"><Image src={salleTapis} alt="Tapis de course du cabinet" width={800} class="w-full h-full object-cover img-tone" /></div>
+        <div class="rounded-brand overflow-hidden aspect-[4/3] bg-bg-2"><Image src={salleEspaliers} alt="Espaliers et matériel de renforcement" width={800} class="w-full h-full object-cover img-tone" /></div>
       </div>
     </div>
   </section>
@@ -108,5 +129,5 @@ const faq = (await getCollection('faq')).filter((f) => f.data.accueil).sort((a, 
     </div>
   </section>
 
-  <CtaBand title="Vous ne savez pas à qui vous adresser ?" text="Décrivez-nous simplement votre situation : nous vous orienterons vers la prise en charge adaptée, au cabinet ou dans le programme RunCare." />
+  <CtaBand title="Vous ne savez pas par où commencer ?" text="Décrivez-nous simplement votre situation : nous vous orienterons vers la prise en charge adaptée, rééducation au cabinet ou programme RunCare." />
 </Base>

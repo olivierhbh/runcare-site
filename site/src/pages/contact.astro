@@ -2,9 +2,8 @@
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Faq from '@/components/Faq.astro';
-import { settings, telHref, whatsappUrl, whatsappCoachingUrl } from '@/lib/settings';
+import { settings, telHref, whatsappUrl, whatsappCoachingUrl, mapsHref } from '@/lib/settings';
 const faq = (await getCollection('faq')).sort((a, b) => a.data.ordre - b.data.ordre);
-const mapQuery = encodeURIComponent(`${settings.adresse}, ${settings.codePostal} ${settings.ville}`);
 ---
 <Base title="Contact & rendez-vous" description="Prendre rendez-vous au cabinet Argonne Kiné Sport Santé, 130 cours de l'Argonne à Bordeaux, ou nous écrire sur WhatsApp pour RunCare. Réponses aux questions fréquentes.">
   <section class="container pt-14 md:pt-20 pb-12">
@@ -37,7 +36,7 @@ const mapQuery = encodeURIComponent(`${settings.adresse}, ${settings.codePostal}
         <p><a class="text-accent" href={`mailto:${settings.email}`}>{settings.email}</a></p>
         <p class="muted whitespace-pre-line">{settings.horaires}</p>
       </address>
-      <a href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} class="btn btn-ghost w-full justify-center mt-5" rel="noopener">Itinéraire</a>
+      <a href={mapsHref} class="btn btn-ghost w-full justify-center mt-5" rel="noopener">Itinéraire &amp; avis Google</a>
     </div>
   </section>
 

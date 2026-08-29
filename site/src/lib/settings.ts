@@ -4,7 +4,7 @@ export type Settings = {
   nom: string; baseline: string; adresse: string; codePostal: string; ville: string;
   telephone: string; whatsapp: string; whatsappCoaching: string; telephoneLelio: string; email: string;
   doctolibRomain: string; doctolibLelio: string; instagram: string;
-  horaires: string; leadMagnetUrl: string;
+  horaires: string; leadMagnetUrl: string; googleMaps: string;
 };
 
 import raw from '../content/settings.yaml?raw';
@@ -15,6 +15,8 @@ export const whatsappUrl = (text?: string, number: string = settings.whatsapp) =
 
 /** WhatsApp dédié au coaching (numéro de Lelio). */
 export const whatsappCoachingUrl = (text?: string) => whatsappUrl(text, settings.whatsappCoaching);
+
+export const mapsHref = settings.googleMaps || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${settings.adresse}, ${settings.codePostal} ${settings.ville}`)}`;
 
 export const telHref = `tel:+33${settings.telephone.replace(/\D/g, '').replace(/^0/, '')}`;
 
@@ -28,11 +30,11 @@ export function ctaHref(type: 'doctolib' | 'whatsapp' | 'contact' | 'url', url?:
 }
 
 /** Le cabinet est la marque principale ; RunCare est son programme dédié au coureur. */
-export const cabinet = { nom: 'Argonne Kiné Sport Santé', court: 'Argonne', baseline: 'Kinésithérapie du sport · Bordeaux' };
+export const cabinet = { nom: 'Argonne Kiné Sport Santé', court: 'Argonne', baseline: 'Kiné du sport & du coureur · Bordeaux' };
 export const runcare = { nom: 'RunCare', baseline: 'Le programme du coureur' };
 
 export const nav = [
-  { href: '/kinesitherapie', label: 'Kinésithérapie' },
+  { href: '/kinesitherapie', label: 'Rééducation' },
   { href: '/runcare', label: 'RunCare' },
   { href: '/equipe', label: 'L’équipe' },
   { href: '/blog', label: 'Conseils' },
@@ -47,7 +49,7 @@ export const servicePath: Record<string, string> = {
 };
 
 export const serviceLabels: Record<string, string> = {
-  'reeducation': 'Kinésithérapie',
+  'reeducation': 'Rééducation',
   'bilan-runcare': 'Bilan RunCare',
   'analyse-de-foulee': 'Analyse de foulée',
   'coaching': 'Coaching',

@@ -17,18 +17,20 @@ un service du cabinet, présenté sous `/runcare`.
   `/runcare/analyse-de-foulee` · `/runcare/coaching` · `/equipe` · `/blog` · `/contact`.
   Les anciennes URL (`/reeducation`, `/bilan-runcare`, `/analyse-de-foulee`, `/coaching`)
   redirigent en 301.
-- Logo du header : **wordmark provisoire « Argonne Kiné — Sport & Santé »** (pas de logo
-  fourni). Le logo RunCare (coureur) est conservé sur le hub, les pages RunCare et le pied
-  de page.
-- Accueil : hero cabinet, bloc Kinésithérapie (→ Doctolib), bloc RunCare avec les
-  3 services, équipe, FAQ. Le texte de présentation du cabinet est un **placeholder à
-  valider** (surligné dans la maquette).
-- Page Kinésithérapie : ancienne page « Rééducation du coureur » élargie (intro et liste
-  des pathologies) — **à relire**, le contenu reste centré course à pied.
+- **Cible inchangée : le coureur.** Le site n'adresse pas les autres patients ; le cabinet
+  est la marque, le message reste « Traiter la blessure, prévenir la récidive, progresser
+  durablement ».
+- Logo du header : logo Argonne Kiné Sport Santé fourni le 29/08 (`sources/logo-cabinet/`,
+  recadré en `site/src/assets/logo-argonne.png`). Le logo RunCare (coureur) est conservé
+  sur le hub, les pages RunCare et le pied de page.
+- Accueil : hero coureur avec deux entrées (« Je suis blessé » → rééducation, « Je veux
+  progresser » → RunCare), bloc Rééducation, bloc RunCare avec les 3 services, section
+  « Le cabinet » (3 photos fournies + lien Google Maps), équipe, FAQ.
+- Fiche Google Maps : https://maps.app.goo.gl/cPBL878vd6E9jfMp8 (réglable dans Keystatic),
+  utilisée dans le pied de page, la page contact et l'accueil.
 - Le questionnaire « Quel coureur êtes-vous ? » est déplacé sur le hub RunCare ; la
   mention « test gratuit » a été retirée partout (déontologie).
-- Points ouverts : vrai logo du cabinet ; photo du cabinet/salle pour l'accueil ;
-  spécialités hors course à pied à lister ; structure juridique (mentions légales).
+- Points ouverts : structure juridique (mentions légales) ; horaires réels.
 
 ## Choix éditoriaux globaux
 

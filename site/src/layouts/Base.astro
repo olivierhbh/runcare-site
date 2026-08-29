@@ -3,7 +3,7 @@ import '@/styles/global.css';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import ThemePicker from '@/components/ThemePicker.astro';
-import { settings, cabinet } from '@/lib/settings';
+import { settings, cabinet, mapsHref } from '@/lib/settings';
 
 interface Props { title: string; description: string; ogImage?: string }
 const { title, description, ogImage } = Astro.props;
@@ -33,7 +33,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       '@context': 'https://schema.org',
       '@type': 'Physiotherapy',
       name: cabinet.nom,
-      description: 'Cabinet de kinésithérapie du sport à Bordeaux. Rééducation, et RunCare, le programme dédié au coureur : bilan, analyse de foulée, coaching.',
+      description: 'Cabinet de kinésithérapie du sport dédié au coureur à pied, à Bordeaux. Rééducation, et RunCare : bilan, analyse de foulée, coaching.',
+      hasMap: mapsHref,
       address: { '@type': 'PostalAddress', streetAddress: settings.adresse, postalCode: settings.codePostal, addressLocality: settings.ville, addressCountry: 'FR' },
       telephone: settings.telephone,
       url: Astro.site?.toString(),

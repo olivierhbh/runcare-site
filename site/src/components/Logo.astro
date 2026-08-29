@@ -1,6 +1,8 @@
 ---
 import Runner from '@/assets/logo-runner.svg';
+import { Image } from 'astro:assets';
 import { cabinet } from '@/lib/settings';
+import argonne from '@/assets/logo-argonne.png';
 interface Props { class?: string; size?: 'sm' | 'md' | 'lg'; variant?: 'cabinet' | 'runcare'; link?: boolean }
 const { class: cls = '', size = 'md', variant = 'cabinet', link = true } = Astro.props;
 const h = { sm: 26, md: 34, lg: 48 }[size];
@@ -20,12 +22,6 @@ const href = variant === 'runcare' ? '/runcare' : '/';
   </Tag>
 ) : (
   <Tag href={link ? href : undefined} class={`logo inline-flex items-center gap-2.5 ${cls}`} aria-label={link ? `${cabinet.nom} — accueil` : undefined}>
-    <span class="shrink-0 rounded-full border-[1.5px] border-current flex items-center justify-center" style={`width:${h}px;height:${h}px;font-family: var(--font-logo)`} aria-hidden="true">
-      <span class="font-semibold leading-none text-accent" style={`font-size:${h * 0.5}px`}>A</span>
-    </span>
-    <span class="leading-none" style="font-family: var(--font-logo)">
-      <span class:list={['block font-semibold tracking-[-0.01em] whitespace-nowrap', main]}>{cabinet.court} <span class="text-accent">Kiné</span></span>
-      <span class="mt-[3px] text-[0.5rem] font-medium tracking-[0.3em] uppercase opacity-75 whitespace-nowrap block">Sport &amp; Santé</span>
-    </span>
+    <Image src={argonne} alt={cabinet.nom} height={Math.round(h * 1.6)} densities={[1, 2, 3]} class="block w-auto" style={`height:${Math.round(h * 1.6)}px`} loading="eager" />
   </Tag>
 )}
