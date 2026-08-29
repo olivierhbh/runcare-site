@@ -33,9 +33,13 @@ export function ctaHref(type: 'doctolib' | 'whatsapp' | 'contact' | 'url', url?:
 export const cabinet = { nom: 'Argonne Kiné Sport Santé', court: 'Argonne', baseline: 'Kiné du sport & du coureur · Bordeaux' };
 export const runcare = { nom: 'RunCare', baseline: 'Le programme du coureur' };
 
-export const nav = [
+/** Navigation principale : à plat, les services RunCare regroupés sous un libellé. */
+export type NavItem = { href: string; label: string; group?: string };
+export const nav: NavItem[] = [
   { href: '/kinesitherapie', label: 'Rééducation' },
-  { href: '/runcare', label: 'RunCare' },
+  { href: '/runcare/bilan', label: 'Bilan', group: 'RunCare' },
+  { href: '/runcare/analyse-de-foulee', label: 'Analyse de foulée', group: 'RunCare' },
+  { href: '/runcare/coaching', label: 'Coaching', group: 'RunCare' },
   { href: '/equipe', label: 'L’équipe' },
   { href: '/blog', label: 'Conseils' },
 ];

@@ -2,27 +2,44 @@
 import Logo from './Logo.astro';
 import { nav, settings } from '@/lib/settings';
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const active = (href: string) => path === href || path.startsWith(href + '/');
+const before = nav.filter((n) => !n.group);
+const runcare = nav.filter((n) => n.group === 'RunCare');
+const first = before[0];
+const rest = before.slice(1);
 ---
 <header class="sticky top-0 z-40 backdrop-blur border-b hairline" style="background: color-mix(in srgb, var(--bg) 85%, transparent)">
-  <div class="container flex items-center justify-between h-[4.25rem]">
+  <div class="container flex items-center justify-between gap-6 h-[4.25rem]">
     <Logo />
-    <nav class="hidden lg:flex items-center gap-7 text-[0.92rem]">
-      {nav.map((n) => (
-        <a href={n.href} class:list={['hover:text-accent transition-colors', path.startsWith(n.href) && 'text-accent font-medium']}>{n.label}</a>
-      ))}
+    <nav class="hidden lg:flex items-center gap-5 xl:gap-6 text-[0.9rem]" aria-label="Navigation principale">
+      <a href={first.href} class:list={['hover:text-accent transition-colors whitespace-nowrap', active(first.href) && 'text-accent font-medium']}>{first.label}</a>
+      <div class="flex items-center gap-4 xl:gap-5 pl-5 xl:pl-6 border-l hairline">
+        <a href="/runcare" class:list={['text-[0.68rem] font-semibold tracking-[0.14em] uppercase hover:text-accent transition-colors', path === '/runcare' ? 'text-accent' : 'muted']}>RunCare</a>
+        {runcare.map((n) => <a href={n.href} class:list={['hover:text-accent transition-colors whitespace-nowrap', active(n.href) && 'text-accent font-medium']}>{n.label}</a>)}
+      </div>
+      <div class="flex items-center gap-5 xl:gap-6 pl-5 xl:pl-6 border-l hairline">
+        {rest.map((n) => <a href={n.href} class:list={['hover:text-accent transition-colors whitespace-nowrap', active(n.href) && 'text-accent font-medium']}>{n.label}</a>)}
+      </div>
     </nav>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 shrink-0">
       <a href="/contact" class="btn btn-primary !py-2.5 !px-4 text-sm"><span class="hidden sm:inline">Prendre rendez-vous</span><span class="sm:hidden">Rendez-vous</span></a>
       <button id="menu-btn" class="lg:hidden p-2 -mr-2" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
       </button>
     </div>
   </div>
-  <nav id="mobile-nav" class="hidden lg:!hidden border-t hairline">
-    <div class="container py-4 flex flex-col gap-3">
-      {nav.map((n) => <a href={n.href} class="py-1.5 text-lg serif">{n.label}</a>)}
-      <a href="/contact" class="py-1.5 text-lg serif">Contact</a>
-      <p class="muted text-sm mt-2">{settings.adresse}, {settings.ville}</p>
+  <nav id="mobile-nav" class="hidden lg:!hidden border-t hairline" aria-label="Navigation mobile">
+    <div class="container py-4 flex flex-col gap-1">
+      <a href={first.href} class="py-2 text-lg serif">{first.label}</a>
+      <div class="mt-2 border-t hairline pt-3">
+        <a href="/runcare" class="block text-[0.7rem] font-semibold tracking-[0.14em] uppercase muted py-1">RunCare · kinésithérapie préventive</a>
+        {runcare.map((n) => <a href={n.href} class="block py-2 pl-4 text-lg serif">{n.label}</a>)}
+      </div>
+      <div class="mt-2 border-t hairline pt-3 flex flex-col gap-1">
+        {rest.map((n) => <a href={n.href} class="py-2 text-lg serif">{n.label}</a>)}
+        <a href="/contact" class="py-2 text-lg serif">Contact</a>
+      </div>
+      <p class="muted text-sm mt-3">{settings.adresse}, {settings.ville}</p>
     </div>
   </nav>
 </header>
