@@ -6,12 +6,9 @@ import ServiceCard from '@/components/ServiceCard.astro';
 import Faq from '@/components/Faq.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import Logo from '@/components/Logo.astro';
-import { settings, servicePath, cabinet, mapsHref } from '@/lib/settings';
+import { settings, servicePath, cabinet } from '@/lib/settings';
 import duo from '@/assets/photos/duo.jpg';
 import quai from '@/assets/photos/bordeaux-quai.jpg';
-import salleTapis from '@/assets/photos/cabinet/salle-tapis.jpg';
-import salleEspaliers from '@/assets/photos/cabinet/salle-espaliers.jpg';
-import salleVelos from '@/assets/photos/cabinet/salle-velos.jpg';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.ordre - b.data.ordre);
 const kine = services.find((s) => s.id === 'reeducation')!;
@@ -67,25 +64,6 @@ const faq = (await getCollection('faq')).filter((f) => f.data.accueil).sort((a, 
         {runcareServices.map((s, i) => (
           <ServiceCard href={servicePath[s.id]} besoin={s.data.besoin} titre={s.data.titre} accroche={s.data.accroche} photo={s.data.photo} index={i + 2} />
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Le cabinet -->
-  <section class="section pt-0">
-    <div class="container">
-      <div class="flex flex-wrap items-end justify-between gap-6 mb-8">
-        <div class="max-w-2xl">
-          <p class="eyebrow mb-4">Le cabinet</p>
-          <h2 class="text-[clamp(1.9rem,4vw,3rem)]">Un plateau technique pensé pour le coureur.</h2>
-          <p class="muted mt-4 text-lg leading-relaxed max-w-[52ch]">Tapis de course, vélos, espaliers, charges libres : de quoi évaluer, rééduquer et renforcer, au 130 cours de l’Argonne.</p>
-        </div>
-        <a href={mapsHref} class="btn btn-ghost" rel="noopener">Itinéraire &amp; avis Google</a>
-      </div>
-      <div class="grid gap-4 md:grid-cols-[1.5fr_1fr_1fr]">
-        <div class="rounded-brand overflow-hidden aspect-[4/3] md:aspect-auto md:row-span-2 bg-bg-2"><Image src={salleVelos} alt="Salle de rééducation du cabinet : vélos, espaliers et charges" width={1400} class="w-full h-full object-cover img-tone" /></div>
-        <div class="rounded-brand overflow-hidden aspect-[4/3] bg-bg-2"><Image src={salleTapis} alt="Tapis de course du cabinet" width={800} class="w-full h-full object-cover img-tone" /></div>
-        <div class="rounded-brand overflow-hidden aspect-[4/3] bg-bg-2"><Image src={salleEspaliers} alt="Espaliers et matériel de renforcement" width={800} class="w-full h-full object-cover img-tone" /></div>
       </div>
     </div>
   </section>

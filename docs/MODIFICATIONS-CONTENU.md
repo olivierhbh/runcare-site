@@ -25,7 +25,9 @@ un service du cabinet, présenté sous `/runcare`.
   sur le hub, les pages RunCare et le pied de page.
 - Accueil : hero coureur avec deux entrées (« Je suis blessé » → rééducation, « Je veux
   progresser » → RunCare), bloc Rééducation, bloc RunCare avec les 3 services, section
-  « Le cabinet » (3 photos fournies + lien Google Maps), équipe, FAQ.
+  équipe, FAQ. (La section « Le cabinet » avec les photos de la salle a été retirée à la
+  demande de Romain — cabinet petit et chargé, pas à mettre en avant ; les photos restent
+  dans `site/src/assets/photos/cabinet/` si besoin.)
 - Déontologie (consigne de Romain, 29/08) : RunCare est présenté partout comme de la
   **kinésithérapie préventive** (prévention des blessures du coureur), actes **hors
   nomenclature, non remboursés** — hub, pages services, coaching, accueil, FAQ, mentions.
