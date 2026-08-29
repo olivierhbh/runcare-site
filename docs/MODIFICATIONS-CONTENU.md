@@ -26,6 +26,9 @@ un service du cabinet, présenté sous `/runcare`.
 - Accueil : hero coureur avec deux entrées (« Je suis blessé » → rééducation, « Je veux
   progresser » → RunCare), bloc Rééducation, bloc RunCare avec les 3 services, section
   « Le cabinet » (3 photos fournies + lien Google Maps), équipe, FAQ.
+- Déontologie (consigne de Romain, 29/08) : RunCare est présenté partout comme de la
+  **kinésithérapie préventive** (prévention des blessures du coureur), actes **hors
+  nomenclature, non remboursés** — hub, pages services, coaching, accueil, FAQ, mentions.
 - Fiche Google Maps : https://maps.app.goo.gl/cPBL878vd6E9jfMp8 (réglable dans Keystatic),
   utilisée dans le pied de page, la page contact et l'accueil.
 - Le questionnaire « Quel coureur êtes-vous ? » est déplacé sur le hub RunCare ; la

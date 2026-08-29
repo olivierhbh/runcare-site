@@ -16,10 +16,10 @@ const steps = ['Comprendre', 'Évaluer', 'Hiérarchiser', 'Agir', 'Adapter'];
 <Base title="RunCare — le programme du coureur à Bordeaux" description="RunCare, le programme d'Argonne Kiné Sport Santé dédié au coureur à pied : bilan diagnostic, analyse de foulée et coaching, par des kinés du sport coureurs. Prévenir la récidive, progresser durablement." ogImage={quai.src}>
   <section class="container pt-14 md:pt-20 pb-14">
     <Logo variant="runcare" size="lg" link={false} />
-    <p class="eyebrow mt-8 mb-5">Le programme du coureur · par Argonne Kiné Sport Santé</p>
+    <p class="eyebrow mt-8 mb-5">Kinésithérapie préventive du coureur · par Argonne Kiné Sport Santé</p>
     <h1 class="text-[clamp(2.4rem,6vw,4.6rem)] max-w-[16ch]">Prévenir la récidive, <em>progresser durablement.</em></h1>
     <div class="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
-      <p class="text-lg md:text-xl muted max-w-[52ch] leading-relaxed">Kinés du sport et coureurs, nous avons conçu RunCare pour répondre au véritable défi du coureur : progresser sans être freiné par les blessures. Trois services complémentaires, un même regard clinique.</p>
+      <p class="text-lg md:text-xl muted max-w-[52ch] leading-relaxed">Kinés du sport et coureurs, nous avons conçu RunCare pour répondre au véritable défi du coureur : progresser sans être freiné par les blessures. Trois actes de kinésithérapie préventive, un même regard clinique.</p>
       <div class="flex flex-wrap gap-3">
         <a href={servicePath['bilan-runcare']} class="btn btn-primary">Commencer par un bilan</a>
         <a href="#services" class="btn btn-ghost">Voir les services</a>
@@ -41,7 +41,10 @@ const steps = ['Comprendre', 'Évaluer', 'Hiérarchiser', 'Agir', 'Adapter'];
           <ServiceCard href={servicePath[s.id]} besoin={s.data.besoin} titre={s.data.titre} accroche={s.data.accroche} photo={s.data.photo} index={i + 2} />
         ))}
       </div>
-      <p class="muted mt-8 max-w-[60ch] text-sm">Vous avez une douleur ou une blessure ? La prise en charge se fait au cabinet, en kinésithérapie : <a href="/kinesitherapie" class="text-accent font-medium hover:underline">voir la rééducation du coureur →</a></p>
+      <div class="mt-10 grid gap-4 md:grid-cols-2 text-sm">
+        <p class="bg-surface border hairline rounded-brand p-5 leading-relaxed"><strong class="block mb-1">De la kinésithérapie, hors nomenclature.</strong>RunCare, c’est de la kinésithérapie : des actes de prévention des blessures du coureur, réalisés par des kinésithérapeutes. Ces actes sont hors nomenclature, donc non remboursés par l’Assurance Maladie.</p>
+        <p class="bg-surface border hairline rounded-brand p-5 leading-relaxed"><strong class="block mb-1">Blessé ou douloureux ?</strong>La prise en charge se fait d’abord au cabinet, en rééducation, sur prescription et remboursée. <a href="/kinesitherapie" class="text-accent font-medium hover:underline">Voir la rééducation du coureur →</a></p>
+      </div>
     </div>
   </section>
 

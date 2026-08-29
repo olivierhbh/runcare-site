@@ -36,6 +36,7 @@ const articles = (await getCollection('articles')).filter((a) => a.data.service 
         {d.tarif && <div><dt class="eyebrow !text-[0.65rem] mb-1">Tarif</dt><dd class="serif text-2xl">{d.tarif}</dd>{d.tarifNote && <dd class="muted mt-1">{d.tarifNote}</dd>}</div>}
       </dl>
       <a href={href} class="btn btn-primary w-full justify-center" rel="noopener">{d.ctaLabel}</a>
+      {isRuncare && <p class="text-xs muted leading-relaxed">Acte de kinésithérapie préventive, hors nomenclature : non remboursé par l’Assurance Maladie.</p>}
       {entry.id === 'reeducation' && (
         <p class="text-xs muted"><Flag note="Le brief propose de mentionner « remboursé par la sécu ». Formulé ici de façon neutre ; à valider avec les règles de communication de l'Ordre.">Prise en charge Assurance Maladie sur prescription.</Flag></p>
       )}
