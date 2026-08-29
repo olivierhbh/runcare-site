@@ -8,11 +8,11 @@ import duo from '@/assets/photos/duo.jpg';
 const equipe = (await getCollection('equipe')).sort((a, b) => a.data.ordre - b.data.ordre);
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
 ---
-<Base title="L’équipe" description="Romain et Lelio, kinésithérapeutes du sport, coachs running et coureurs, fondateurs de RunCare à Bordeaux." ogImage={duo.src}>
+<Base title="L’équipe" description="Romain et Lelio, kinésithérapeutes du sport et coachs running, fondateurs du cabinet Argonne Kiné Sport Santé et de son programme RunCare, à Bordeaux." ogImage={duo.src}>
   <section class="container pt-14 md:pt-20 pb-12">
     <p class="eyebrow mb-4">Qui sommes-nous ?</p>
     <h1 class="text-[clamp(2.4rem,5.5vw,4rem)] max-w-[18ch]">Deux expertises complémentaires, une même passion.</h1>
-    <p class="mt-6 text-lg md:text-xl muted max-w-[58ch]">Répondre au véritable défi du coureur : progresser durablement sans être freiné par les blessures.</p>
+    <p class="mt-6 text-lg md:text-xl muted max-w-[58ch]">Kinés du sport et sportifs, nous soignons au cabinet et accompagnons les coureurs avec RunCare : progresser durablement sans être freiné par les blessures.</p>
   </section>
   <div class="container"><div class="rounded-brand overflow-hidden aspect-[3/2] bg-bg-2"><Image src={duo} alt="Romain et Lelio au cabinet" width={1600} class="w-full h-full object-cover img-tone" /></div></div>
 

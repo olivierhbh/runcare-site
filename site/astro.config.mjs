@@ -11,6 +11,13 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://argonnekinesportsante.fr',
   adapter: vercel(),
+  // Anciennes URL (site RunCare seul) → nouvelle arborescence cabinet / RunCare.
+  redirects: {
+    '/reeducation': '/kinesitherapie',
+    '/bilan-runcare': '/runcare/bilan',
+    '/analyse-de-foulee': '/runcare/analyse-de-foulee',
+    '/coaching': '/runcare/coaching',
+  },
   integrations: [react(), markdoc(), keystatic()],
   vite: { plugins: [tailwindcss()] },
 });

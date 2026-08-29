@@ -8,6 +8,28 @@ Les points à trancher sont aussi visibles directement dans la maquette : bouton
 « Maquette · thème » en bas à droite → « Afficher les notes de relecture ». Les passages
 concernés sont surlignés en jaune avec une infobulle.
 
+## Restructuration cabinet / RunCare (29/08/2026)
+
+Le site est désormais celui du **cabinet Argonne Kiné Sport Santé** ; RunCare devient
+un service du cabinet, présenté sous `/runcare`.
+
+- Arborescence : `/` (cabinet) · `/kinesitherapie` · `/runcare` (hub) · `/runcare/bilan` ·
+  `/runcare/analyse-de-foulee` · `/runcare/coaching` · `/equipe` · `/blog` · `/contact`.
+  Les anciennes URL (`/reeducation`, `/bilan-runcare`, `/analyse-de-foulee`, `/coaching`)
+  redirigent en 301.
+- Logo du header : **wordmark provisoire « Argonne Kiné — Sport & Santé »** (pas de logo
+  fourni). Le logo RunCare (coureur) est conservé sur le hub, les pages RunCare et le pied
+  de page.
+- Accueil : hero cabinet, bloc Kinésithérapie (→ Doctolib), bloc RunCare avec les
+  3 services, équipe, FAQ. Le texte de présentation du cabinet est un **placeholder à
+  valider** (surligné dans la maquette).
+- Page Kinésithérapie : ancienne page « Rééducation du coureur » élargie (intro et liste
+  des pathologies) — **à relire**, le contenu reste centré course à pied.
+- Le questionnaire « Quel coureur êtes-vous ? » est déplacé sur le hub RunCare ; la
+  mention « test gratuit » a été retirée partout (déontologie).
+- Points ouverts : vrai logo du cabinet ; photo du cabinet/salle pour l'accueil ;
+  spécialités hors course à pied à lister ; structure juridique (mentions légales).
+
 ## Choix éditoriaux globaux
 
 - **Vouvoiement partout.** Le brief mélangeait « tu » et « vous » (souvent dans la même

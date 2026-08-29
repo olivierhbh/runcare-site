@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import ServicePage from '@/components/ServicePage.astro';
+import { servicePath } from '@/lib/settings';
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services
+    .filter((s) => s.id !== 'coaching' && s.id !== 'reeducation')
+    .map((s) => ({ params: { service: servicePath[s.id].replace('/runcare/', '') }, props: { entry: s } }));
+}
+const { entry } = Astro.props;
+---
+<ServicePage entry={entry} />

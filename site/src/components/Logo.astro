@@ -1,15 +1,31 @@
 ---
 import Runner from '@/assets/logo-runner.svg';
-interface Props { class?: string; size?: 'sm' | 'md' }
-const { class: cls = '', size = 'md' } = Astro.props;
-const h = size === 'sm' ? 26 : 34;
+import { cabinet } from '@/lib/settings';
+interface Props { class?: string; size?: 'sm' | 'md' | 'lg'; variant?: 'cabinet' | 'runcare'; link?: boolean }
+const { class: cls = '', size = 'md', variant = 'cabinet', link = true } = Astro.props;
+const h = { sm: 26, md: 34, lg: 48 }[size];
+const main = { sm: 'text-[1.15rem]', md: 'text-[1.2rem] sm:text-[1.45rem]', lg: 'text-[2rem]' }[size];
+const Tag = link ? 'a' : 'span';
+const href = variant === 'runcare' ? '/runcare' : '/';
 ---
-<a href="/" class={`logo inline-flex items-center gap-2.5 ${cls}`} aria-label="RunCare — accueil">
-  <Runner height={h} width={h * 1.09} aria-hidden="true" class="shrink-0" />
-  <span class="leading-none" style="font-family: var(--font-logo)">
-    <span class:list={['block font-semibold tracking-[-0.01em]', size === 'sm' ? 'text-[1.15rem]' : 'text-[1.45rem]']}>Run<span class="text-accent">Care</span></span>
-    <span class="logo-tag mt-[3px] text-[0.5rem] font-medium tracking-[0.3em] uppercase opacity-75 flex items-center gap-1.5 whitespace-nowrap">
-      <span class="hidden sm:block h-px w-3 bg-current opacity-60"></span>Kiné &amp; Coach<span class="hidden sm:block h-px w-3 bg-current opacity-60"></span>
+{variant === 'runcare' ? (
+  <Tag href={link ? href : undefined} class={`logo inline-flex items-center gap-2.5 ${cls}`} aria-label={link ? 'RunCare — le programme du coureur' : undefined}>
+    <Runner height={h} width={h * 1.09} aria-hidden="true" class="shrink-0" />
+    <span class="leading-none" style="font-family: var(--font-logo)">
+      <span class:list={['block font-semibold tracking-[-0.01em]', main]}>Run<span class="text-accent">Care</span></span>
+      <span class="mt-[3px] text-[0.5rem] font-medium tracking-[0.3em] uppercase opacity-75 flex items-center gap-1.5 whitespace-nowrap">
+        <span class="hidden sm:block h-px w-3 bg-current opacity-60"></span>Kiné &amp; Coach<span class="hidden sm:block h-px w-3 bg-current opacity-60"></span>
+      </span>
     </span>
-  </span>
-</a>
+  </Tag>
+) : (
+  <Tag href={link ? href : undefined} class={`logo inline-flex items-center gap-2.5 ${cls}`} aria-label={link ? `${cabinet.nom} — accueil` : undefined}>
+    <span class="shrink-0 rounded-full border-[1.5px] border-current flex items-center justify-center" style={`width:${h}px;height:${h}px;font-family: var(--font-logo)`} aria-hidden="true">
+      <span class="font-semibold leading-none text-accent" style={`font-size:${h * 0.5}px`}>A</span>
+    </span>
+    <span class="leading-none" style="font-family: var(--font-logo)">
+      <span class:list={['block font-semibold tracking-[-0.01em] whitespace-nowrap', main]}>{cabinet.court} <span class="text-accent">Kiné</span></span>
+      <span class="mt-[3px] text-[0.5rem] font-medium tracking-[0.3em] uppercase opacity-75 whitespace-nowrap block">Sport &amp; Santé</span>
+    </span>
+  </Tag>
+)}

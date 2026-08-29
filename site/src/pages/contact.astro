@@ -6,7 +6,7 @@ import { settings, telHref, whatsappUrl, whatsappCoachingUrl } from '@/lib/setti
 const faq = (await getCollection('faq')).sort((a, b) => a.data.ordre - b.data.ordre);
 const mapQuery = encodeURIComponent(`${settings.adresse}, ${settings.codePostal} ${settings.ville}`);
 ---
-<Base title="Contact & rendez-vous" description="Prendre rendez-vous au cabinet RunCare, 130 cours de l'Argonne à Bordeaux, ou nous écrire sur WhatsApp. Réponses aux questions fréquentes.">
+<Base title="Contact & rendez-vous" description="Prendre rendez-vous au cabinet Argonne Kiné Sport Santé, 130 cours de l'Argonne à Bordeaux, ou nous écrire sur WhatsApp pour RunCare. Réponses aux questions fréquentes.">
   <section class="container pt-14 md:pt-20 pb-12">
     <p class="eyebrow mb-4">Contact & rendez-vous</p>
     <h1 class="text-[clamp(2.4rem,5.5vw,4rem)] max-w-[16ch]">Décrivez-nous votre situation.</h1>
@@ -15,16 +15,16 @@ const mapQuery = encodeURIComponent(`${settings.adresse}, ${settings.codePostal}
 
   <section class="container pb-20 grid gap-5 md:grid-cols-3">
     <div class="bg-surface border hairline rounded-brand p-7">
-      <p class="eyebrow mb-3">Rééducation</p>
+      <p class="eyebrow mb-3">Kinésithérapie</p>
       <h2 class="text-2xl mb-3">Au cabinet</h2>
-      <p class="muted text-sm leading-relaxed mb-5">Séances de kinésithérapie, analyse de foulée et séances de préparation physique.</p>
+      <p class="muted text-sm leading-relaxed mb-5">Séances de kinésithérapie sur prescription, rééducation, préparation physique.</p>
       <a href={settings.doctolibRomain} class="btn btn-primary w-full justify-center" rel="noopener">Doctolib — Romain</a>
       <a href={settings.doctolibLelio} class="btn btn-ghost w-full justify-center mt-2" rel="noopener">Doctolib — Lelio</a>
     </div>
     <div class="bg-surface border hairline rounded-brand p-7">
-      <p class="eyebrow mb-3">Bilan, foulée, coaching</p>
+      <p class="eyebrow mb-3">RunCare</p>
       <h2 class="text-2xl mb-3">Par message</h2>
-      <p class="muted text-sm leading-relaxed mb-5">Le plus simple pour réserver un bilan, une analyse de foulée ou parler coaching.</p>
+      <p class="muted text-sm leading-relaxed mb-5">Pour toute question sur le <a class="text-accent hover:underline" href="/runcare/bilan">bilan</a>, l’<a class="text-accent hover:underline" href="/runcare/analyse-de-foulee">analyse de foulée</a> ou le <a class="text-accent hover:underline" href="/runcare/coaching">coaching</a>.</p>
       <a href={whatsappUrl('Bonjour, je souhaite vous décrire ma situation.')} class="btn btn-primary w-full justify-center" rel="noopener">Écrire sur WhatsApp</a>
       <a href={whatsappCoachingUrl('Bonjour, je souhaite échanger sur un accompagnement coaching.')} class="btn btn-ghost w-full justify-center mt-2" rel="noopener">WhatsApp coaching</a>
     </div>

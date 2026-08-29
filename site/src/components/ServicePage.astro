@@ -1,17 +1,16 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import { getCollection, render } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import PageHero from '@/components/PageHero.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import Flag from '@/components/Flag.astro';
 import ArticleCard from '@/components/ArticleCard.astro';
+import Logo from '@/components/Logo.astro';
 import { ctaHref } from '@/lib/settings';
 import bilanAnalyse from '@/assets/photos/bilan-analyse.jpg';
 
-export async function getStaticPaths() {
-  const services = await getCollection('services');
-  return services.filter((s) => s.id !== 'coaching').map((s) => ({ params: { service: s.id }, props: { entry: s } }));
-}
+interface Props { entry: CollectionEntry<'services'> }
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
@@ -21,10 +20,13 @@ const subjects: Record<string, string> = {
 };
 const href = ctaHref(d.ctaType, d.ctaUrl, subjects[entry.id]);
 const heroPhoto = entry.id === 'bilan-runcare' ? bilanAnalyse : d.photo;
+const isRuncare = entry.id !== 'reeducation';
 const articles = (await getCollection('articles')).filter((a) => a.data.service === entry.id);
 ---
 <Base title={d.titre} description={d.accroche} ogImage={d.photo?.src}>
-  <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={heroPhoto} photoAlt={d.titre} />
+  <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={heroPhoto} photoAlt={d.titre}>
+    {isRuncare && <a href="/runcare" class="mt-8 inline-flex items-center gap-3 text-sm muted hover:text-accent"><Logo variant="runcare" size="sm" link={false} /><span>← Tous les services RunCare</span></a>}
+  </PageHero>
   <section class="container pb-20 grid gap-12 lg:grid-cols-[1fr_20rem] items-start">
     <div class="prose"><Content /></div>
     <aside class="lg:sticky lg:top-24 bg-surface border hairline rounded-brand p-6 space-y-5">

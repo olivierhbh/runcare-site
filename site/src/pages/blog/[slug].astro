@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import { Image } from 'astro:assets';
 import CtaBand from '@/components/CtaBand.astro';
-import { serviceLabels, settings } from '@/lib/settings';
+import { serviceLabels, servicePath, settings } from '@/lib/settings';
 import ArticleCardLite from '@/components/ArticleCard.astro';
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -14,19 +14,19 @@ const { Content } = await render(entry);
 const d = entry.data;
 const date = d.publishedDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 const others = (await getCollection('articles')).filter((a) => a.id !== entry.id).slice(0, 3);
-const bilan = { label: 'Réserver un Bilan Diagnostic RunCare', href: '/bilan-runcare' };
+const bilan = { label: 'Réserver un Bilan Diagnostic RunCare', href: servicePath['bilan-runcare'] };
 const ctaByService: Record<string, { text: string; primary: { label: string; href: string }; secondary?: { label: string; href: string } }> = {
   'reeducation': { text: 'Une douleur qui persiste ? Prenez rendez-vous au cabinet, ou faites le point sur votre situation avec un bilan.', primary: { label: 'Prendre rendez-vous sur Doctolib', href: settings.doctolibRomain }, secondary: bilan },
   'bilan-runcare': { text: 'Pour comprendre ce qui se joue dans votre cas, le bilan croise votre historique, votre entraînement et vos capacités.', primary: bilan },
-  'analyse-de-foulee': { text: 'Avant de modifier votre foulée, faites d’abord le point sur votre situation globale avec un bilan.', primary: bilan, secondary: { label: 'Voir l’analyse de foulée', href: '/analyse-de-foulee' } },
-  'coaching': { text: 'Chaque accompagnement commence par un bilan pour construire un entraînement adapté à votre situation.', primary: bilan, secondary: { label: 'Voir les formules de coaching', href: '/coaching' } },
+  'analyse-de-foulee': { text: 'Avant de modifier votre foulée, faites d’abord le point sur votre situation globale avec un bilan.', primary: bilan, secondary: { label: 'Voir l’analyse de foulée', href: servicePath['analyse-de-foulee'] } },
+  'coaching': { text: 'Chaque accompagnement commence par un bilan pour construire un entraînement adapté à votre situation.', primary: bilan, secondary: { label: 'Voir les formules de coaching', href: servicePath['coaching'] } },
 };
 const cta = ctaByService[d.service];
 ---
 <Base title={d.title} description={d.description}>
   <article class="container pt-14 md:pt-20 pb-20">
     <div class="max-w-[62ch]">
-      <p class="text-xs muted mb-4 flex gap-2"><a class="text-accent font-semibold uppercase tracking-[0.12em]" href={ctaByService[d.service].href}>{serviceLabels[d.service]}</a><span>·</span><time>{date}</time></p>
+      <p class="text-xs muted mb-4 flex gap-2"><a class="text-accent font-semibold uppercase tracking-[0.12em]" href={servicePath[d.service]}>{serviceLabels[d.service]}</a><span>·</span><time>{date}</time></p>
       <h1 class="text-[clamp(2.2rem,5vw,3.6rem)]">{d.title}</h1>
       <p class="mt-6 text-lg muted leading-relaxed">{d.description}</p>
     </div>

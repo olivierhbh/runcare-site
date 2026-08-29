@@ -1,6 +1,6 @@
-# RunCare — site vitrine
+# Argonne Kiné Sport Santé — site vitrine
 
-Site de Romain Bihel et Lelio Renault (kinés du sport et coachs running, Bordeaux).
+Site du cabinet de kinésithérapie du sport de Romain Bihel et Lelio Renault (Bordeaux). **RunCare** est le programme du cabinet dédié au coureur (bilan, analyse de foulée, coaching), présenté sous `/runcare`.
 Domaine : **argonnekinesportsante.fr**. Prod actuelle : https://runcare-site.vercel.app (Vercel, push sur `main` → déploiement).
 
 ## Organisation du dépôt

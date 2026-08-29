@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import Logo from '@/components/Logo.astro';
+import { settings, servicePath } from '@/lib/settings';
+import quai from '@/assets/photos/bordeaux-quai.jpg';
+
+const services = (await getCollection('services')).filter((s) => s.id !== 'reeducation').sort((a, b) => a.data.ordre - b.data.ordre);
+const articles = (await getCollection('articles')).filter((a) => a.data.service !== 'reeducation').sort((a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime()).slice(0, 3);
+const steps = ['Comprendre', 'Évaluer', 'Hiérarchiser', 'Agir', 'Adapter'];
+---
+<Base title="RunCare — le programme du coureur à Bordeaux" description="RunCare, le programme d'Argonne Kiné Sport Santé dédié au coureur à pied : bilan diagnostic, analyse de foulée et coaching, par des kinés du sport coureurs. Prévenir la récidive, progresser durablement." ogImage={quai.src}>
+  <section class="container pt-14 md:pt-20 pb-14">
+    <Logo variant="runcare" size="lg" link={false} />
+    <p class="eyebrow mt-8 mb-5">Le programme du coureur · par Argonne Kiné Sport Santé</p>
+    <h1 class="text-[clamp(2.4rem,6vw,4.6rem)] max-w-[16ch]">Prévenir la récidive, <em>progresser durablement.</em></h1>
+    <div class="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+      <p class="text-lg md:text-xl muted max-w-[52ch] leading-relaxed">Kinés du sport et coureurs, nous avons conçu RunCare pour répondre au véritable défi du coureur : progresser sans être freiné par les blessures. Trois services complémentaires, un même regard clinique.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href={servicePath['bilan-runcare']} class="btn btn-primary">Commencer par un bilan</a>
+        <a href="#services" class="btn btn-ghost">Voir les services</a>
+      </div>
+    </div>
+    <div class="mt-12 rounded-brand overflow-hidden aspect-[16/8] md:aspect-[21/9] bg-bg-2">
+      <Image src={quai} alt="Coureur sur les quais de Bordeaux au petit matin" width={1800} class="w-full h-full object-cover img-tone" loading="eager" />
+    </div>
+  </section>
+
+  <section id="services" class="section bg-bg-2">
+    <div class="container">
+      <div class="max-w-2xl mb-12">
+        <p class="eyebrow mb-4">Les services RunCare</p>
+        <h2 class="text-[clamp(1.9rem,4vw,3rem)]">Quel que soit votre besoin, nous vous orientons vers l’accompagnement adapté.</h2>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-3">
+        {services.map((s, i) => (
+          <ServiceCard href={servicePath[s.id]} besoin={s.data.besoin} titre={s.data.titre} accroche={s.data.accroche} photo={s.data.photo} index={i + 2} />
+        ))}
+      </div>
+      <p class="muted mt-8 max-w-[60ch] text-sm">Vous avez une douleur ou une blessure ? La prise en charge se fait au cabinet, en kinésithérapie : <a href="/kinesitherapie" class="text-accent font-medium hover:underline">voir la rééducation du coureur →</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="max-w-2xl mb-10">
+        <p class="eyebrow mb-4">Notre méthode</p>
+        <h2 class="text-[clamp(1.9rem,4vw,3rem)]">Deux expertises complémentaires, une même passion.</h2>
+        <p class="muted mt-5 text-lg leading-relaxed max-w-[50ch]">Le regard du kiné et celui du coach, pour comprendre avant d’agir.</p>
+      </div>
+      <ol class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        {steps.map((s, i) => (
+          <li class="bg-surface border hairline rounded-brand p-6 flex flex-col justify-between gap-10 min-h-40">
+            <span class="serif text-3xl text-accent">{String(i + 1).padStart(2, '0')}</span>
+            <span class="font-medium text-lg leading-tight">{s}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container">
+      <div class="rounded-brand bg-accent-soft p-8 md:p-14 grid gap-8 md:grid-cols-[1.4fr_1fr] items-center">
+        <div>
+          <p class="eyebrow mb-3">Quel coureur êtes-vous ?</p>
+          <h2 class="text-[clamp(1.7rem,3.5vw,2.6rem)]">Évaluez votre profil face aux risques de blessure.</h2>
+          <p class="muted mt-4 max-w-[50ch]">Un questionnaire de quelques minutes pour situer votre profil et recevoir nos premiers conseils adaptés.</p>
+        </div>
+        <div class="md:justify-self-end">
+          <a href={settings.leadMagnetUrl || '/profil-coureur'} class="btn btn-primary" rel="noopener">Déterminer mon profil</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {articles.length > 0 && (
+    <section class="section pt-0">
+      <div class="container">
+        <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+          <p class="eyebrow">Conseils aux coureurs</p>
+          <a href="/blog" class="text-sm font-medium text-accent hover:underline">Tous les articles →</a>
+        </div>
+        <div class="grid gap-5 md:grid-cols-3">{articles.map((a) => <ArticleCard article={a} />)}</div>
+      </div>
+    </section>
+  )}
+
+  <CtaBand title="Vous ne savez pas par où commencer ?" text="Décrivez-nous votre situation : nous vous dirons quel service RunCare a du sens pour vous." />
+</Base>

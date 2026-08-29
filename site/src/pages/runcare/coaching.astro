@@ -57,7 +57,7 @@ const cell = (f: (typeof formules)[0], key: (typeof rows)[0]['key']) =>
     </div>
     <p class="mt-6 text-sm muted max-w-[70ch]"><Flag note="Prix Force : le brief dit « 120 € sans engagement » pour 3 mois avec 4 séances au cabinet. Vérifier qu'il s'agit bien d'un forfait de 120 € au total et non 120 €/mois.">La formule Force est un forfait unique de 120 € pour les 3 mois.</Flag> Chaque formule démarre par un Bilan Diagnostic RunCare, proposé à 60 € au lieu de 90 €.</p>
     <div class="mt-6 flex flex-wrap gap-3 items-center">
-      <a href="/bilan-runcare" class="btn btn-primary">Commencer par un Bilan Diagnostic</a>
+      <a href="/runcare/bilan" class="btn btn-primary">Commencer par un Bilan Diagnostic</a>
       <span class="text-sm muted">Vous hésitez entre les formules ? Le bilan permet de choisir celle qui a du sens pour vous.</span>
     </div>
   </section>
@@ -105,5 +105,5 @@ const cell = (f: (typeof formules)[0], key: (typeof rows)[0]['key']) =>
       </div>
     </section>
   )}
-  <CtaBand title="Envie d’en parler ?" text="Décrivez-nous votre objectif et votre situation : nous vous dirons quelle formule a du sens pour vous." primary={{ label: 'Réserver un Bilan Diagnostic', href: '/bilan-runcare' }} whatsapp={whatsappCoachingUrl('Bonjour, je souhaite échanger sur un accompagnement coaching.')} />
+  <CtaBand title="Envie d’en parler ?" text="Décrivez-nous votre objectif et votre situation : nous vous dirons quelle formule a du sens pour vous." primary={{ label: 'Réserver un Bilan Diagnostic', href: '/runcare/bilan' }} whatsapp={whatsappCoachingUrl('Bonjour, je souhaite échanger sur un accompagnement coaching.')} />
 </Base>

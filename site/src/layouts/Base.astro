@@ -3,11 +3,11 @@ import '@/styles/global.css';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import ThemePicker from '@/components/ThemePicker.astro';
-import { settings } from '@/lib/settings';
+import { settings, cabinet } from '@/lib/settings';
 
 interface Props { title: string; description: string; ogImage?: string }
 const { title, description, ogImage } = Astro.props;
-const fullTitle = title.includes('RunCare') ? title : `${title} — RunCare, kiné & coach du coureur à Bordeaux`;
+const fullTitle = title.includes(cabinet.nom) ? title : `${title} — ${cabinet.nom}, Bordeaux`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <html lang="fr" data-theme="sapin" data-notes="off">
@@ -32,8 +32,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Physiotherapy',
-      name: 'RunCare — Kiné & Coach',
-      description: 'Cabinet de kinésithérapie dédié à la prise en charge du coureur à pied à Bordeaux.',
+      name: cabinet.nom,
+      description: 'Cabinet de kinésithérapie du sport à Bordeaux. Rééducation, et RunCare, le programme dédié au coureur : bilan, analyse de foulée, coaching.',
       address: { '@type': 'PostalAddress', streetAddress: settings.adresse, postalCode: settings.codePostal, addressLocality: settings.ville, addressCountry: 'FR' },
       telephone: settings.telephone,
       url: Astro.site?.toString(),

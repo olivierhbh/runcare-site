@@ -12,7 +12,7 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
       ))}
     </nav>
     <div class="flex items-center gap-3">
-      <a href="/contact" class="btn btn-primary !py-2.5 !px-4 text-sm">Prendre contact</a>
+      <a href="/contact" class="btn btn-primary !py-2.5 !px-4 text-sm"><span class="hidden sm:inline">Prendre rendez-vous</span><span class="sm:hidden">Rendez-vous</span></a>
       <button id="menu-btn" class="lg:hidden p-2 -mr-2" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
       </button>

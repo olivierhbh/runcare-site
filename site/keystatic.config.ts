@@ -8,15 +8,15 @@ export default config({
   storage: github
     ? { kind: 'github', repo: 'olivierhbh/runcare-site', pathPrefix: 'site' }
     : { kind: 'local' },
-  ui: { brand: { name: 'RunCare' } },
+  ui: { brand: { name: 'Argonne Kiné Sport Santé' } },
   singletons: {
     settings: singleton({
       label: 'Coordonnées & réglages',
       path: 'src/content/settings',
       format: { data: 'yaml' },
       schema: {
-        nom: fields.text({ label: 'Nom du cabinet', defaultValue: 'RunCare' }),
-        baseline: fields.text({ label: 'Baseline', defaultValue: 'Kiné & Coach' }),
+        nom: fields.text({ label: 'Nom du cabinet', defaultValue: 'Argonne Kiné Sport Santé' }),
+        baseline: fields.text({ label: 'Baseline', defaultValue: 'Kinésithérapie du sport · Bordeaux' }),
         adresse: fields.text({ label: 'Adresse' }),
         codePostal: fields.text({ label: 'Code postal' }),
         ville: fields.text({ label: 'Ville' }),
