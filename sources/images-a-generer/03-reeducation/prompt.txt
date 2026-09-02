@@ -1,0 +1,14 @@
+IMAGE À REMPLACER : site/src/assets/photos/services/reeducation/reeducation-cheville.jpg
+(page Rééducation + carte de l'accueil)
+
+PIÈCES JOINTES À FOURNIR À L'IA :
+1. reeducation-actuelle-a-retoucher.jpg (la scène à conserver)
+2. reference-visage-lelio-1.jpg et reference-visage-lelio-2.jpg (le vrai visage de Lelio)
+
+PROMPT :
+Retouche la première image (séance de kinésithérapie au cabinet). Remplace le visage
+du praticien par celui de l'homme des deux photos de référence (c'est la même
+personne : visage fin, barbe légère, cheveux châtain clair courts). Garde tout le
+reste strictement identique : la scène, la table de traitement, le patient, la
+lumière, les vêtements. Rendu naturel type photo prise au smartphone, grain léger,
+peau non lissée, pas d'aspect « image générée ».

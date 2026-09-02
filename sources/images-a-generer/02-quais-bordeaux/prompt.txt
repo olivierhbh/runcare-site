@@ -1,0 +1,14 @@
+IMAGE À REMPLACER : site/src/assets/photos/bordeaux-quai.jpg (grande image de la page d'accueil)
+
+PIÈCES JOINTES À FOURNIR À L'IA :
+1. quais-actuelle-pour-la-pose.jpg (pour la pose et l'ambiance du coureur)
+2. AJOUTER TOI-MÊME une vraie photo des quais de Bordeaux (place de la Bourse /
+   miroir d'eau, ou quais rive gauche côté Chartrons) comme référence du lieu.
+
+PROMPT :
+Photo réaliste d'un coureur au lever du soleil sur les quais de Bordeaux, reproduisant
+fidèlement le lieu de la photo de référence fournie : façades XVIIIe en pierre blonde,
+miroir d'eau, réverbères et pavés réels de la place de la Bourse. Reprends la pose et
+l'ambiance du coureur de l'autre image fournie : il court de profil, au premier tiers
+de l'image, tenue de running sobre. Lumière douce du matin, légère brume, style
+photojournalisme, pas de rendu « IA lisse ». Format paysage très large (21:9).

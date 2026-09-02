@@ -69,8 +69,7 @@ const contacts: Record<string, { label: string; links: { label: string; href: st
             </div>
           </div>
           <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            {m.data.strava && <a href={m.data.strava} class="text-sm font-medium text-accent hover:underline" rel="noopener">Suivre {cap(m.id)} sur Strava →</a>}
-            {!m.data.strava && <p class="text-sm"><Flag note="Profil Strava à fournir (optionnel) — affiché ici s'il est renseigné.">Strava : lien à fournir</Flag></p>}
+            {m.data.strava && <a href={m.data.strava} class="text-sm font-medium text-accent hover:underline" rel="noopener">Jette un œil au profil de {cap(m.id)} sur Strava →</a>}
           </div>
         </div>
       </div>

@@ -87,4 +87,9 @@ const articles = defineCollection({
     }),
 });
 
-export const collections = { equipe, services, formules, faq, articles };
+const legal = defineCollection({
+  loader: glob({ pattern: '*.mdoc', base: 'src/content/legal' }),
+  schema: z.object({ titre: z.string() }),
+});
+
+export const collections = { equipe, services, formules, faq, articles, legal };

@@ -1,0 +1,13 @@
+IMAGE À REMPLACER : site/src/assets/photos/duo.jpg (photo d'équipe de la page d'accueil)
+
+PIÈCES JOINTES À FOURNIR À L'IA :
+1. duo-actuelle-a-retoucher.jpg (la photo à retoucher)
+2. reference-visage-lelio-1.jpg et reference-visage-lelio-2.jpg (le vrai visage de Lelio)
+
+PROMPT :
+Retouche la première image (photo de deux kinésithérapeutes dans leur cabinet).
+Remplace uniquement le visage de l'homme de droite pour qu'il corresponde exactement
+à l'homme des deux photos de référence (c'est la même personne : visage fin, barbe
+légère, cheveux châtain clair courts). Ne change rien d'autre : cadrage, lumière,
+vêtements, décor et l'homme de gauche restent strictement identiques. Rendu photo
+réaliste, grain naturel, aucun lissage excessif de la peau.

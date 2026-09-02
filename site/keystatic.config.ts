@@ -37,6 +37,16 @@ export default config({
     }),
   },
   collections: {
+    legal: collection({
+      label: 'Pages légales',
+      path: 'src/content/legal/*',
+      slugField: 'titre',
+      format: { contentField: 'contenu' },
+      schema: {
+        titre: fields.slug({ name: { label: 'Titre' } }),
+        contenu: fields.markdoc({ label: 'Contenu' }),
+      },
+    }),
     equipe: collection({
       label: 'Équipe',
       path: 'src/content/equipe/*',

@@ -1,0 +1,6 @@
+Un dossier par image à régénérer. Dans chaque dossier :
+- prompt.txt : le prompt à donner à l'IA (Gemini / Nano Banana) + la liste des images
+  à mettre en pièces jointes (elles sont dans le dossier, sauf la vraie photo des
+  quais à ajouter pour le dossier 02).
+Une fois l'image générée : remplacer le fichier indiqué en tête de prompt.txt
+(même chemin, même nom) puis commit — le site la reprend automatiquement.
