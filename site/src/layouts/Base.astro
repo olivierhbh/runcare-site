@@ -7,7 +7,7 @@ import { settings } from '@/lib/settings';
 
 interface Props { title: string; description: string; ogImage?: string }
 const { title, description, ogImage } = Astro.props;
-const fullTitle = title.includes(settings.nom) ? title : `${title} — ${settings.nom}`;
+const fullTitle = title.includes(settings.nom) ? title : `${title} · ${settings.nom}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <html lang="fr" data-theme="sapin" data-notes="off">
@@ -32,7 +32,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Physiotherapy',
-      name: `${settings.nom} — RunCare`,
+      name: `${settings.nom} (RunCare)`,
       description: 'Cabinet de kinésithérapie dédié à la prise en charge du coureur à pied à Bordeaux.',
       address: { '@type': 'PostalAddress', streetAddress: settings.adresse, postalCode: settings.codePostal, addressLocality: settings.ville, addressCountry: 'FR' },
       telephone: settings.telephone,

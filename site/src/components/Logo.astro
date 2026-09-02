@@ -8,12 +8,12 @@ const h = size === 'sm' ? 26 : 34;
 const ha = size === 'sm' ? 40 : 54; // logo Argonne (image, ratio ~2,24)
 ---
 {variant === 'argonne' && (
-  <a href="/" class={`logo inline-flex items-center ${cls}`} aria-label="Argonne Kiné Sport Santé — accueil">
+  <a href="/" class={`logo inline-flex items-center ${cls}`} aria-label="Argonne Kiné Sport Santé, retour à l'accueil">
     <Image src={argonne} alt="Argonne Kiné Sport Santé" height={ha} densities={[1, 2, 3]} class="block w-auto" style={`height:${ha}px`} loading="eager" />
   </a>
 )}
 {variant !== 'argonne' && (
-<a href="/" class={`logo inline-flex items-center gap-2.5 ${cls}`} aria-label="RunCare — accueil">
+<a href="/" class={`logo inline-flex items-center gap-2.5 ${cls}`} aria-label="RunCare, retour à l'accueil">
   <Runner height={h} width={h * 1.09} aria-hidden="true" class="shrink-0" />
   <span class="leading-none" style="font-family: var(--font-logo)">
     <span class:list={['block font-semibold tracking-[-0.01em]', size === 'sm' ? 'text-[1.15rem]' : 'text-[1.45rem]']}>Run<span class="text-accent">Care</span></span>

@@ -223,7 +223,7 @@ h1 em, h2 em { font-style: italic; font-variation-settings: 'opsz' 96, 'SOFT' 60
   padding: 0.75rem 1rem; border-radius: 6px;
   font-size: 0.9rem; color: #5a3f00; margin: 1rem 0;
 }
-[data-notes='on'] .flag-block::before { content: '⚑ Note de relecture — '; font-weight: 700; }
+[data-notes='on'] .flag-block::before { content: '⚑ Note de relecture : '; font-weight: 700; }
 
 /* Divers */
 .container { width: min(100% - 2.5rem, 72rem); margin-inline: auto; }
