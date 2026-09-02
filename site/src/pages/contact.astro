@@ -16,7 +16,7 @@ const telCabHref = `tel:+33${settings.telephoneCabinet.replace(/\D/g, '').replac
   </section>
 
   <section class="container pb-10 grid gap-5 md:grid-cols-2">
-    <div class="bg-surface border-2 rounded-brand p-7" style="border-color: var(--argonne)">
+    <div class="bg-surface border-2 rounded-brand p-7 flex flex-col" style="border-color: var(--argonne)">
       <p class="text-xs font-semibold tracking-[0.18em] uppercase mb-3" style="color: var(--argonne)">Argonne Kiné Sport Santé</p>
       <h2 class="text-2xl mb-3">Rééducation au cabinet</h2>
       <ul class="text-sm space-y-2 mb-6 muted">
@@ -24,17 +24,17 @@ const telCabHref = `tel:+33${settings.telephoneCabinet.replace(/\D/g, '').replac
         <li>Du lundi au vendredi, sur rendez-vous</li>
         <li>Téléphone : <a class="hover:text-accent font-medium" href={telCabHref}>{settings.telephoneCabinet}</a></li>
       </ul>
-      <a href={settings.doctolibLelio} class="btn btn-primary w-full justify-center" rel="noopener" style="background: var(--argonne)">Prendre rendez-vous sur Doctolib</a>
+      <a href={settings.doctolibLelio} class="btn btn-primary w-full justify-center mt-auto" rel="noopener" style="background: var(--argonne)">Prendre rendez-vous sur Doctolib</a>
       <a href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} class="btn btn-ghost w-full justify-center mt-2" rel="noopener">Itinéraire</a>
     </div>
-    <div class="bg-surface border-2 border-accent rounded-brand p-7">
+    <div class="bg-surface border-2 border-accent rounded-brand p-7 flex flex-col">
       <p class="text-xs font-semibold tracking-[0.18em] uppercase mb-3 text-accent">RunCare</p>
       <h2 class="text-2xl mb-3">Bilan, analyse de foulée, coaching</h2>
       <ul class="text-sm space-y-2 mb-6 muted">
         <li>E-mail : <a class="hover:text-accent font-medium" href={`mailto:${settings.emailRuncare}`}>{settings.emailRuncare}</a></li>
         <li>Le plus simple : décris-nous ta situation sur WhatsApp.</li>
       </ul>
-      <a href={whatsappUrl('Bonjour, je souhaite décrire ma situation.')} class="btn btn-primary w-full justify-center" rel="noopener">WhatsApp Romain</a>
+      <a href={whatsappUrl('Bonjour, je souhaite décrire ma situation.')} class="btn btn-primary w-full justify-center mt-auto" rel="noopener">WhatsApp Romain</a>
       <a href={whatsappCoachingUrl('Bonjour, je souhaite décrire ma situation.')} class="btn btn-ghost w-full justify-center mt-2" rel="noopener">WhatsApp Lelio</a>
     </div>
   </section>
