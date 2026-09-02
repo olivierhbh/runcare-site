@@ -1,9 +1,18 @@
 ---
+import { Image } from 'astro:assets';
 import Runner from '@/assets/logo-runner.svg';
-interface Props { class?: string; size?: 'sm' | 'md' }
-const { class: cls = '', size = 'md' } = Astro.props;
+import argonne from '@/assets/logo-argonne.png';
+interface Props { class?: string; size?: 'sm' | 'md'; variant?: 'runcare' | 'argonne' }
+const { class: cls = '', size = 'md', variant = 'runcare' } = Astro.props;
 const h = size === 'sm' ? 26 : 34;
+const ha = size === 'sm' ? 40 : 54; // logo Argonne (image, ratio ~2,24)
 ---
+{variant === 'argonne' && (
+  <a href="/" class={`logo inline-flex items-center ${cls}`} aria-label="Argonne Kiné Sport Santé — accueil">
+    <Image src={argonne} alt="Argonne Kiné Sport Santé" height={ha} densities={[1, 2, 3]} class="block w-auto" style={`height:${ha}px`} loading="eager" />
+  </a>
+)}
+{variant !== 'argonne' && (
 <a href="/" class={`logo inline-flex items-center gap-2.5 ${cls}`} aria-label="RunCare — accueil">
   <Runner height={h} width={h * 1.09} aria-hidden="true" class="shrink-0" />
   <span class="leading-none" style="font-family: var(--font-logo)">
@@ -13,3 +22,4 @@ const h = size === 'sm' ? 26 : 34;
     </span>
   </span>
 </a>
+)}

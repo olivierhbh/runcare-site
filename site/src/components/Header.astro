@@ -5,7 +5,7 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 <header class="sticky top-0 z-40 backdrop-blur border-b hairline" style="background: color-mix(in srgb, var(--bg) 85%, transparent)">
   <div class="container flex items-center justify-between h-[4.25rem]">
-    <Logo />
+    <Logo variant="argonne" />
     <nav class="hidden lg:flex items-center gap-7 text-[0.92rem]">
       {nav.map((n) => (
         <a href={n.href} class:list={['hover:text-accent transition-colors text-center leading-tight', path.startsWith(n.href) && 'text-accent font-medium']}>
