@@ -76,8 +76,33 @@ Tout est en ligne sur https://runcare-site.vercel.app (le domaine définitif sui
 - Le test « Quel coureur es-tu ? » est hébergé sur systeme.io : pensez à vérifier
   cette page aussi (tutoiement, pas de mention « gratuit »).
 
-## À venir de notre côté
+Les trois photos (équipe de l'accueil, quais de Bordeaux, séance de rééducation)
+ont été régénérées et sont en ligne — dites-nous si elles vous conviennent.
 
-- Régénération des trois photos (équipe de l'accueil, quais de Bordeaux plus
-  réalistes, séance de rééducation avec le vrai visage de Lelio).
+## Modifier le site vous-mêmes (textes, tarifs, FAQ, articles, mentions légales)
+
+Le site a une interface d'édition en ligne (Keystatic). Pour y accéder, il faut un
+compte GitHub (gratuit) :
+
+1. Créez un compte sur https://github.com/signup avec votre adresse e-mail
+   (un compte chacun). Choisissez le nom d'utilisateur que vous voulez, par exemple
+   romain-bihel / lelio-renault.
+2. **Envoyez-moi votre nom d'utilisateur GitHub** (ou l'adresse e-mail du compte) :
+   je vous ajoute au projet. Vous recevrez alors une invitation par e-mail —
+   cliquez sur « Accept invitation ».
+3. Ensuite, rendez-vous sur l'adresse du site suivie de `/keystatic`
+   (https://runcare-site.vercel.app/keystatic, puis argonnekinesportsante.fr/keystatic
+   quand le domaine sera branché), connectez-vous avec GitHub, et vous pouvez
+   modifier textes, tarifs, formules, FAQ, articles, coordonnées et mentions
+   légales. Chaque enregistrement met le site à jour en ligne au bout de 1 à
+   2 minutes.
+
+En résumé, ce dont j'ai besoin de votre part :
+- vos noms d'utilisateur GitHub (après création des comptes) ;
+- les infos des mentions légales (structure juridique, SIRET, RPPS, directeur de
+  publication) — ou complétez-les vous-mêmes dans Keystatic une fois l'accès reçu ;
+- les réponses aux questions ci-dessus.
+
+## À venir
+
 - Rattachement du domaine argonnekinesportsante.fr.
