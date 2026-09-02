@@ -3,7 +3,6 @@ import { getCollection, render } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import PageHero from '@/components/PageHero.astro';
 import CtaBand from '@/components/CtaBand.astro';
-import Flag from '@/components/Flag.astro';
 import ArticleCard from '@/components/ArticleCard.astro';
 import RuncareNote from '@/components/RuncareNote.astro';
 import { ctaHref } from '@/lib/settings';
@@ -39,7 +38,7 @@ const articles = (await getCollection('articles')).filter((a) => a.data.service 
       </dl>
       <a href={href} class="btn btn-primary w-full justify-center" rel="noopener">{d.ctaLabel}</a>
       {entry.id === 'reeducation' && (
-        <p class="text-xs muted"><Flag note="Le brief propose de mentionner « remboursé par la sécu ». Formulé ici de façon neutre ; à valider avec les règles de communication de l'Ordre.">Prise en charge Assurance Maladie sur prescription.</Flag></p>
+        <p class="text-xs muted">Prise en charge Assurance Maladie sur prescription.</p>
       )}
     </aside>
   </section>

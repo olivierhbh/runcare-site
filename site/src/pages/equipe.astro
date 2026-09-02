@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '@/layouts/Base.astro';
 import CtaBand from '@/components/CtaBand.astro';
-import Flag from '@/components/Flag.astro';
 import duo from '@/assets/photos/duo.jpg';
 import { settings, whatsappUrl, whatsappCoachingUrl } from '@/lib/settings';
 const equipe = (await getCollection('equipe')).sort((a, b) => a.data.ordre - b.data.ordre);
@@ -52,7 +51,6 @@ const contacts: Record<string, { label: string; links: { label: string; href: st
             <div>
               <p class="eyebrow !text-[0.65rem] mb-2">Coureur</p>
               <ul class="space-y-1">{m.data.palmares.map((p) => <li>{p}</li>)}</ul>
-              {m.id === 'lelio' && <p class="mt-2"><Flag note="Aucun chrono ni référence fournis pour Lelio ; ajouter s'ils le souhaitent (chronos, cote ITRA, courses marquantes).">Références à compléter</Flag></p>}
             </div>
             <div>
               <p class="eyebrow !text-[0.65rem] mb-2">Ses services</p>
