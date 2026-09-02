@@ -10,8 +10,10 @@ concernés sont surlignés en jaune avec une infobulle.
 
 ## Choix éditoriaux globaux
 
-- **Vouvoiement partout.** Le brief mélangeait « tu » et « vous » (souvent dans la même
-  phrase). Tout a été harmonisé au vouvoiement, plus adapté à un cabinet de santé.
+- **Tutoiement partout** (demande de Romain et Lelio, 02/09/2026 — remplace le choix
+  initial de vouvoiement). Exceptions volontaires : mentions légales et politique de
+  confidentialité (registre juridique) et la question FAQ « Êtes-vous spécialisés… »
+  (le lecteur s'adresse aux kinés).
 - **Emojis retirés** (🔴🟠🔵🟢🏃📊👟🚀…) : ils ne cadrent pas avec un site sobre. Les
   pastilles de couleur par service existent dans le thème « Argile » uniquement.
 - **Noms des formules de coaching** : le brief les appelait « Gestion de charge /

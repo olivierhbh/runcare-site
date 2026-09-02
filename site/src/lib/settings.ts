@@ -2,7 +2,7 @@ import { load } from 'js-yaml';
 
 export type Settings = {
   nom: string; baseline: string; adresse: string; codePostal: string; ville: string;
-  telephone: string; whatsapp: string; whatsappCoaching: string; telephoneLelio: string; email: string;
+  telephone: string; telephoneCabinet: string; whatsapp: string; whatsappCoaching: string; telephoneLelio: string; email: string; emailRuncare: string; venteUrl: string;
   doctolibRomain: string; doctolibLelio: string; instagram: string;
   horaires: string; leadMagnetUrl: string;
 };
@@ -20,18 +20,20 @@ export const telHref = `tel:+33${settings.telephone.replace(/\D/g, '').replace(/
 
 export function ctaHref(type: 'doctolib' | 'whatsapp' | 'contact' | 'url', url?: string | null, subject?: string) {
   switch (type) {
-    case 'doctolib': return url || settings.doctolibRomain;
+    case 'doctolib': return url || settings.doctolibLelio;
     case 'whatsapp': return whatsappUrl(subject ? `Bonjour, je souhaite ${subject}.` : undefined);
     case 'url': return url ?? '#';
     default: return '/contact';
   }
 }
 
-export const nav = [
-  { href: '/reeducation', label: 'Rééducation' },
-  { href: '/bilan-runcare', label: 'Bilan RunCare' },
-  { href: '/analyse-de-foulee', label: 'Analyse de foulée' },
-  { href: '/coaching', label: 'Coaching' },
+/** tag: petit repère affiché sous l'entrée (RunCare en vert, Argonne en bleu). */
+export type NavItem = { href: string; label: string; tag?: 'runcare' | 'argonne' };
+export const nav: NavItem[] = [
+  { href: '/reeducation', label: 'Rééducation', tag: 'argonne' },
+  { href: '/bilan-runcare', label: 'Bilan', tag: 'runcare' },
+  { href: '/analyse-de-foulee', label: 'Analyse de foulée', tag: 'runcare' },
+  { href: '/coaching', label: 'Coaching', tag: 'runcare' },
   { href: '/equipe', label: 'L’équipe' },
   { href: '/blog', label: 'Conseils' },
 ];
@@ -39,6 +41,6 @@ export const nav = [
 export const serviceLabels: Record<string, string> = {
   'reeducation': 'Rééducation',
   'bilan-runcare': 'Bilan RunCare',
-  'analyse-de-foulee': 'Analyse de foulée',
-  'coaching': 'Coaching',
+  'analyse-de-foulee': 'Analyse de foulée RunCare',
+  'coaching': 'Coaching RunCare',
 };

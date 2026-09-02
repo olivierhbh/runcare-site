@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import Flag from '@/components/Flag.astro';
 import ArticleCard from '@/components/ArticleCard.astro';
+import RuncareNote from '@/components/RuncareNote.astro';
 import { ctaHref } from '@/lib/settings';
 import bilanAnalyse from '@/assets/photos/bilan-analyse.jpg';
 
@@ -26,7 +27,10 @@ const articles = (await getCollection('articles')).filter((a) => a.data.service 
 <Base title={d.titre} description={d.accroche} ogImage={d.photo?.src}>
   <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={heroPhoto} photoAlt={d.titre} />
   <section class="container pb-20 grid gap-12 lg:grid-cols-[1fr_20rem] items-start">
-    <div class="prose"><Content /></div>
+    <div>
+      <div class="prose"><Content /></div>
+      {entry.id !== 'reeducation' && <RuncareNote class="mt-10" />}
+    </div>
     <aside class="lg:sticky lg:top-24 bg-surface border hairline rounded-brand p-6 space-y-5">
       <dl class="space-y-4 text-sm">
         {d.format && <div><dt class="eyebrow !text-[0.65rem] mb-1">Format</dt><dd>{d.format}</dd></div>}

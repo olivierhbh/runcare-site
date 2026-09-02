@@ -1,0 +1,9 @@
+---
+/** Mention déontologique demandée par Romain : RunCare = actes de kinésithérapie hors nomenclature. */
+interface Props { class?: string }
+const { class: cls = '' } = Astro.props;
+---
+<div class={`rounded-brand bg-accent-soft p-5 text-sm leading-relaxed ${cls}`}>
+  <p class="font-semibold mb-1">RunCare — actes de prévention et d’accompagnement du coureur</p>
+  <p class="muted">Les prestations bilan, analyse de foulée et coaching sont réalisées par des kinésithérapeutes dans le cadre d’actes hors nomenclature et ne sont pas remboursées par l’Assurance Maladie.</p>
+</div>

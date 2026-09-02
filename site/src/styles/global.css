@@ -7,6 +7,10 @@
    Thèmes — chaque thème redéfinit les mêmes variables.
    Le thème actif est posé sur <html data-theme="…">.
    ------------------------------------------------------------------ */
+:root {
+  /* Bleu du logo Argonne Kiné Sport Santé — commun à tous les thèmes. */
+  --argonne: #1d3a66;
+}
 :root,
 [data-theme='sapin'] {
   /* A. Sapin — une seule couleur d'accent, tirée du logo (recommandé) */
@@ -21,7 +25,7 @@
   --accent-soft: #e2ece4;
   --dark: #142238;
   --dark-ink: #f7f6f1;
-  --svc-1: var(--accent);
+  --svc-1: var(--argonne);
   --svc-2: var(--accent);
   --svc-3: var(--accent);
   --svc-4: var(--accent);

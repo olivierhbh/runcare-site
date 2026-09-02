@@ -1,7 +1,7 @@
 ---
 import { whatsappUrl } from '@/lib/settings';
 interface Props { title?: string; text?: string; whatsapp?: string; primary?: { label: string; href: string } }
-const { primary, title = 'Vous ne savez pas quel service choisir ?', text = 'Décrivez-nous simplement votre situation et nous vous orienterons vers la solution la plus adaptée.', whatsapp = whatsappUrl('Bonjour, je souhaite vous décrire ma situation pour savoir quel accompagnement me correspond.') } = Astro.props;
+const { primary, title = 'Tu ne sais pas quel service choisir ?', text = 'Décris-nous simplement ta situation et nous t’orienterons vers la solution la plus adaptée.', whatsapp = whatsappUrl('Bonjour, je souhaite décrire ma situation pour savoir quel accompagnement me correspond.') } = Astro.props;
 ---
 <section class="section on-dark">
   <div class="container grid gap-8 md:grid-cols-[1.3fr_1fr] items-center">

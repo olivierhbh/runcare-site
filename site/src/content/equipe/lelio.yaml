@@ -4,13 +4,13 @@ titres:
   - Kinésithérapeute du sport
   - Coach running
 services:
-  - Rééducation
+  - Rééducation au cabinet
   - Bilan RunCare
-  - Coaching
+  - Coaching RunCare
 palmares:
-  - Coureur trail et route
+  - Ancien rugbyman devenu coureur route et trail
 philosophie: "Les sensations du coureur font partie des données dont il doit tenir compte pour ajuster sa charge d'entraînement globale et continuer à progresser."
-bio: "Kiné du sport et coach, Lelio court sur route et en trail. Il prend en charge la rééducation des coureurs blessés, le bilan et le coaching."
+bio: "Kiné du sport et coach, Lelio est un ancien rugbyman devenu coureur route et trail. Il prend en charge la rééducation des coureurs blessés, le bilan et le coaching."
 portrait: '/src/assets/photos/equipe/lelio/lelio.jpg'
 photoAction: '/src/assets/photos/equipe/lelio/lelio-trail.jpg'
 doctolib: https://www.doctolib.fr/masseur-kinesitherapeute/bordeaux/lelio-renault

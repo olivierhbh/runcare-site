@@ -8,7 +8,7 @@ export default config({
   storage: github
     ? { kind: 'github', repo: 'olivierhbh/runcare-site', pathPrefix: 'site' }
     : { kind: 'local' },
-  ui: { brand: { name: 'RunCare' } },
+  ui: { brand: { name: 'Argonne Kiné Sport Santé' } },
   singletons: {
     settings: singleton({
       label: 'Coordonnées & réglages',
@@ -20,16 +20,19 @@ export default config({
         adresse: fields.text({ label: 'Adresse' }),
         codePostal: fields.text({ label: 'Code postal' }),
         ville: fields.text({ label: 'Ville' }),
-        telephone: fields.text({ label: 'Téléphone' }),
+        telephone: fields.text({ label: 'Téléphone (Romain)' }),
+        telephoneCabinet: fields.text({ label: 'Téléphone du cabinet' }),
         whatsapp: fields.text({ label: 'Numéro WhatsApp général (format international, ex. 33612345678)' }),
         whatsappCoaching: fields.text({ label: 'Numéro WhatsApp pour le coaching (format international)' }),
         telephoneLelio: fields.text({ label: 'Téléphone Lelio' }),
         email: fields.text({ label: 'Email' }),
+        emailRuncare: fields.text({ label: 'Email RunCare' }),
         doctolibRomain: fields.url({ label: 'Doctolib — Romain' }),
         doctolibLelio: fields.url({ label: 'Doctolib — Lelio' }),
         instagram: fields.url({ label: 'Instagram' }),
         horaires: fields.text({ label: 'Horaires', multiline: true }),
-        leadMagnetUrl: fields.url({ label: 'Lien du test « Quel coureur êtes-vous ? »' }),
+        venteUrl: fields.url({ label: 'Page de vente RunCare (systeme.io)' }),
+        leadMagnetUrl: fields.url({ label: 'Lien du test « Quel coureur es-tu ? »' }),
       },
     }),
   },

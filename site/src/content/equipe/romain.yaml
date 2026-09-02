@@ -5,9 +5,9 @@ titres:
   - Coach running
   - Préparateur physique
 services:
-  - Analyse de foulée
+  - Analyse de foulée RunCare
   - Bilan RunCare
-  - Coaching
+  - Coaching RunCare
 palmares:
   - "10 km : 33'"
   - "Semi-marathon : 1 h 14"
@@ -17,5 +17,5 @@ philosophie: "Progresser consiste surtout à donner à son corps le temps de s'a
 bio: "Kiné du sport, coach et préparateur physique, Romain court sur route comme en trail. Il accompagne les coureurs sur l'analyse de foulée, le bilan et le coaching."
 portrait: '/src/assets/photos/equipe/romain/romain.jpg'
 photoAction: '/src/assets/photos/equipe/romain/romain-course.jpg'
-doctolib: https://www.doctolib.fr/masseur-kinesitherapeute/bordeaux/romain-bihel
+doctolib: ""
 strava: ""

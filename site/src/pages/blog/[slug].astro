@@ -14,12 +14,12 @@ const { Content } = await render(entry);
 const d = entry.data;
 const date = d.publishedDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 const others = (await getCollection('articles')).filter((a) => a.id !== entry.id).slice(0, 3);
-const bilan = { label: 'Réserver un Bilan Diagnostic RunCare', href: '/bilan-runcare' };
+const vente = { label: 'Découvrir le Bilan Diagnostic RunCare', href: settings.venteUrl };
 const ctaByService: Record<string, { text: string; primary: { label: string; href: string }; secondary?: { label: string; href: string } }> = {
-  'reeducation': { text: 'Une douleur qui persiste ? Prenez rendez-vous au cabinet, ou faites le point sur votre situation avec un bilan.', primary: { label: 'Prendre rendez-vous sur Doctolib', href: settings.doctolibRomain }, secondary: bilan },
-  'bilan-runcare': { text: 'Pour comprendre ce qui se joue dans votre cas, le bilan croise votre historique, votre entraînement et vos capacités.', primary: bilan },
-  'analyse-de-foulee': { text: 'Avant de modifier votre foulée, faites d’abord le point sur votre situation globale avec un bilan.', primary: bilan, secondary: { label: 'Voir l’analyse de foulée', href: '/analyse-de-foulee' } },
-  'coaching': { text: 'Chaque accompagnement commence par un bilan pour construire un entraînement adapté à votre situation.', primary: bilan, secondary: { label: 'Voir les formules de coaching', href: '/coaching' } },
+  'reeducation': { text: 'Une douleur qui persiste ? Prends rendez-vous au cabinet, ou fais le point sur ta situation avec un bilan.', primary: { label: 'Prendre rendez-vous sur Doctolib', href: settings.doctolibLelio }, secondary: { label: 'Le Bilan Diagnostic RunCare', href: '/bilan-runcare' } },
+  'bilan-runcare': { text: 'Pour comprendre ce qui se joue dans ton cas, le bilan croise ton historique, ton entraînement et tes capacités.', primary: vente },
+  'analyse-de-foulee': { text: 'Avant de modifier ta foulée, fais d’abord le point sur ta situation globale avec un bilan.', primary: vente, secondary: { label: 'Voir l’analyse de foulée', href: '/analyse-de-foulee' } },
+  'coaching': { text: 'Chaque accompagnement commence par un bilan, offert avec chaque formule de coaching.', primary: vente, secondary: { label: 'Voir les formules de coaching', href: '/coaching' } },
 };
 const cta = ctaByService[d.service];
 ---

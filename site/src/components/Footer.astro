@@ -19,7 +19,7 @@ const year = new Date().getFullYear();
         <li><a class="hover:text-accent" href="/equipe">L’équipe</a></li>
         <li><a class="hover:text-accent" href="/blog">Conseils</a></li>
         <li><a class="hover:text-accent" href="/contact">Contact &amp; FAQ</a></li>
-        <li><a class="hover:text-accent" href={settings.leadMagnetUrl || '/profil-coureur'} rel="noopener">Quel coureur êtes-vous ?</a></li>
+        <li><a class="hover:text-accent" href={settings.leadMagnetUrl || '/profil-coureur'} rel="noopener">Quel coureur es-tu ?</a></li>
       </ul>
     </div>
     <div>
@@ -34,7 +34,7 @@ const year = new Date().getFullYear();
   </div>
   <div class="border-t hairline">
     <div class="container py-5 flex flex-wrap gap-x-6 gap-y-2 text-xs muted">
-      <span>© {year} RunCare</span>
+      <span>© {year} {settings.nom} — RunCare</span>
       <a class="hover:text-accent" href="/mentions-legales">Mentions légales</a>
       <a class="hover:text-accent" href="/politique-de-confidentialite">Politique de confidentialité</a>
     </div>
