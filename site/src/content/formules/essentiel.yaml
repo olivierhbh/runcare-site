@@ -1,23 +1,25 @@
-nom: Essentiel
+nom: Gestion de charge
 ordre: 1
-sousTitre: "Planification"
-pourQui: "Mieux gérer sa charge d'entraînement"
-description: "Tu bénéficies d'une planification personnalisée et d'un débrief tous les 15 jours. Tu es autonome entre les rendez-vous et tu ne bénéficies pas d'un accompagnement au quotidien."
+sousTitre: Gestion de charge
+pourQui: Mieux gérer sa charge d'entraînement
+description: >-
+  Tu bénéficies d'un plan d'entraînement personnalisé et d'un débrief avec
+  ajustement tous les 15 jours. 
 inclus:
   - Programme d'entraînement individualisé
-  - Planification selon ton objectif et tes disponibilités
   - Suivi digital sur Nolio
-  - 1 visio pour te présenter le plan
   - Débrief tous les 15 jours
   - Fiches éducatives
-format: "À distance"
+format: À distance
 engagement: 6 mois
 tarif: 60 €/mois
 tarifDetail: Bilan Diagnostic RunCare (90 €) offert
-idealSi: "Tu sais courir, mais tu as besoin d'un cadre pour mieux organiser ton entraînement et progresser durablement."
+idealSi: >-
+  Tu as besoin à la fois besoin d'un cadre pour mieux organiser ton entraînement
+  et de conseils individualisés par des experts pour ajuster ton programme
 misEnAvant: false
 tableau:
-  programme: "Individualisé sur Nolio"
-  planification: "Des entraînements"
-  suivi: "Débrief tous les 15 jours"
-  ajustement: "Tous les 15 jours"
+  programme: Individualisé sur Nolio
+  planification: Des entraînements
+  suivi: Débrief tous les 15 jours
+  ajustement: Tous les 15 jours
