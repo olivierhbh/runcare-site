@@ -1,24 +1,31 @@
 nom: Premium
 ordre: 2
-sousTitre: "Accompagnement complet"
-pourQui: "Optimiser l'ensemble de sa progression"
-description: "La même qualité de planification, avec un accompagnement beaucoup plus rapproché : suivi hebdomadaire, briefing chaque semaine, renforcement musculaire et échanges WhatsApp avec ton coach."
+sousTitre: Accompagnement complet
+pourQui: Optimiser l'ensemble de sa progression
+description: >-
+  La même qualité de planification, avec un accompagnement beaucoup plus
+  rapproché : suivi hebdomadaire, briefing chaque semaine, renforcement
+  musculaire et échanges WhatsApp avec ton coach.
 inclus:
   - Planification individualisée de l'entraînement
-  - Programme de préparation physique et séances de renforcement musculaire
   - Suivi digital sur Nolio
-  - Suivi hebdomadaire et briefing chaque semaine
-  - Échanges WhatsApp avec ton coach, réponse sous 48 h
   - Conseils personnalisés en fonction de ta progression
   - Fiches éducatives
-format: "À distance"
+  - Suivi hebdomadaire et briefing chaque semaine
+  - Programme de préparation physique et séances de renforcement musculaire
+  - Échanges WhatsApp avec ton coach, réponse sous 48 h
+format: À distance
 engagement: 3 mois
 tarif: 120 €/mois
 tarifDetail: Bilan Diagnostic RunCare (90 €) offert
-idealSi: "Tu recherches un véritable accompagnement personnalisé pour structurer ton entraînement, ta préparation physique et ta progression."
+idealSi: >
+  Tu cherches un accompagnement complet, répondant à l’ensemble des objectifs
+  identifiés lors de votre bilan initial, et souhaites bénéficier d’un accès
+  direct à ton kiné-coach lorsque ta situation nécessite un conseil ou une
+  adaptation, avec une réponse sous 48 h ouvrées.
 misEnAvant: true
 tableau:
-  programme: "Individualisé sur Nolio"
-  planification: "Complète (course + renforcement)"
-  suivi: "Hebdomadaire, briefing chaque semaine"
-  ajustement: "Régulier, réponse sous 48 h"
+  programme: Individualisé sur Nolio
+  planification: Complète (course + renforcement)
+  suivi: Hebdomadaire, briefing chaque semaine
+  ajustement: Régulier, réponse sous 48 h
