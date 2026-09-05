@@ -1,6 +1,6 @@
 # Site argonnekinesportsante — vos retours du 05/09, appliqués
 
-Tout est en ligne sur https://runcare-site.vercel.app.
+Tout est en ligne sur https://argonnekinesportsante.fr (le domaine est branché depuis le 05/09).
 
 ## Ce qui a été fait
 
@@ -53,6 +53,8 @@ doit être à jour au bout de 1 à 2 minutes. Si ce n'est pas le cas, dis-le moi
    chronos de Lelio, et le nom d'utilisateur GitHub de Lelio pour lui ouvrir l'accès
    à Keystatic.
 
-## À venir
+## Domaine
 
-- Rattachement du domaine argonnekinesportsante.fr.
+argonnekinesportsante.fr et www.argonnekinesportsante.fr pointent maintenant vers le
+site, en HTTPS. Keystatic est accessible sur https://argonnekinesportsante.fr/keystatic.
+Les mails du domaine (@argonnekinesportsante.fr chez OVH) ne sont pas touchés.

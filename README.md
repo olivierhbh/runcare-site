@@ -1,7 +1,7 @@
 # RunCare — site vitrine
 
 Site de Romain Bihel et Lelio Renault (kinés du sport et coachs running, Bordeaux).
-Domaine : **argonnekinesportsante.fr**. Prod actuelle : https://runcare-site.vercel.app (Vercel, push sur `main` → déploiement).
+Domaine : **argonnekinesportsante.fr**. Prod : https://argonnekinesportsante.fr (alias https://runcare-site.vercel.app) (Vercel, push sur `main` → déploiement).
 
 ## Organisation du dépôt
 
