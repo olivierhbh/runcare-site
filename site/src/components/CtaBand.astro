@@ -1,7 +1,6 @@
 ---
-import { whatsappUrl } from '@/lib/settings';
-interface Props { title?: string; text?: string; whatsapp?: string; primary?: { label: string; href: string } }
-const { primary, title = 'Tu ne sais pas quel service choisir ?', text = 'Décris-nous simplement ta situation et nous t’orienterons vers la solution la plus adaptée.', whatsapp = whatsappUrl('Bonjour, je souhaite décrire ma situation pour savoir quel accompagnement me correspond.') } = Astro.props;
+interface Props { title?: string; text?: string }
+const { title = 'Tu ne sais pas quel service choisir ?', text = 'Décris-nous simplement ta situation et nous t’orienterons vers la solution la plus adaptée.' } = Astro.props;
 ---
 <section class="section on-dark">
   <div class="container grid gap-8 md:grid-cols-[1.3fr_1fr] items-center">
@@ -9,10 +8,8 @@ const { primary, title = 'Tu ne sais pas quel service choisir ?', text = 'Décri
       <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] max-w-xl">{title}</h2>
       <p class="muted mt-4 max-w-lg text-lg">{text}</p>
     </div>
-    <div class="flex flex-wrap gap-3 md:justify-end">
-      {primary && <a class="btn btn-primary" href={primary.href} rel="noopener">{primary.label}</a>}
-      <a class:list={['btn', primary ? 'btn-ghost' : 'btn-primary']} href={whatsapp} rel="noopener">Écrire sur WhatsApp</a>
-      <a class="btn btn-ghost" href="/contact">Voir les coordonnées</a>
+    <div class="flex md:justify-end">
+      <a class="btn btn-primary" href="/contact">Prendre contact</a>
     </div>
   </div>
 </section>

@@ -15,21 +15,9 @@ const { Content } = await render(entry);
 const d = entry.data;
 const formules = (await getCollection('formules')).sort((a, b) => a.data.ordre - b.data.ordre);
 const articles = (await getCollection('articles')).filter((a) => a.data.service === 'coaching');
-// Essentiel → WhatsApp Romain ; Premium → WhatsApp Lelio (consigne Romain, 01/09/2026).
+// Gestion de charge (fichier essentiel.yaml) → WhatsApp Romain ; Premium → WhatsApp Lelio (consigne Romain, 01/09/2026).
 const formuleWhatsapp = (id: string, nom: string) =>
   (id === 'essentiel' ? whatsappUrl : whatsappCoachingUrl)(`Bonjour, je suis intéressé(e) par la formule ${nom}.`);
-const rows: { label: string; key: keyof (typeof formules)[0]['data']['tableau'] | 'format' | 'engagement' | 'tarif' | 'pourQui' }[] = [
-  { label: 'Pour qui ?', key: 'pourQui' },
-  { label: 'Programme', key: 'programme' },
-  { label: 'Planification', key: 'planification' },
-  { label: 'Suivi', key: 'suivi' },
-  { label: 'Ajustement', key: 'ajustement' },
-  { label: 'Format', key: 'format' },
-  { label: 'Engagement', key: 'engagement' },
-  { label: 'Tarif', key: 'tarif' },
-];
-const cell = (f: (typeof formules)[0], key: (typeof rows)[0]['key']) =>
-  key in f.data.tableau ? f.data.tableau[key as keyof typeof f.data.tableau] : (f.data as any)[key];
 ---
 <Base title="Coaching RunCare" description={d.accroche} ogImage={nolio.src}>
   <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={coachingTel} photoAlt="Coureur consultant son plan d'entraînement" />
@@ -63,26 +51,7 @@ const cell = (f: (typeof formules)[0], key: (typeof rows)[0]['key']) =>
   <section class="section bg-bg-2">
     <div class="container">
       <div class="prose max-w-[70ch] mb-14"><Content /></div>
-      <h2 class="text-[clamp(1.8rem,3.5vw,2.6rem)] mb-8">Les deux formules en un coup d’œil</h2>
-      <div class="overflow-x-auto rounded-brand border hairline bg-surface">
-        <table class="w-full text-sm min-w-[34rem]">
-          <thead>
-            <tr class="border-b hairline">
-              <th class="text-left p-4 font-normal muted"></th>
-              {formules.map((f, i) => <th class={`text-left p-4 svc-${i + 2}`}><span class="serif text-xl block">{f.data.nom}</span><span class="muted font-normal text-xs">{f.data.sousTitre}</span></th>)}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r) => (
-              <tr class="border-b hairline last:border-0">
-                <th class="text-left p-4 font-medium align-top">{r.label}</th>
-                {formules.map((f) => <td class:list={['p-4 align-top', r.key === 'tarif' && 'font-semibold']}>{cell(f, r.key)}</td>)}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div class="mt-14">
+      <div>
         <p class="eyebrow mb-4">Ton suivi digital</p>
         <h2 class="text-[clamp(1.8rem,3.5vw,2.6rem)] mb-8 max-w-2xl">Un exemple de programmation d’entraînement sur la plateforme Nolio.</h2>
         <div class="rounded-brand overflow-hidden border hairline bg-surface p-3 shadow-sm">
@@ -101,5 +70,5 @@ const cell = (f: (typeof formules)[0], key: (typeof rows)[0]['key']) =>
       </div>
     </section>
   )}
-  <CtaBand title="Envie d’en parler ?" text="Décris-nous ton objectif et ta situation : nous te dirons quelle formule a du sens pour toi." primary={{ label: 'Découvrir le Bilan Diagnostic', href: '/bilan-runcare' }} whatsapp={whatsappCoachingUrl('Bonjour, je souhaite échanger sur un accompagnement coaching.')} />
+  <CtaBand title="Envie d’en parler ?" text="Décris-nous ton objectif et ta situation : nous te dirons quelle formule a du sens pour toi." />
 </Base>

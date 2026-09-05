@@ -125,12 +125,6 @@ export default config({
         tarifDetail: fields.text({ label: 'Précision tarif' }),
         idealSi: fields.text({ label: 'Idéal si…', multiline: true }),
         misEnAvant: fields.checkbox({ label: 'Mettre en avant' }),
-        tableau: fields.object({
-          programme: fields.text({ label: 'Programme' }),
-          planification: fields.text({ label: 'Planification' }),
-          suivi: fields.text({ label: 'Suivi' }),
-          ajustement: fields.text({ label: 'Ajustement' }),
-        }, { label: 'Colonnes du tableau comparatif' }),
       },
     }),
     faq: collection({

@@ -16,7 +16,9 @@ export const whatsappUrl = (text?: string, number: string = settings.whatsapp) =
 /** WhatsApp dédié au coaching (numéro de Lelio). */
 export const whatsappCoachingUrl = (text?: string) => whatsappUrl(text, settings.whatsappCoaching);
 
-export const telHref = `tel:+33${settings.telephone.replace(/\D/g, '').replace(/^0/, '')}`;
+const toTel = (n: string) => `tel:+33${n.replace(/\D/g, '').replace(/^0/, '')}`;
+export const telHref = toTel(settings.telephone);
+export const telCabinetHref = toTel(settings.telephoneCabinet);
 
 export function ctaHref(type: 'doctolib' | 'whatsapp' | 'contact' | 'url', url?: string | null, subject?: string) {
   switch (type) {

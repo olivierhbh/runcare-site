@@ -56,12 +56,6 @@ const formules = defineCollection({
     tarifDetail: z.string().default(''),
     idealSi: z.string(),
     misEnAvant: z.boolean().default(false),
-    tableau: z.object({
-      programme: z.string(),
-      planification: z.string(),
-      suivi: z.string(),
-      ajustement: z.string(),
-    }),
   }),
 });
 
