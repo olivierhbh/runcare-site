@@ -6,6 +6,10 @@ fonctionnement technique). Le brief envoyé à Romain et Lelio est dans
 
 ## À faire (Olivier), dans l'ordre
 
+Fait le 06/09/2026 : redirections vérifiées (1), Search Console vérifiée par TXT OVH et
+sitemap envoyé (2), compte Umami créé et identifiant en place (5, commit 2dace6a).
+Reste : passation Search Console à Romain (3), Bing (4), contrôles (6), retours du brief (7).
+
 1. **Vérifier les redirections après déploiement** :
    `curl -sI https://www.argonnekinesportsante.fr/` doit répondre 308 vers l'apex,
    idem pour `https://runcare-site.vercel.app/`. Si `vercel.json` n'est pas pris en

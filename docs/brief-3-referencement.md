@@ -93,5 +93,8 @@ de réponses de qualité en français) :
 - Titres et descriptions de chaque page retravaillés avec les mots-clés et « Bordeaux ».
 - Image de partage : quand le lien du site est envoyé sur WhatsApp ou Instagram, la
   photo de vous deux apparaît.
-- Statistiques de fréquentation sans cookie ni bandeau (Umami) : visites par page et
-  clics vers Doctolib, WhatsApp et la page de vente.
+- Site déclaré à Google (Search Console) : c'est là qu'on verra sur quelles recherches
+  le site apparaît. Accès à vous donner sur l'adresse Google de la question 3.
+- Statistiques de fréquentation sans cookie ni bandeau (Umami, gratuit) : visites par
+  page et clics vers Doctolib, WhatsApp et la page de vente. Olivier vous transmettra
+  l'identifiant et le mot de passe du compte (https://cloud.umami.is).
