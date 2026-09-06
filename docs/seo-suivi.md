@@ -10,8 +10,8 @@ Fait le 06/09/2026 : redirections vérifiées (1), Search Console vérifiée par
 sitemap envoyé (2), compte Umami créé et identifiant en place (5, commit 2dace6a).
 Romain ajouté en propriétaire sur la Search Console (3). Bing importé depuis la Search
 Console, accueil « Discovered but not crawled » le 06/09 (normal pour un site neuf) ;
-Romain pas encore ajouté sur Bing (il pourra s'y connecter avec son compte Google, pas
-besoin de compte Microsoft). Compte Umami encore sur le compte d'Olivier : à transmettre
+Bing refuse d'ajouter un utilisateur qui ne s'est jamais connecté : Romain se connecte
+lui-même avec son compte Google et importe depuis la Search Console (ligne dans le brief). Compte Umami encore sur le compte d'Olivier : à transmettre
 ensemble, ou changer l'adresse e-mail du compte pour la sienne dans le profil Umami.
 Reste : Bing pour Romain (4), Umami à transmettre (5), contrôles (6), retours du brief (7).
 

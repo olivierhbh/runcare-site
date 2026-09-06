@@ -82,8 +82,6 @@ de réponses de qualité en français) :
 2. **Qui a écrit quel article ?** Google valorise les articles santé signés par un
    professionnel identifié. Si vous me dites l'auteur de chacun des quatre, je le
    renseigne (invisible sur la page, mais lu par Google).
-3. **Quelle adresse Google** gère la fiche du cabinet ? Je vous donnerai accès aux
-   statistiques Google (Search Console) sur cette adresse.
 
 ## Ce qu'Olivier a mis en place (pour information)
 
@@ -93,8 +91,11 @@ de réponses de qualité en français) :
 - Titres et descriptions de chaque page retravaillés avec les mots-clés et « Bordeaux ».
 - Image de partage : quand le lien du site est envoyé sur WhatsApp ou Instagram, la
   photo de vous deux apparaît.
-- Site déclaré à Google (Search Console) : c'est là qu'on verra sur quelles recherches
-  le site apparaît. Accès à vous donner sur l'adresse Google de la question 3.
+- Site déclaré à Google (Search Console, https://search.google.com/search-console) :
+  c'est là qu'on voit sur quelles recherches le site apparaît. Romain y a déjà accès
+  avec son compte Google. Même chose chez Bing : Romain, connecte-toi une fois sur
+  https://www.bing.com/webmasters avec ton compte Google et choisis « Importer depuis
+  Google Search Console », l'accès se fait tout seul.
 - Statistiques de fréquentation sans cookie ni bandeau (Umami, gratuit) : visites par
   page et clics vers Doctolib, WhatsApp et la page de vente. Olivier vous transmettra
   l'identifiant et le mot de passe du compte (https://cloud.umami.is).
