@@ -1,13 +1,122 @@
 ---
 import '@/styles/global.css';
+import { getCollection } from 'astro:content';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
-import { settings } from '@/lib/settings';
+import { settings, serviceLabels, telE164 } from '@/lib/settings';
 
-interface Props { title: string; description: string; ogImage?: string }
-const { title, description, ogImage } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  /** Type Open Graph / schema.org : page classique ou article de blog. */
+  type?: 'website' | 'article';
+  /** Renseigné pour les articles : dates ISO. */
+  article?: { published: Date; modified?: Date };
+  /** Empêche l'indexation (pages techniques). */
+  noindex?: boolean;
+}
+const { title, description, ogImage, type = 'website', article, noindex = false } = Astro.props;
+const site = Astro.site!;
+const siteUrl = site.toString().replace(/\/$/, '');
 const fullTitle = title.includes(settings.nom) ? title : `${title} · ${settings.nom}`;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const canonical = new URL(Astro.url.pathname, site);
+const image = new URL(ogImage ?? '/og-default.jpg', site).toString();
+
+// --- Fil d'Ariane (déduit de l'URL) ------------------------------------------
+const sectionLabels: Record<string, string> = {
+  ...serviceLabels,
+  blog: 'Conseils',
+  equipe: 'L’équipe',
+  contact: 'Contact',
+  'mentions-legales': 'Mentions légales',
+  'politique-de-confidentialite': 'Politique de confidentialité',
+};
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const crumbs = [{ name: 'Accueil', url: `${siteUrl}/` }];
+segments.forEach((seg, i) => {
+  const last = i === segments.length - 1;
+  crumbs.push({ name: last ? title : (sectionLabels[seg] ?? seg), url: `${siteUrl}/${segments.slice(0, i + 1).join('/')}` });
+});
+
+// --- Données structurées (schema.org) ---------------------------------------
+const cabinetId = `${siteUrl}/#cabinet`;
+const equipe = (await getCollection('equipe')).sort((a, b) => a.data.ordre - b.data.ordre);
+const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
+const persons = equipe.map((m) => ({
+  '@type': 'Person',
+  '@id': `${siteUrl}/equipe#${m.id}`,
+  name: `${cap(m.id)} ${m.data.nom}`,
+  givenName: cap(m.id),
+  familyName: m.data.nom,
+  jobTitle: m.data.titres.join(', '),
+  description: m.data.bio || undefined,
+  image: m.data.portrait ? new URL(m.data.portrait.src, site).toString() : undefined,
+  url: `${siteUrl}/equipe`,
+  worksFor: { '@id': cabinetId },
+  sameAs: [m.data.doctolib, m.data.strava].filter(Boolean),
+}));
+const sameAs = [settings.doctolibRomain, settings.doctolibLelio, settings.instagram, settings.googleMapsUrl].filter(Boolean);
+const cabinet = {
+  '@type': 'Physiotherapy',
+  '@id': cabinetId,
+  name: settings.nom,
+  alternateName: 'RunCare',
+  description: 'Cabinet de kinésithérapie du sport à Bordeaux dédié au coureur à pied : rééducation des blessures de course, bilan, analyse de foulée et coaching running.',
+  url: `${siteUrl}/`,
+  telephone: telE164(settings.telephoneCabinet),
+  email: settings.email,
+  image: new URL('/og-default.jpg', site).toString(),
+  address: { '@type': 'PostalAddress', streetAddress: settings.adresse, postalCode: settings.codePostal, addressLocality: settings.ville, addressCountry: 'FR' },
+  geo: settings.latitude && settings.longitude ? { '@type': 'GeoCoordinates', latitude: settings.latitude, longitude: settings.longitude } : undefined,
+  hasMap: settings.googleMapsUrl || undefined,
+  areaServed: { '@type': 'City', name: settings.ville },
+  openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'] },
+  priceRange: '€€',
+  currenciesAccepted: 'EUR',
+  medicalSpecialty: 'Physiotherapy',
+  founder: persons.map((p) => ({ '@id': p['@id'] })),
+  employee: persons.map((p) => ({ '@id': p['@id'] })),
+  sameAs,
+};
+const graph: Record<string, unknown>[] = [
+  cabinet,
+  ...persons,
+  { '@type': 'WebSite', '@id': `${siteUrl}/#website`, url: `${siteUrl}/`, name: settings.nom, inLanguage: 'fr-FR', publisher: { '@id': cabinetId } },
+  {
+    '@type': 'WebPage',
+    '@id': canonical.toString(),
+    url: canonical.toString(),
+    name: fullTitle,
+    description,
+    inLanguage: 'fr-FR',
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    about: { '@id': cabinetId },
+    primaryImageOfPage: image,
+    breadcrumb: { '@id': `${canonical}#breadcrumb` },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    '@id': `${canonical}#breadcrumb`,
+    itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })),
+  },
+];
+if (type === 'article' && article) {
+  graph.push({
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: title,
+    description,
+    image,
+    inLanguage: 'fr-FR',
+    datePublished: article.published.toISOString(),
+    dateModified: (article.modified ?? article.published).toISOString(),
+    author: { '@id': cabinetId },
+    publisher: { '@id': cabinetId },
+    mainEntityOfPage: { '@id': canonical.toString() },
+  });
+}
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 ---
 <html lang="fr">
   <head>
@@ -15,26 +124,51 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {settings.googleSiteVerification && <meta name="google-site-verification" content={settings.googleSiteVerification} />}
+    <meta property="og:site_name" content={settings.nom} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="fr_FR" />
-    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site)} />}
+    <meta property="og:image" content={image} />
+    {type === 'article' && article && <meta property="article:published_time" content={article.published.toISOString()} />}
+    {type === 'article' && article?.modified && <meta property="article:modified_time" content={article.modified.toISOString()} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Physiotherapy',
-      name: `${settings.nom} (RunCare)`,
-      description: 'Cabinet de kinésithérapie dédié à la prise en charge du coureur à pied à Bordeaux.',
-      address: { '@type': 'PostalAddress', streetAddress: settings.adresse, postalCode: settings.codePostal, addressLocality: settings.ville, addressCountry: 'FR' },
-      telephone: settings.telephone,
-      url: Astro.site?.toString(),
-    })} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <script type="application/ld+json" is:inline set:html={jsonLd} />
+    {settings.umamiWebsiteId && (
+      <script defer is:inline src="https://cloud.umami.is/script.js" data-website-id={settings.umamiWebsiteId} data-domains={site.hostname}></script>
+    )}
   </head>
   <body class="flex flex-col min-h-dvh">
     <Header />
     <main class="flex-1"><slot /></main>
     <Footer />
+    {settings.umamiWebsiteId && (
+      <script is:inline>
+        // Compte les clics vers les prises de contact (Doctolib, WhatsApp, systeme.io, téléphone, e-mail).
+        document.addEventListener('click', (e) => {
+          const a = e.target && e.target.closest && e.target.closest('a[href]');
+          if (!a || !window.umami) return;
+          const h = a.href;
+          const ev = h.includes('doctolib.fr') ? 'clic-doctolib'
+            : h.includes('wa.me') ? 'clic-whatsapp'
+            : h.includes('systeme.io') ? 'clic-systeme-io'
+            : h.startsWith('tel:') ? 'clic-telephone'
+            : h.startsWith('mailto:') ? 'clic-email'
+            : h.includes('instagram.com') ? 'clic-instagram'
+            : null;
+          if (ev) window.umami.track(ev, { page: location.pathname });
+        });
+      </script>
+    )}
   </body>
 </html>

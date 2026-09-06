@@ -5,7 +5,7 @@ import ArticleCard from '@/components/ArticleCard.astro';
 import CtaBand from '@/components/CtaBand.astro';
 const articles = (await getCollection('articles')).sort((a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime());
 ---
-<Base title="Conseils aux coureurs" description="Nos articles pour comprendre les blessures, la foulée, la charge d'entraînement et progresser durablement en course à pied.">
+<Base title="Conseils kiné et running : blessures, foulée, entraînement" description="Les conseils de kinésithérapeutes du sport et coachs running à Bordeaux pour comprendre les blessures de course à pied, améliorer sa foulée, gérer sa charge d’entraînement et progresser durablement.">
   <section class="container pt-14 md:pt-20 pb-12">
     <p class="eyebrow mb-4">Conseils</p>
     <h1 class="text-[clamp(2.4rem,5.5vw,4rem)] max-w-[16ch]">Comprendre pour mieux courir.</h1>

@@ -38,6 +38,8 @@ const services = defineCollection({
       ctaLabel: z.string(),
       ctaType: z.enum(['doctolib', 'whatsapp', 'contact', 'url']).default('contact'),
       ctaUrl: z.string().optional().nullable(),
+      seoTitle: z.string().optional().nullable(),
+      seoDescription: z.string().optional().nullable(),
     }),
 });
 
@@ -78,6 +80,9 @@ const articles = defineCollection({
       service: z.enum(['reeducation', 'bilan-runcare', 'analyse-de-foulee', 'coaching']),
       publishedDate: z.coerce.date(),
       cover: img().optional(),
+      updatedDate: z.coerce.date().optional().nullable(),
+      seoTitle: z.string().optional().nullable(),
+      seoDescription: z.string().optional().nullable(),
     }),
 });
 

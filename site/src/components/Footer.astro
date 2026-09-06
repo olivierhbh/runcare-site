@@ -29,6 +29,8 @@ const year = new Date().getFullYear();
         <p><a class="hover:text-accent" href={telCabinetHref}>{settings.telephoneCabinet}</a></p>
         <p><a class="hover:text-accent" href={settings.doctolibLelio} rel="noopener">Prendre rendez-vous sur Doctolib</a></p>
         <p><a class="hover:text-accent" href={`mailto:${settings.emailRuncare}`}>{settings.emailRuncare}</a></p>
+        {settings.instagram && <p><a class="hover:text-accent" href={settings.instagram} rel="noopener">Instagram @runcare_bordeaux</a></p>}
+        {settings.googleMapsUrl && <p><a class="hover:text-accent" href={settings.googleMapsUrl} rel="noopener">Voir sur Google Maps</a></p>}
       </address>
     </div>
   </div>

@@ -5,6 +5,8 @@ export type Settings = {
   telephone: string; telephoneCabinet: string; whatsapp: string; whatsappCoaching: string; telephoneLelio: string; email: string; emailRuncare: string; venteUrl: string;
   doctolibRomain: string; doctolibLelio: string; instagram: string;
   horaires: string; leadMagnetUrl: string;
+  googleMapsUrl: string; latitude: string; longitude: string;
+  googleSiteVerification: string; umamiWebsiteId: string;
 };
 
 import raw from '../content/settings.yaml?raw';
@@ -16,7 +18,9 @@ export const whatsappUrl = (text?: string, number: string = settings.whatsapp) =
 /** WhatsApp dédié au coaching (numéro de Lelio). */
 export const whatsappCoachingUrl = (text?: string) => whatsappUrl(text, settings.whatsappCoaching);
 
-const toTel = (n: string) => `tel:+33${n.replace(/\D/g, '').replace(/^0/, '')}`;
+/** Numéro au format international E.164 (+33…), pour schema.org. */
+export const telE164 = (n: string) => `+33${n.replace(/\D/g, '').replace(/^0/, '')}`;
+const toTel = (n: string) => `tel:${telE164(n)}`;
 export const telHref = toTel(settings.telephone);
 export const telCabinetHref = toTel(settings.telephoneCabinet);
 

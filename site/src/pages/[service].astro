@@ -23,7 +23,7 @@ const href = ctaHref(d.ctaType, d.ctaUrl, subjects[entry.id]);
 const heroPhoto = entry.id === 'bilan-runcare' ? bilanAnalyse : d.photo;
 const articles = (await getCollection('articles')).filter((a) => a.data.service === entry.id);
 ---
-<Base title={d.titre} description={d.accroche} ogImage={d.photo?.src}>
+<Base title={d.seoTitle || d.titre} description={d.seoDescription || d.accroche} ogImage={d.photo?.src}>
   <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={heroPhoto} photoAlt={d.titre} />
   <section class="container pb-20 grid gap-12 lg:grid-cols-[1fr_20rem] items-start">
     <div>

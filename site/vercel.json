@@ -1,1 +1,12 @@
-{ "framework": "astro" }
+{
+  "framework": "astro",
+  "redirects": [
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.argonnekinesportsante.fr" }], "destination": "https://argonnekinesportsante.fr/$1", "permanent": true },
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "runcare-site.vercel.app" }], "destination": "https://argonnekinesportsante.fr/$1", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true }
+  ],
+  "headers": [
+    { "source": "/keystatic(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
+    { "source": "/api/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ]
+}

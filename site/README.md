@@ -35,6 +35,20 @@ dans les pages (duo, quai, studio, Nolio…) restent à la racine du dossier.
 
 ## Mise en production
 
-Keystatic n'est chargé qu'en dev (voir `astro.config.mjs`). Pour que RunCare édite le
-contenu en ligne : passer `storage` en mode `github` dans `keystatic.config.ts`, créer la
-GitHub App, ajouter l'adaptateur Vercel et les variables `KEYSTATIC_*`.
+Keystatic est en mode `github` en production (variables `KEYSTATIC_*` sur Vercel) : Romain
+et Lelio éditent sur https://argonnekinesportsante.fr/keystatic. Cette route est en
+`noindex` (en-tête `X-Robots-Tag` dans `vercel.json`) et exclue du sitemap et de `robots.txt`.
+
+## Référencement
+
+- `@astrojs/sitemap` génère `/sitemap-index.xml` ; `public/robots.txt` le référence.
+- `src/layouts/Base.astro` porte les balises (title, description, canonical, Open Graph,
+  Twitter) et les données structurées schema.org : cabinet (`Physiotherapy`), fiches
+  `Person` de l'équipe, fil d'Ariane, `Article` pour le blog.
+- Chaque service et article a des champs « Titre pour Google » / « Description pour
+  Google » dans Keystatic (facultatifs, sinon le titre et l'accroche sont utilisés).
+- `vercel.json` redirige `www.` et `runcare-site.vercel.app` vers le domaine principal.
+- Statistiques : Umami (sans cookie, sans bandeau). Renseigner l'identifiant du site dans
+  « Coordonnées & réglages » ; les clics Doctolib / WhatsApp / systeme.io / téléphone /
+  e-mail remontent comme événements.
+- Google Search Console : coller le code de la balise HTML dans « Coordonnées & réglages ».

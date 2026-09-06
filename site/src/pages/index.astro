@@ -14,11 +14,11 @@ const services = (await getCollection('services')).sort((a, b) => a.data.ordre -
 const equipe = (await getCollection('equipe')).sort((a, b) => a.data.ordre - b.data.ordre);
 const faq = (await getCollection('faq')).filter((f) => f.data.accueil).sort((a, b) => a.data.ordre - b.data.ordre);
 ---
-<Base title="RunCare, kiné & coach du coureur à Bordeaux · Argonne Kiné Sport Santé" description="Cabinet de kinésithérapie dédié au coureur à pied à Bordeaux : rééducation, bilan, analyse de foulée et coaching. Traiter les blessures, prévenir la récidive, progresser durablement.">
+<Base title="Kiné du sport et coach running à Bordeaux · Argonne Kiné Sport Santé" description="Kinésithérapeutes du sport et coachs running à Bordeaux, spécialisés dans le coureur à pied : rééducation des blessures de course, bilan, analyse de foulée et coaching. Cabinet cours de l’Argonne.">
   <!-- Hero -->
   <section class="container pt-12 md:pt-16 pb-14">
-    <p class="eyebrow mb-5">Cabinet de kinésithérapie du coureur · Bordeaux</p>
-    <h1 class="text-[clamp(2.2rem,5vw,3.6rem)] max-w-[18ch]">Traiter la blessure, prévenir la récidive, <em>progresser durablement.</em></h1>
+    <h1 class="eyebrow mb-5" style="font-family: var(--font-sans); font-weight: 600; letter-spacing: 0.14em; line-height: 1.5">Cabinet de kinésithérapie du sport et coaching running · Bordeaux</h1>
+    <p class="serif text-[clamp(2.2rem,5vw,3.6rem)] max-w-[18ch]">Traiter la blessure, prévenir la récidive, <em class="italic" style="font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 1">progresser durablement.</em></p>
     <div class="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
       <p class="text-lg md:text-xl muted max-w-[52ch] leading-relaxed">Kinésithérapeutes du sport, coureurs et passionnés, nous mettons notre expertise clinique et notre expérience de terrain au service de ta pratique.</p>
       <div class="flex flex-wrap gap-3">
@@ -27,7 +27,7 @@ const faq = (await getCollection('faq')).filter((f) => f.data.accueil).sort((a, 
       </div>
     </div>
     <div class="mt-10 rounded-brand overflow-hidden aspect-[16/7] md:aspect-[21/6] bg-bg-2">
-      <Image src={quai} alt="Coureur sur les quais de Bordeaux au petit matin" width={1800} class="w-full h-full object-cover img-tone" loading="eager" />
+      <Image src={quai} alt="Coureur sur les quais de Bordeaux au petit matin" width={1800} class="w-full h-full object-cover img-tone" loading="eager" fetchpriority="high" />
     </div>
   </section>
 

@@ -19,7 +19,7 @@ const articles = (await getCollection('articles')).filter((a) => a.data.service 
 const formuleWhatsapp = (id: string, nom: string) =>
   (id === 'essentiel' ? whatsappUrl : whatsappCoachingUrl)(`Bonjour, je suis intéressé(e) par la formule ${nom}.`);
 ---
-<Base title="Coaching RunCare" description={d.accroche} ogImage={nolio.src}>
+<Base title={d.seoTitle || d.titre} description={d.seoDescription || d.accroche} ogImage={coachingTel.src}>
   <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={coachingTel} photoAlt="Coureur consultant son plan d'entraînement" />
 
   <section class="container pb-16">

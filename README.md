@@ -6,7 +6,7 @@ Domaine : **argonnekinesportsante.fr**. Prod : https://argonnekinesportsante.fr 
 ## Organisation du dépôt
 
 - `site/` — le code (Astro 7 + Tailwind 4 + Keystatic). Voir `site/README.md`.
-- `docs/` — documentation de travail : `MODIFICATIONS-CONTENU.md` (journal des écarts avec le brief et points en suspens), `photos-ia-prompts.md`.
+- `docs/` — documentation de travail : `MODIFICATIONS-CONTENU.md` (journal des écarts avec le brief et points en suspens), `seo-suivi.md` (référencement : ce qui est en place, actions restantes), les briefs envoyés à Romain et Lelio, `photos-ia-prompts.md`.
 - `sources/` — matière brute fournie par le client :
   - `brief/` — brief initial et consignes complémentaires (versionnés) ;
   - `logo-runner.svg` — logo provisoire ;

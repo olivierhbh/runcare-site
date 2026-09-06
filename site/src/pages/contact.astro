@@ -7,7 +7,7 @@ import { settings, whatsappUrl, whatsappCoachingUrl, telCabinetHref } from '@/li
 const faq = (await getCollection('faq')).sort((a, b) => a.data.ordre - b.data.ordre);
 const mapQuery = encodeURIComponent(`${settings.adresse}, ${settings.codePostal} ${settings.ville}`);
 ---
-<Base title="Contact & rendez-vous" description="Prendre rendez-vous au cabinet Argonne Kiné Sport Santé, 130 cours de l'Argonne à Bordeaux, ou contacter RunCare pour un bilan, une analyse de foulée ou un coaching.">
+<Base title="Contact et rendez-vous kiné du sport à Bordeaux" description="Prendre rendez-vous au cabinet de kinésithérapie Argonne Kiné Sport Santé, 130 cours de l’Argonne à Bordeaux (Doctolib, téléphone), ou contacter RunCare par WhatsApp pour un bilan, une analyse de foulée ou un coaching running.">
   <section class="container pt-14 md:pt-20 pb-12">
     <p class="eyebrow mb-4">Contact & rendez-vous</p>
     <h1 class="text-[clamp(2.4rem,5.5vw,4rem)] max-w-[16ch]">Décris-nous ta situation.</h1>

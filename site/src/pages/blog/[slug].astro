@@ -23,14 +23,14 @@ const ctaByService: Record<string, { text: string; primary: { label: string; hre
 };
 const cta = ctaByService[d.service];
 ---
-<Base title={d.title} description={d.description}>
+<Base title={d.seoTitle || d.title} description={d.seoDescription || d.description} ogImage={d.cover?.src} type="article" article={{ published: d.publishedDate, modified: d.updatedDate ?? undefined }}>
   <article class="container pt-14 md:pt-20 pb-20">
     <div class="max-w-[62ch]">
-      <p class="text-xs muted mb-4 flex gap-2"><a class="text-accent font-semibold uppercase tracking-[0.12em]" href={ctaByService[d.service].href}>{serviceLabels[d.service]}</a><span>·</span><time>{date}</time></p>
+      <p class="text-xs muted mb-4 flex gap-2"><a class="text-accent font-semibold uppercase tracking-[0.12em]" href={ctaByService[d.service].href}>{serviceLabels[d.service]}</a><span>·</span><time datetime={d.publishedDate.toISOString().slice(0, 10)}>{date}</time></p>
       <h1 class="text-[clamp(2.2rem,5vw,3.6rem)]">{d.title}</h1>
       <p class="mt-6 text-lg muted leading-relaxed">{d.description}</p>
     </div>
-    {d.cover && <div class="rounded-brand overflow-hidden aspect-[21/9] bg-bg-2 mt-10 max-w-4xl"><Image src={d.cover} alt="" width={1600} class="w-full h-full object-cover img-tone" /></div>}
+    {d.cover && <div class="rounded-brand overflow-hidden aspect-[21/9] bg-bg-2 mt-10 max-w-4xl"><Image src={d.cover} alt={d.title} width={1600} class="w-full h-full object-cover img-tone" /></div>}
     <div class="prose mt-12"><Content /></div>
     <div class="max-w-[62ch] mt-14 rounded-brand bg-accent-soft p-7">
       <p class="eyebrow mb-2">Aller plus loin</p>
