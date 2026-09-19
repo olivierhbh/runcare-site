@@ -81,10 +81,12 @@ Branche de travail `cloudflare`, fusionnée dans `main` le 2026-09-19. Productio
 - **www** : règle Single Redirect « Redirect from WWW to root » (`https://www.*` → `https://${1}`, 301, query string conservée) + CNAME www passé en « Proxied ». **Always Use HTTPS** activé : Cloudflare servait la page en `http://` (200), Vercel redirigeait (308).
 - Vérifié sur le vrai domaine via Cloudflare : pages 200, 404 réelle, `/x/` et `/index.html` en 301, `http://` → `https://` 301, `www` → apex 301 (chemin et paramètres conservés), `/_astro` immuable, `noindex` seulement sur Keystatic, `robots.txt` intact, Keystatic connecté (session existante conservée), déploiement de `main` par l'action en 32 s.
 
+- Branche `cloudflare` supprimée le 2026-09-19 après fusion (0 commit hors de `main`) : elle apparaissait dans le sélecteur de branches de Keystatic et prêtait à confusion.
+
 ## Reste à faire
 
 - Réactiver le DNSSEC côté Cloudflare (DNS → Settings) et publier le DS chez OVH (onglet « DS records »), **après** expiration des anciennes délégations (au plus tôt 2 h après 10:35 ; plus sûr le lendemain).
 - Test d'envoi et de réception d'un e-mail sur une adresse du domaine.
-- Dans quelques jours : supprimer le projet Vercel `runcare-site` (seulement lui), retirer l'URL de rappel Vercel/workers.dev de l'app GitHub si inutile, supprimer la branche `cloudflare`. Pas de secret GitHub `VERCEL_*` (vérifié).
+- Dans quelques jours : supprimer le projet Vercel `runcare-site` (seulement lui), retirer l'URL de rappel Vercel/workers.dev de l'app GitHub si inutile. Pas de secret GitHub `VERCEL_*` (vérifié).
 - Search Console : soumettre `https://argonnekinesportsante.fr/sitemap-index.xml`.
 - Facultatif : remplacer le contenu du CNAME `www` (cname.vercel-dns.com) par un enregistrement neutre (AAAA `100::` proxifié) avant la suppression du projet Vercel.
