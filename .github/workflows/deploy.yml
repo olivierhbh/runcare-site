@@ -4,7 +4,7 @@ name: Déploiement Cloudflare
 
 on:
   push:
-    branches: [main, cloudflare] # cloudflare : branche de migration, à retirer après fusion
+    branches: [main]
     paths:
       - 'site/**'
       - '.github/workflows/deploy.yml'

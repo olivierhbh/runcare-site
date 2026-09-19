@@ -13,5 +13,8 @@
     // n'invoquerait jamais le Worker et répondrait 404.
     "run_worker_first": ["/keystatic", "/keystatic/*", "/api/*"]
   },
+  // Le domaine passe par Cloudflare (enregistrement DNS proxifié) et cette
+  // route envoie toutes ses requêtes au Worker.
+  "routes": [{ "pattern": "argonnekinesportsante.fr/*", "zone_name": "argonnekinesportsante.fr" }],
   "observability": { "enabled": true }
 }
