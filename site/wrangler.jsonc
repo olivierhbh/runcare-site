@@ -16,5 +16,8 @@
   // Le domaine passe par Cloudflare (enregistrement DNS proxifié) et cette
   // route envoie toutes ses requêtes au Worker.
   "routes": [{ "pattern": "argonnekinesportsante.fr/*", "zone_name": "argonnekinesportsante.fr" }],
+  // Avec une route déclarée, workers.dev serait désactivé : on le garde pour les tests
+  // (non indexé, cf. public/_headers).
+  "workers_dev": true,
   "observability": { "enabled": true }
 }
