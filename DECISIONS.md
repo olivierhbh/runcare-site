@@ -1,6 +1,6 @@
 # Décisions — migration Vercel → Cloudflare Workers
 
-Branche de travail : `cloudflare`. La production Vercel (`main`) reste intacte jusqu'à validation.
+Branche de travail `cloudflare`, fusionnée dans `main` le 2026-09-19. Production sur Cloudflare depuis le même jour.
 
 ## 2026-09-19 — Inventaire de départ
 
@@ -65,6 +65,26 @@ Branche de travail : `cloudflare`. La production Vercel (`main`) reste intacte j
 | `/_astro/*` immuable | ✅ | ✅ |
 | `X-Robots-Tag` workers.dev / Keystatic | ✅ | ✅ |
 | POST sans `Origin` → 403 (CSRF Astro) | ✅ | — |
-| Connexion GitHub Keystatic | redirection vers GitHub ✅ | ⏳ secrets à poser |
-| Édition, commit, redéploiement | — | ⏳ |
-| Dépôt d'image via Keystatic | — | ⏳ |
+| Connexion GitHub Keystatic | redirection vers GitHub ✅ | ✅ |
+| Édition, commit, redéploiement (branche `cloudflare`) | — | ✅ phrase en ligne 71 s après l'enregistrement, puis revert |
+| Dépôt d'image via Keystatic | — | ✅ WebP généré au build, puis revert |
+| CPU Keystatic (`wrangler tail`) | — | 3 à 7 ms |
+
+## Bascule du domaine (2026-09-19, heures de la machine d'Olivier, UTC+8)
+
+- **DNSSEC** coupé chez OVH (délégation sécurisée), DS retiré par l'AFNIC à 09:23 ; attente d'une heure (TTL du DS : 3600 s) avant de changer les serveurs de noms.
+- **Zone Cloudflare** (Free, configuration complète) : import automatique comparé à la zone OVH (identique : A Vercel, CNAME www Vercel, 3 MX OVH, SPF, TXT Google, TXT `1|www…`), `ftp` supprimé, A et www laissés en « DNS only » pendant la transition. Réponses de `denver`/`paris.ns.cloudflare.com` vérifiées identiques à celles d'OVH avant le changement. Bot Preference Sync désactivé (le `robots.txt` du dépôt reste intact).
+- **Serveurs de noms** changés chez OVH à 10:25 ; registre `.fr` à jour à 10:35 ; zone active à 10:37.
+- **Méthode sans coupure** : route `argonnekinesportsante.fr/*` déclarée dans `wrangler.jsonc` et déployée, puis enregistrement A passé en « Proxied » (bascule instantanée, réversible en repassant en gris). Écarté : domaine personnalisé du Worker, qui impose de supprimer d'abord l'enregistrement existant (trou possible, cache négatif). Déclarer une route désactive workers.dev par défaut (coupure d'environ 1 min constatée) : `workers_dev: true` ajouté.
+- **Pages légales** : hébergeur Vercel remplacé par Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, +1 (650) 319-8930 (adresse lue sur cloudflare.com/privacypolicy le 2026-09-19).
+- **Vercel** : intégration git déconnectée par Olivier avant la fusion (aucun statut Vercel sur le commit de fusion) ; projet conservé quelques jours pour les résolveurs qui ont encore l'ancienne adresse.
+- **www** : règle Single Redirect « Redirect from WWW to root » (`https://www.*` → `https://${1}`, 301, query string conservée) + CNAME www passé en « Proxied ». **Always Use HTTPS** activé : Cloudflare servait la page en `http://` (200), Vercel redirigeait (308).
+- Vérifié sur le vrai domaine via Cloudflare : pages 200, 404 réelle, `/x/` et `/index.html` en 301, `http://` → `https://` 301, `www` → apex 301 (chemin et paramètres conservés), `/_astro` immuable, `noindex` seulement sur Keystatic, `robots.txt` intact, Keystatic connecté (session existante conservée), déploiement de `main` par l'action en 32 s.
+
+## Reste à faire
+
+- Réactiver le DNSSEC côté Cloudflare (DNS → Settings) et publier le DS chez OVH (onglet « DS records »), **après** expiration des anciennes délégations (au plus tôt 2 h après 10:35 ; plus sûr le lendemain).
+- Test d'envoi et de réception d'un e-mail sur une adresse du domaine.
+- Dans quelques jours : supprimer le projet Vercel `runcare-site` (seulement lui), retirer l'URL de rappel Vercel/workers.dev de l'app GitHub si inutile, supprimer la branche `cloudflare`. Pas de secret GitHub `VERCEL_*` (vérifié).
+- Search Console : soumettre `https://argonnekinesportsante.fr/sitemap-index.xml`.
+- Facultatif : remplacer le contenu du CNAME `www` (cname.vercel-dns.com) par un enregistrement neutre (AAAA `100::` proxifié) avant la suppression du projet Vercel.
