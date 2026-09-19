@@ -1,0 +1,7 @@
+# Barre oblique finale : redirection permanente vers l'adresse sans barre
+# (trailingSlash: 'never'), comme sur Vercel. Sans ces règles, Cloudflare
+# redirige quand même, mais en 307 (temporaire).
+/:page/ /:page 301
+/:section/:page/ /:section/:page 301
+# Reprise de vercel.json.
+/index.html / 301

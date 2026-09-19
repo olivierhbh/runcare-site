@@ -1,0 +1,4 @@
+# Adresses *.workers.dev (y compris les aperçus de versions) : non indexées,
+# seul le vrai domaine doit apparaître dans Google.
+https://:worker.:account.workers.dev/*
+  X-Robots-Tag: noindex
