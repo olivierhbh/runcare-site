@@ -35,9 +35,9 @@ dans les pages (duo, quai, studio, Nolio…) restent à la racine du dossier.
 
 ## Mise en production
 
-Keystatic est en mode `github` en production (variables `KEYSTATIC_*` sur Vercel) : Romain
+Keystatic est en mode `github` en production (secrets `KEYSTATIC_*` du Worker Cloudflare, `wrangler secret`) : Romain
 et Lelio éditent sur https://argonnekinesportsante.fr/keystatic. Cette route est en
-`noindex` (en-tête `X-Robots-Tag` dans `vercel.json`) et exclue du sitemap et de `robots.txt`.
+`noindex` (en-tête `X-Robots-Tag` posé par `src/middleware.ts`) et exclue du sitemap et de `robots.txt`.
 
 ## Référencement
 
@@ -47,7 +47,7 @@ et Lelio éditent sur https://argonnekinesportsante.fr/keystatic. Cette route es
   `Person` de l'équipe, fil d'Ariane, `Article` pour le blog.
 - Chaque service et article a des champs « Titre pour Google » / « Description pour
   Google » dans Keystatic (facultatifs, sinon le titre et l'accroche sont utilisés).
-- `vercel.json` redirige `www.` et `runcare-site.vercel.app` vers le domaine principal.
+- `www.` est redirigé vers le domaine principal par une règle de redirection Cloudflare ; `public/_redirects` retire la barre oblique finale (301).
 - Statistiques : Umami (sans cookie, sans bandeau). Renseigner l'identifiant du site dans
   « Coordonnées & réglages » ; les clics Doctolib / WhatsApp / systeme.io / téléphone /
   e-mail remontent comme événements.

@@ -3,15 +3,19 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
-import vercel from '@astrojs/vercel';
+import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // Le site est statique ; seules les routes /keystatic et /api/keystatic sont
-// rendues à la demande (adaptateur Vercel), ce qui permet l'édition en ligne.
+// rendues à la demande (Worker Cloudflare), ce qui permet l'édition en ligne.
+// Les images sont optimisées au build par Sharp (imageService: 'compile'), et
+// le prérendu tourne sous Node pour lire le contenu sur le disque.
 export default defineConfig({
   site: 'https://argonnekinesportsante.fr',
-  adapter: vercel(),
+  adapter: cloudflare({ imageService: 'compile', prerenderEnvironment: 'node' }),
+  // Pas de sessions : évite le binding KV que l'adaptateur créerait sinon.
+  session: false,
   trailingSlash: 'never',
   integrations: [
     react(),

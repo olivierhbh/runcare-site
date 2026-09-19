@@ -10,3 +10,5 @@ site/dist
 site/.astro
 site/.vercel
 site/.env*
+# Archives locales (bundles git), non versionnées
+archives/
