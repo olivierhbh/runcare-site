@@ -83,9 +83,12 @@ Branche de travail `cloudflare`, fusionnée dans `main` le 2026-09-19. Productio
 
 - Branche `cloudflare` supprimée le 2026-09-19 après fusion (0 commit hors de `main`) : elle apparaissait dans le sélecteur de branches de Keystatic et prêtait à confusion.
 
+## DNSSEC rétabli (2026-09-20)
+
+Vérifié avant : les quatre résolveurs publics interrogés ne renvoyaient plus que `denver`/`paris.ns.cloudflare.com` (délégation changée 23 h plus tôt, TTL 3600 s). DNSSEC activé chez Cloudflare, puis DS saisi chez OVH (onglet « DS records ») : key tag 2371, flag 257 (KSK), algorithme 13, clé publique relue par `dig DNSKEY` sur les serveurs Cloudflare et empreinte SHA-256 recalculée pour contrôle (`875BD008…`, identique à la fiche Cloudflare). OVH demande la clé publique, pas l'empreinte. DS publié par l'AFNIC à 09:34 ; validation confirmée (drapeau `ad`) chez Google, Cloudflare et Quad9, sur le site comme sur les MX.
+
 ## Reste à faire
 
-- Réactiver le DNSSEC côté Cloudflare (DNS → Settings) et publier le DS chez OVH (onglet « DS records »), **après** expiration des anciennes délégations (au plus tôt 2 h après 10:35 ; plus sûr le lendemain).
 - Test d'envoi et de réception d'un e-mail sur une adresse du domaine.
 - Dans quelques jours : supprimer le projet Vercel `runcare-site` (seulement lui), retirer l'URL de rappel Vercel/workers.dev de l'app GitHub si inutile. Pas de secret GitHub `VERCEL_*` (vérifié).
 - Search Console : soumettre `https://argonnekinesportsante.fr/sitemap-index.xml`.
