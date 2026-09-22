@@ -93,7 +93,9 @@ Vérifié avant : les quatre résolveurs publics interrogés ne renvoyaient plus
 - **Projet Vercel `runcare-site` supprimé** (lui seul), trois jours après la bascule : serveurs de noms Cloudflare vus par les résolveurs publics depuis le 19/09 (TTL 3600 s), `www` déjà servi par Cloudflare. `runcare-site.vercel.app` répond désormais 404 chez Vercel ; cette adresse n'a jamais été indexée (toujours redirigée) et n'a circulé que dans le brief 1 à Romain et Lelio.
 - Branche `cloudflare` : déjà supprimée le 19/09.
 
+- **App GitHub `runcare-vercel-site`** (2026-09-22) : URL de rappel `workers.dev` retirée ; restent `argonnekinesportsante.fr` (prod) et deux adresses de boucle locale (`127.0.0.1:4321` pour `astro dev`, `127.0.0.1` sans port pour `wrangler dev` : GitHub n'impose pas le port sur une adresse de boucle locale).
+- **Courrier** : test d'envoi/réception non fait, Romain ne prévoit pas d'adresse sur ce domaine. Les MX OVH restent déclarés dans la zone, sans effet. Point ouvert : `settings.yaml` publie `contact@argonnekinesportsante.fr` comme e-mail du cabinet dans les données structurées (JSON-LD `Physiotherapy.email`), adresse qui ne sera donc pas relevée — à remplacer par `runcarepro@gmail.com` ou à retirer, décision de Romain.
+
 ## Reste à faire
 
-- App GitHub `runcare-vercel-site` : retirer les URL de rappel `runcare-site.vercel.app` et `workers.dev` (Keystatic ne sert que sur le vrai domaine ; l'adresse de test sert à vérifier les pages, pas à éditer).
-- Test d'envoi et de réception d'un e-mail sur une adresse du domaine.
+- E-mail du cabinet dans « Coordonnées & réglages » (Keystatic) : `contact@argonnekinesportsante.fr` n'est pas relevée, à faire trancher par Romain.
