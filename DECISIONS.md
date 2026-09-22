@@ -87,9 +87,13 @@ Branche de travail `cloudflare`, fusionnée dans `main` le 2026-09-19. Productio
 
 Vérifié avant : les quatre résolveurs publics interrogés ne renvoyaient plus que `denver`/`paris.ns.cloudflare.com` (délégation changée 23 h plus tôt, TTL 3600 s). DNSSEC activé chez Cloudflare, puis DS saisi chez OVH (onglet « DS records ») : key tag 2371, flag 257 (KSK), algorithme 13, clé publique relue par `dig DNSKEY` sur les serveurs Cloudflare et empreinte SHA-256 recalculée pour contrôle (`875BD008…`, identique à la fiche Cloudflare). OVH demande la clé publique, pas l'empreinte. DS publié par l'AFNIC à 09:34 ; validation confirmée (drapeau `ad`) chez Google, Cloudflare et Quad9, sur le site comme sur les MX.
 
+## Nettoyage après bascule (2026-09-22)
+
+- **CNAME `www`** (`cname.vercel-dns.com`) remplacé par un `AAAA 100::` proxifié : la redirection `www` → apex est faite par Cloudflare à la périphérie, l'origine n'est jamais contactée. Vérifié après : `https://www.…/contact?x=1` → 301 apex, chemin et paramètres conservés ; `http://www` → 301 → 301 (Always Use HTTPS puis règle www).
+- **Projet Vercel `runcare-site` supprimé** (lui seul), trois jours après la bascule : serveurs de noms Cloudflare vus par les résolveurs publics depuis le 19/09 (TTL 3600 s), `www` déjà servi par Cloudflare. `runcare-site.vercel.app` répond désormais 404 chez Vercel ; cette adresse n'a jamais été indexée (toujours redirigée) et n'a circulé que dans le brief 1 à Romain et Lelio.
+- Branche `cloudflare` : déjà supprimée le 19/09.
+
 ## Reste à faire
 
+- App GitHub `runcare-vercel-site` : retirer les URL de rappel `runcare-site.vercel.app` et `workers.dev` (Keystatic ne sert que sur le vrai domaine ; l'adresse de test sert à vérifier les pages, pas à éditer).
 - Test d'envoi et de réception d'un e-mail sur une adresse du domaine.
-- Dans quelques jours : supprimer le projet Vercel `runcare-site` (seulement lui), retirer l'URL de rappel Vercel/workers.dev de l'app GitHub si inutile. Pas de secret GitHub `VERCEL_*` (vérifié).
-- Search Console : soumettre `https://argonnekinesportsante.fr/sitemap-index.xml`.
-- Facultatif : remplacer le contenu du CNAME `www` (cname.vercel-dns.com) par un enregistrement neutre (AAAA `100::` proxifié) avant la suppression du projet Vercel.
