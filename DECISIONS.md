@@ -96,6 +96,8 @@ Vérifié avant : les quatre résolveurs publics interrogés ne renvoyaient plus
 - **App GitHub `runcare-vercel-site`** (2026-09-22) : URL de rappel `workers.dev` retirée ; restent `argonnekinesportsante.fr` (prod) et deux adresses de boucle locale (`127.0.0.1:4321` pour `astro dev`, `127.0.0.1` sans port pour `wrangler dev` : GitHub n'impose pas le port sur une adresse de boucle locale).
 - **Courrier** : test d'envoi/réception non fait, Romain ne prévoit pas d'adresse sur ce domaine. Les MX OVH restent déclarés dans la zone, sans effet. Point ouvert : `settings.yaml` publie `contact@argonnekinesportsante.fr` comme e-mail du cabinet dans les données structurées (JSON-LD `Physiotherapy.email`), adresse qui ne sera donc pas relevée — à remplacer par `runcarepro@gmail.com` ou à retirer, décision de Romain.
 
+- **E-mail du cabinet** remplacé par `runcarepro@gmail.com` dans Keystatic par Olivier (commit `1ef89d7`), publié et vérifié dans le JSON-LD en ligne.
+
 ## Reste à faire
 
-- E-mail du cabinet dans « Coordonnées & réglages » (Keystatic) : `contact@argonnekinesportsante.fr` n'est pas relevée, à faire trancher par Romain.
+Rien : la migration et son nettoyage sont terminés.
