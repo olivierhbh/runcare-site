@@ -3,7 +3,7 @@ baseline: Kiné & Coach
 adresse: 130 cours de l'Argonne
 codePostal: '33000'
 ville: Bordeaux
-telephone: https://tidycal.com/team/runcare/appel-gratuit
+telephone: 06 69 70 46 53
 telephoneCabinet: 05 56 31 92 81
 whatsapp: '33669704653'
 whatsappCoaching: '33646666621'
@@ -15,6 +15,7 @@ instagram: https://www.instagram.com/runcare_physio/
 horaires: Du lundi au vendredi, sur rendez-vous.
 venteUrl: https://runcare.systeme.io/748f0635
 leadMagnetUrl: https://runcare.systeme.io/79081d31
+appelGratuitUrl: https://tidycal.com/team/runcare/appel-gratuit
 googleMapsUrl: https://maps.app.goo.gl/KSetY9qE2ykRUaPY8
 latitude: '44.8264897'
 longitude: '-0.5766193'

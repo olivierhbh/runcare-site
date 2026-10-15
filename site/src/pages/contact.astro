@@ -3,11 +3,11 @@ import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Faq from '@/components/Faq.astro';
 import RuncareNote from '@/components/RuncareNote.astro';
-import { settings, whatsappUrl, whatsappCoachingUrl, telCabinetHref } from '@/lib/settings';
+import { settings, telCabinetHref } from '@/lib/settings';
 const faq = (await getCollection('faq')).sort((a, b) => a.data.ordre - b.data.ordre);
 const mapQuery = encodeURIComponent(`${settings.adresse}, ${settings.codePostal} ${settings.ville}`);
 ---
-<Base title="Contact et rendez-vous kiné du sport à Bordeaux" description="Prendre rendez-vous au cabinet de kinésithérapie Argonne Kiné Sport Santé, 130 cours de l’Argonne à Bordeaux (Doctolib, téléphone), ou contacter RunCare par WhatsApp pour un bilan, une analyse de foulée ou un coaching running.">
+<Base title="Contact et rendez-vous kiné du sport à Bordeaux" description="Prendre rendez-vous au cabinet de kinésithérapie Argonne Kiné Sport Santé, 130 cours de l’Argonne à Bordeaux (Doctolib, téléphone), ou réserver un appel gratuit avec un kiné coach RunCare pour un coaching running.">
   <section class="container pt-14 md:pt-20 pb-12">
     <p class="eyebrow mb-4">Contact & rendez-vous</p>
     <h1 class="text-[clamp(2.4rem,5.5vw,4rem)] max-w-[16ch]">Décris-nous ta situation.</h1>
@@ -28,13 +28,12 @@ const mapQuery = encodeURIComponent(`${settings.adresse}, ${settings.codePostal}
     </div>
     <div class="bg-surface border-2 border-accent rounded-brand p-7 flex flex-col">
       <p class="text-xs font-semibold tracking-[0.18em] uppercase mb-3 text-accent">RunCare</p>
-      <h2 class="text-2xl mb-3">Bilan, analyse de foulée, coaching</h2>
+      <h2 class="text-2xl mb-3">Coaching</h2>
       <ul class="text-sm space-y-2 mb-6 muted">
         <li>E-mail : <a class="hover:text-accent font-medium" href={`mailto:${settings.emailRuncare}`}>{settings.emailRuncare}</a></li>
-        <li>Le plus simple : décris-nous ta situation sur WhatsApp.</li>
+        <li>Pour plus d’informations :</li>
       </ul>
-      <a href={whatsappUrl('Bonjour, je souhaite décrire ma situation.')} class="btn btn-primary w-full justify-center mt-auto" rel="noopener">WhatsApp Romain</a>
-      <a href={whatsappCoachingUrl('Bonjour, je souhaite décrire ma situation.')} class="btn btn-ghost w-full justify-center mt-2" rel="noopener">WhatsApp Lelio</a>
+      <a href={settings.appelGratuitUrl} class="btn btn-primary w-full justify-center mt-auto" rel="noopener">Réserve un appel avec ton kiné coach</a>
     </div>
   </section>
   <div class="container pb-16"><RuncareNote class="max-w-3xl" /></div>

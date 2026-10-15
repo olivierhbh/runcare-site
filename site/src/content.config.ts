@@ -76,7 +76,7 @@ const articles = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
-      service: z.enum(['reeducation', 'bilan-runcare', 'analyse-de-foulee', 'coaching']),
+      service: z.enum(['reeducation', 'bilan-runcare', 'coaching']),
       publishedDate: z.coerce.date(),
       cover: img().optional(),
       updatedDate: z.coerce.date().optional().nullable(),

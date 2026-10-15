@@ -14,7 +14,7 @@ const services = (await getCollection('services')).sort((a, b) => a.data.ordre -
 const equipe = (await getCollection('equipe')).sort((a, b) => a.data.ordre - b.data.ordre);
 const faq = (await getCollection('faq')).filter((f) => f.data.accueil).sort((a, b) => a.data.ordre - b.data.ordre);
 ---
-<Base title="Kiné du sport et coach running à Bordeaux · Argonne Kiné Sport Santé" description="Kinésithérapeutes du sport et coachs running à Bordeaux, spécialisés dans le coureur à pied : rééducation des blessures de course, bilan, analyse de foulée et coaching. Cabinet cours de l’Argonne.">
+<Base title="Kiné du sport et coach running à Bordeaux · Argonne Kiné Sport Santé" description="Kinésithérapeutes du sport et coachs running à Bordeaux, spécialisés dans le coureur à pied : rééducation des blessures de course et coaching running. Cabinet cours de l’Argonne.">
   <!-- Hero -->
   <section class="container pt-12 md:pt-16 pb-14">
     <h1 class="eyebrow mb-5" style="font-family: var(--font-sans); font-weight: 600; letter-spacing: 0.14em; line-height: 1.5">Cabinet de kinésithérapie du sport et coaching running · Bordeaux</h1>
@@ -38,7 +38,7 @@ const faq = (await getCollection('faq')).filter((f) => f.data.accueil).sort((a, 
         <p class="eyebrow mb-4">Nos accompagnements</p>
         <h2 class="text-[clamp(1.9rem,4vw,3rem)]">Quel que soit ton besoin, nous t’orientons vers l’accompagnement adapté.</h2>
       </div>
-      <div class="grid gap-10 lg:grid-cols-[1fr_3fr]">
+      <div class="grid gap-10 lg:grid-cols-2">
         <div>
           <p class="text-xs font-semibold tracking-[0.18em] uppercase mb-4" style="color: var(--argonne)">Au cabinet · Argonne</p>
           <div class="grid gap-5">
@@ -49,7 +49,7 @@ const faq = (await getCollection('faq')).filter((f) => f.data.accueil).sort((a, 
         </div>
         <div>
           <p class="text-xs font-semibold tracking-[0.18em] uppercase mb-4 text-accent">Prévention &amp; accompagnement · RunCare</p>
-          <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          <div class="grid gap-5">
             {services.filter((s) => s.id !== 'reeducation').map((s, i) => (
               <ServiceCard href={`/${s.id}`} besoin={s.data.besoin} titre={s.data.titre} accroche={s.data.accroche} photo={s.data.photo} index={i + 2} />
             ))}

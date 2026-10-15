@@ -62,7 +62,7 @@ const cabinet = {
   '@id': cabinetId,
   name: settings.nom,
   alternateName: 'RunCare',
-  description: 'Cabinet de kinésithérapie du sport à Bordeaux dédié au coureur à pied : rééducation des blessures de course, bilan, analyse de foulée et coaching running.',
+  description: 'Cabinet de kinésithérapie du sport à Bordeaux dédié au coureur à pied : rééducation des blessures de course et coaching running.',
   url: `${siteUrl}/`,
   telephone: telE164(settings.telephoneCabinet),
   email: settings.email,
@@ -156,13 +156,14 @@ const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': grap
     <Footer />
     {settings.umamiWebsiteId && (
       <script is:inline>
-        // Compte les clics vers les prises de contact (Doctolib, WhatsApp, systeme.io, téléphone, e-mail).
+        // Compte les clics vers les prises de contact (Doctolib, WhatsApp, appel gratuit TidyCal, systeme.io, téléphone, e-mail).
         document.addEventListener('click', (e) => {
           const a = e.target && e.target.closest && e.target.closest('a[href]');
           if (!a || !window.umami) return;
           const h = a.href;
           const ev = h.includes('doctolib.fr') ? 'clic-doctolib'
             : h.includes('wa.me') ? 'clic-whatsapp'
+            : h.includes('tidycal.com') ? 'clic-appel-gratuit'
             : h.includes('systeme.io') ? 'clic-systeme-io'
             : h.startsWith('tel:') ? 'clic-telephone'
             : h.startsWith('mailto:') ? 'clic-email'

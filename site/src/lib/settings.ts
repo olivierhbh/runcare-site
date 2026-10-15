@@ -4,7 +4,7 @@ export type Settings = {
   nom: string; baseline: string; adresse: string; codePostal: string; ville: string;
   telephone: string; telephoneCabinet: string; whatsapp: string; whatsappCoaching: string; telephoneLelio: string; email: string; emailRuncare: string; venteUrl: string;
   doctolibRomain: string; doctolibLelio: string; instagram: string;
-  horaires: string; leadMagnetUrl: string;
+  horaires: string; leadMagnetUrl: string; appelGratuitUrl: string;
   googleMapsUrl: string; latitude: string; longitude: string;
   googleSiteVerification: string; umamiWebsiteId: string;
 };
@@ -34,12 +34,17 @@ export function ctaHref(type: 'doctolib' | 'whatsapp' | 'contact' | 'url', url?:
 }
 
 /** tag: petit repère affiché sous l'entrée (RunCare en vert, Argonne en bleu). */
-export type NavItem = { href: string; label: string; tag?: 'runcare' | 'argonne' };
-export const nav: NavItem[] = [
+export type NavItem = { href: string; label: string; tag?: 'runcare' | 'argonne'; external?: boolean };
+/** Les deux services (menu principal et colonne « Services » du pied de page). */
+export const servicesNav: NavItem[] = [
   { href: '/reeducation', label: 'Rééducation', tag: 'argonne' },
-  { href: '/bilan-runcare', label: 'Bilan', tag: 'runcare' },
-  { href: '/analyse-de-foulee', label: 'Analyse de foulée', tag: 'runcare' },
   { href: '/coaching', label: 'Coaching', tag: 'runcare' },
+];
+// Menu principal (consigne Romain, 15/10/2026) : bilan et analyse de foulée retirés, remplacés par le test de profil.
+export const nav: NavItem[] = [
+  servicesNav[0],
+  { href: settings.leadMagnetUrl || '/profil-coureur', label: 'Découvre ton profil de coureur', tag: 'runcare', external: true },
+  servicesNav[1],
   { href: '/equipe', label: 'L’équipe' },
   { href: '/blog', label: 'Conseils' },
 ];
@@ -47,6 +52,5 @@ export const nav: NavItem[] = [
 export const serviceLabels: Record<string, string> = {
   'reeducation': 'Rééducation',
   'bilan-runcare': 'Bilan RunCare',
-  'analyse-de-foulee': 'Analyse de foulée RunCare',
   'coaching': 'Coaching RunCare',
 };

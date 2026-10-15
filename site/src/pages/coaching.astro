@@ -6,7 +6,7 @@ import PageHero from '@/components/PageHero.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import ArticleCard from '@/components/ArticleCard.astro';
 import RuncareNote from '@/components/RuncareNote.astro';
-import { whatsappUrl, whatsappCoachingUrl } from '@/lib/settings';
+import { settings, ctaHref } from '@/lib/settings';
 import nolio from '@/assets/photos/nolio.jpg';
 import coachingTel from '@/assets/photos/coaching-tel.jpg';
 
@@ -15,12 +15,13 @@ const { Content } = await render(entry);
 const d = entry.data;
 const formules = (await getCollection('formules')).sort((a, b) => a.data.ordre - b.data.ordre);
 const articles = (await getCollection('articles')).filter((a) => a.data.service === 'coaching');
-// Gestion de charge (fichier gestion-de-charge.yaml) → WhatsApp Romain ; Accompagnement complet → WhatsApp Lelio (consigne Romain, 01/09/2026).
-const formuleWhatsapp = (id: string, nom: string) =>
-  (id === 'gestion-de-charge' ? whatsappUrl : whatsappCoachingUrl)(`Bonjour, je suis intéressé(e) par la formule ${nom}.`);
+// Les formules renvoient vers la réservation d'un appel gratuit, sans distinguer Romain et Lelio (consigne Romain, 15/10/2026, remplace celle du 01/09).
+const appel = settings.appelGratuitUrl;
 ---
 <Base title={d.seoTitle || d.titre} description={d.seoDescription || d.accroche} ogImage={coachingTel.src}>
-  <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={coachingTel} photoAlt="Coureur consultant son plan d'entraînement" />
+  <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={coachingTel} photoAlt="Coureur consultant son plan d'entraînement">
+    <a href={ctaHref(d.ctaType, d.ctaUrl)} class="btn btn-primary mt-6" rel="noopener">{d.ctaLabel}</a>
+  </PageHero>
 
   <section class="container pb-16">
     <div class="grid gap-5 md:grid-cols-2 max-w-4xl mx-auto">
@@ -40,7 +41,7 @@ const formuleWhatsapp = (id: string, nom: string) =>
             <p class="text-sm muted">{f.data.format} · Engagement {f.data.engagement}</p>
             <p class="text-xs muted mt-1">{f.data.tarifDetail}</p>
           </div>
-          <a href={formuleWhatsapp(f.id, f.data.nom)} class="btn btn-primary w-full justify-center" rel="noopener">Choisir {f.data.nom}</a>
+          <a href={appel} class="btn btn-primary w-full justify-center" rel="noopener">Choisir {f.data.nom}</a>
           <p class="text-sm border-t pt-4" style="border-color: color-mix(in srgb, currentColor 15%, transparent)"><span class="font-semibold">Idéal si :</span> {f.data.idealSi}</p>
         </article>
       ))}

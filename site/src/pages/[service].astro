@@ -6,7 +6,6 @@ import CtaBand from '@/components/CtaBand.astro';
 import ArticleCard from '@/components/ArticleCard.astro';
 import RuncareNote from '@/components/RuncareNote.astro';
 import { ctaHref } from '@/lib/settings';
-import bilanAnalyse from '@/assets/photos/bilan-analyse.jpg';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -15,16 +14,11 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
-const subjects: Record<string, string> = {
-  'analyse-de-foulee': 'réserver une analyse de foulée',
-  'bilan-runcare': 'réserver un Bilan Diagnostic RunCare',
-};
-const href = ctaHref(d.ctaType, d.ctaUrl, subjects[entry.id]);
-const heroPhoto = entry.id === 'bilan-runcare' ? bilanAnalyse : d.photo;
+const href = ctaHref(d.ctaType, d.ctaUrl);
 const articles = (await getCollection('articles')).filter((a) => a.data.service === entry.id);
 ---
 <Base title={d.seoTitle || d.titre} description={d.seoDescription || d.accroche} ogImage={d.photo?.src}>
-  <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={heroPhoto} photoAlt={d.titre} />
+  <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={d.photo} photoAlt={d.titre} />
   <section class="container pb-20 grid gap-12 lg:grid-cols-[1fr_20rem] items-start">
     <div>
       <div class="prose"><Content /></div>

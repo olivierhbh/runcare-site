@@ -8,7 +8,7 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
     <Logo variant="argonne" />
     <nav class="hidden lg:flex items-center gap-7 text-[0.92rem]">
       {nav.map((n) => (
-        <a href={n.href} class:list={['hover:text-accent transition-colors text-center leading-tight', path.startsWith(n.href) && 'text-accent font-medium']}>
+        <a href={n.href} rel={n.external ? 'noopener' : undefined} class:list={['hover:text-accent transition-colors text-center leading-tight', !n.external && path.startsWith(n.href) && 'text-accent font-medium']}>
           {n.label}
           {n.tag && <span class:list={['block text-[0.55rem] font-semibold tracking-[0.18em] uppercase mt-0.5', n.tag === 'runcare' ? 'text-accent' : 'text-[var(--argonne)]']}>{n.tag === 'runcare' ? 'RunCare' : 'Argonne'}</span>}
         </a>
@@ -24,7 +24,7 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
   <nav id="mobile-nav" class="hidden lg:!hidden border-t hairline">
     <div class="container py-4 flex flex-col gap-3">
       {nav.map((n) => (
-        <a href={n.href} class="py-1.5 text-lg serif flex items-baseline gap-2.5">
+        <a href={n.href} rel={n.external ? 'noopener' : undefined} class="py-1.5 text-lg serif flex items-baseline gap-2.5">
           {n.label}
           {n.tag && <span class:list={['text-[0.6rem] font-sans font-semibold tracking-[0.18em] uppercase', n.tag === 'runcare' ? 'text-accent' : 'text-[var(--argonne)]']}>{n.tag === 'runcare' ? 'RunCare' : 'Argonne'}</span>}
         </a>

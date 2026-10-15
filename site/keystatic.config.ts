@@ -4,6 +4,43 @@ import { config, fields, collection, singleton } from '@keystatic/core';
 // PUBLIC_KEYSTATIC_GITHUB_APP_SLUG), sinon mode local pour le développement.
 const github = Boolean(import.meta.env.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG || import.meta.env.PUBLIC_KEYSTATIC_GITHUB_MODE);
 
+/** Fiche service. Les deux services sont des singletons à identifiant fixe (le code du site
+ *  dépend de `reeducation` et `coaching`) : impossible de les renommer ou de les supprimer
+ *  depuis Keystatic, seul leur contenu se modifie. */
+const service = (label: string, id: 'reeducation' | 'coaching') =>
+  singleton({
+    label,
+    path: `src/content/services/${id}`,
+    format: { contentField: 'contenu' },
+    schema: {
+      titre: fields.text({ label: 'Titre', validation: { isRequired: true } }),
+      ordre: fields.integer({ label: 'Ordre d’affichage', defaultValue: 1 }),
+      besoin: fields.text({ label: 'Besoin (accueil), ex. « J’ai une douleur »', validation: { isRequired: true } }),
+      accroche: fields.text({ label: 'Accroche courte (accueil)', multiline: true, validation: { isRequired: true } }),
+      intro: fields.text({ label: 'Introduction (haut de page)', multiline: true, validation: { isRequired: true } }),
+      format: fields.text({ label: 'Format, ex. « Présentiel, au cabinet »' }),
+      duree: fields.text({ label: 'Durée' }),
+      tarif: fields.text({ label: 'Tarif' }),
+      tarifNote: fields.text({ label: 'Précision tarif' }),
+      photo: fields.image({ label: 'Photo', directory: `src/assets/photos/services/${id}`, publicPath: `/src/assets/photos/services/${id}/` }),
+      ctaLabel: fields.text({ label: 'Texte du bouton', validation: { isRequired: true } }),
+      ctaType: fields.select({
+        label: 'Action du bouton',
+        options: [
+          { label: 'Doctolib', value: 'doctolib' },
+          { label: 'WhatsApp', value: 'whatsapp' },
+          { label: 'Page contact', value: 'contact' },
+          { label: 'Lien externe', value: 'url' },
+        ],
+        defaultValue: 'contact',
+      }),
+      ctaUrl: fields.url({ label: 'Lien externe (si « Lien externe »)' }),
+      seoTitle: fields.text({ label: 'Titre pour Google (50 à 65 caractères, avec le mot-clé et la ville)' }),
+      seoDescription: fields.text({ label: 'Description pour Google (120 à 160 caractères)', multiline: true }),
+      contenu: fields.markdoc({ label: 'Contenu de la page' }),
+    },
+  });
+
 export default config({
   storage: github
     ? { kind: 'github', repo: 'olivierhbh/runcare-site', pathPrefix: 'site' }
@@ -33,6 +70,7 @@ export default config({
         horaires: fields.text({ label: 'Horaires', multiline: true }),
         venteUrl: fields.url({ label: 'Page de vente RunCare (systeme.io)' }),
         leadMagnetUrl: fields.url({ label: 'Lien du test « Quel coureur es-tu ? »' }),
+        appelGratuitUrl: fields.url({ label: 'Lien de réservation d’un appel gratuit (TidyCal)' }),
         googleMapsUrl: fields.url({ label: 'Fiche Google (lien Google Maps du cabinet)' }),
         latitude: fields.text({ label: 'Latitude du cabinet (référencement local)' }),
         longitude: fields.text({ label: 'Longitude du cabinet (référencement local)' }),
@@ -40,6 +78,8 @@ export default config({
         umamiWebsiteId: fields.text({ label: 'Identifiant du site Umami (statistiques de fréquentation)' }),
       },
     }),
+    reeducation: service('Service : Rééducation (cabinet)', 'reeducation'),
+    coaching: service('Service : Coaching RunCare', 'coaching'),
   },
   collections: {
     legal: collection({
@@ -81,70 +121,6 @@ export default config({
         strava: fields.url({ label: 'Profil Strava' }),
       },
     }),
-    services: collection({
-      label: 'Services',
-      path: 'src/content/services/*',
-      slugField: 'titre',
-      format: { contentField: 'contenu' },
-      schema: {
-        titre: fields.slug({ name: { label: 'Titre', validation: { isRequired: true } } }),
-        ordre: fields.integer({ label: 'Ordre d’affichage', defaultValue: 1 }),
-        besoin: fields.text({ label: 'Besoin (accueil), ex. « J’ai une douleur »', validation: { isRequired: true } }),
-        accroche: fields.text({ label: 'Accroche courte (accueil)', multiline: true, validation: { isRequired: true } }),
-        intro: fields.text({ label: 'Introduction (haut de page)', multiline: true, validation: { isRequired: true } }),
-        format: fields.text({ label: 'Format, ex. « Présentiel, au cabinet »' }),
-        duree: fields.text({ label: 'Durée' }),
-        tarif: fields.text({ label: 'Tarif' }),
-        tarifNote: fields.text({ label: 'Précision tarif' }),
-        photo: fields.image({ label: 'Photo', directory: 'src/assets/photos/services', publicPath: '/src/assets/photos/services/' }),
-        ctaLabel: fields.text({ label: 'Texte du bouton', validation: { isRequired: true } }),
-        ctaType: fields.select({
-          label: 'Action du bouton',
-          options: [
-            { label: 'Doctolib', value: 'doctolib' },
-            { label: 'WhatsApp', value: 'whatsapp' },
-            { label: 'Page contact', value: 'contact' },
-            { label: 'Lien externe', value: 'url' },
-          ],
-          defaultValue: 'contact',
-        }),
-        ctaUrl: fields.url({ label: 'Lien externe (si « Lien externe »)' }),
-        seoTitle: fields.text({ label: 'Titre pour Google (50 à 65 caractères, avec le mot-clé et la ville)' }),
-        seoDescription: fields.text({ label: 'Description pour Google (120 à 160 caractères)', multiline: true }),
-        contenu: fields.markdoc({ label: 'Contenu de la page' }),
-      },
-    }),
-    formules: collection({
-      label: 'Formules de coaching',
-      path: 'src/content/formules/*',
-      slugField: 'nom',
-      format: { data: 'yaml' },
-      schema: {
-        nom: fields.slug({ name: { label: 'Nom', validation: { isRequired: true } } }),
-        ordre: fields.integer({ label: 'Ordre', defaultValue: 1 }),
-        sousTitre: fields.text({ label: 'Sous-titre (facultatif)' }),
-        description: fields.text({ label: 'Description', multiline: true, validation: { isRequired: true } }),
-        inclus: fields.array(fields.text({ label: 'Élément' }), { label: 'Ce qui est inclus', itemLabel: (p) => p.value, validation: { length: { min: 1 } } }),
-        format: fields.text({ label: 'Format', validation: { isRequired: true } }),
-        engagement: fields.text({ label: 'Engagement', validation: { isRequired: true } }),
-        tarif: fields.text({ label: 'Tarif', validation: { isRequired: true } }),
-        tarifDetail: fields.text({ label: 'Précision tarif' }),
-        idealSi: fields.text({ label: 'Idéal si…', multiline: true, validation: { isRequired: true } }),
-        misEnAvant: fields.checkbox({ label: 'Mettre en avant' }),
-      },
-    }),
-    faq: collection({
-      label: 'FAQ',
-      path: 'src/content/faq/*',
-      slugField: 'question',
-      format: { data: 'yaml' },
-      schema: {
-        question: fields.slug({ name: { label: 'Question', validation: { isRequired: true } } }),
-        ordre: fields.integer({ label: 'Ordre', defaultValue: 1 }),
-        reponse: fields.text({ label: 'Réponse', multiline: true, validation: { isRequired: true } }),
-        accueil: fields.checkbox({ label: 'Afficher sur l’accueil', defaultValue: true }),
-      },
-    }),
     articles: collection({
       label: 'Articles',
       path: 'src/content/articles/*',
@@ -159,7 +135,6 @@ export default config({
           options: [
             { label: 'Rééducation', value: 'reeducation' },
             { label: 'Bilan RunCare', value: 'bilan-runcare' },
-            { label: 'Analyse de foulée', value: 'analyse-de-foulee' },
             { label: 'Coaching', value: 'coaching' },
           ],
           defaultValue: 'reeducation',
