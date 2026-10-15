@@ -15,9 +15,9 @@ const { Content } = await render(entry);
 const d = entry.data;
 const formules = (await getCollection('formules')).sort((a, b) => a.data.ordre - b.data.ordre);
 const articles = (await getCollection('articles')).filter((a) => a.data.service === 'coaching');
-// Gestion de charge (fichier essentiel.yaml) → WhatsApp Romain ; Premium → WhatsApp Lelio (consigne Romain, 01/09/2026).
+// Gestion de charge (fichier gestion-de-charge.yaml) → WhatsApp Romain ; Accompagnement complet → WhatsApp Lelio (consigne Romain, 01/09/2026).
 const formuleWhatsapp = (id: string, nom: string) =>
-  (id === 'essentiel' ? whatsappUrl : whatsappCoachingUrl)(`Bonjour, je suis intéressé(e) par la formule ${nom}.`);
+  (id === 'gestion-de-charge' ? whatsappUrl : whatsappCoachingUrl)(`Bonjour, je suis intéressé(e) par la formule ${nom}.`);
 ---
 <Base title={d.seoTitle || d.titre} description={d.seoDescription || d.accroche} ogImage={coachingTel.src}>
   <PageHero eyebrow={d.besoin} title={d.titre} intro={d.intro} photo={coachingTel} photoAlt="Coureur consultant son plan d'entraînement" />
@@ -27,7 +27,7 @@ const formuleWhatsapp = (id: string, nom: string) =>
       {formules.map((f) => (
         <article class:list={['rounded-brand border p-7 flex flex-col gap-6 md:grid md:grid-rows-subgrid md:row-span-7 md:gap-y-6', f.data.misEnAvant ? 'on-dark border-transparent' : 'bg-surface hairline']}>
           <div>
-            <p class="eyebrow mb-2">{f.data.sousTitre}</p>
+            {f.data.sousTitre && <p class="eyebrow mb-2">{f.data.sousTitre}</p>}
             <h2 class="text-3xl">{f.data.nom}</h2>
             <p class="mt-3 muted leading-relaxed text-[0.95rem]">{f.data.description}</p>
           </div>

@@ -48,8 +48,7 @@ const formules = defineCollection({
   schema: z.object({
     nom: z.string(),
     ordre: z.number().default(1),
-    sousTitre: z.string(),
-    pourQui: z.string(),
+    sousTitre: z.string().default(''),
     description: z.string(),
     inclus: z.array(z.string()),
     format: z.string(),

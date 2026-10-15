@@ -101,3 +101,10 @@ Vérifié avant : les quatre résolveurs publics interrogés ne renvoyaient plus
 ## Reste à faire
 
 Rien : la migration et son nettoyage sont terminés.
+
+## Build cassé par des champs vides dans Keystatic (2026-10-13 → 2026-10-15)
+
+- **Symptôme** : huit déploiements en échec du 13/10 (Romain reçoit les mails « All jobs have failed » de GitHub), aucune de ses modifs en ligne. Cause : il a recréé les deux formules de coaching en laissant vides « Sous-titre » et « Pour qui ? » ; Keystatic n'écrit pas les champs texte vides dans le YAML, et le schéma Astro les exigeait → `InvalidContentEntryDataError`.
+- **Garde-fous** : tout champ dont le schéma Astro exige une valeur est désormais `isRequired` dans Keystatic (Keystatic refuse d'enregistrer tant qu'il est vide) : noms des entrées (tous les champs slug), description, éléments inclus (au moins un), format, engagement, tarif, « idéal si » des formules ; réponse des FAQ ; besoin, accroche, intro, texte du bouton des services ; résumé et date des articles ; nom de famille dans l'équipe. Règle : champ obligatoire côté Astro ⇔ `isRequired` côté Keystatic, sinon `.default('')` côté Astro.
+- **Formules** : « Sous-titre » devient facultatif (Astro `.default('')`, n'est affiché que s'il est rempli) ; « Pour qui ? » supprimé (n'était affiché nulle part). Les deux fichiers créés par Romain avaient `nom: ''` et des noms de fichier avec espaces (dont « Acoompagnement ») : renommés `gestion-de-charge.yaml` et `accompagnement-complet.yaml`, nom renseigné d'après le fichier. Le lien WhatsApp de « Gestion de charge » reste sur le numéro de Romain (consigne du 01/09), l'autre sur celui de Lelio : à confirmer avec Romain.
+- **Points ouverts, décision de Romain** : il a supprimé les pages services « Bilan RunCare » (13/10) et « Analyse de foulée » (07/10) ainsi que la FAQ « bilan ou foulée » ; le menu, le pied de page et les boutons de deux articles pointent donc vers des 404 depuis le 07/10. Rien changé en attendant sa réponse (retirer du menu, ou remettre les pages).
