@@ -23,7 +23,7 @@ export default defineConfig({
     keystatic(),
     sitemap({
       // Pages techniques ou redirigées : hors sitemap.
-      filter: (page) => !/\/(keystatic|api|profil-coureur|404)(\/|$)/.test(page),
+      filter: (page) => !/\/(keystatic|api|profil-coureur|coaching|404)(\/|$)/.test(page),
       changefreq: 'monthly',
       lastmod: new Date(),
     }),

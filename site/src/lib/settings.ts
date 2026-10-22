@@ -38,7 +38,8 @@ export type NavItem = { href: string; label: string; tag?: 'runcare' | 'argonne'
 /** Les deux services (menu principal et colonne « Services » du pied de page). */
 export const servicesNav: NavItem[] = [
   { href: '/reeducation', label: 'Rééducation', tag: 'argonne' },
-  { href: '/coaching', label: 'Coaching', tag: 'runcare' },
+  // La page coaching renvoie sur la page de vente systeme.io (demande Romain, 22/10/2026) : on y va directement.
+  { href: settings.venteUrl || '/coaching', label: 'Coaching', tag: 'runcare', external: true },
 ];
 // Menu principal (consigne Romain, 15/10/2026) : bilan et analyse de foulée retirés, remplacés par le test de profil.
 export const nav: NavItem[] = [
