@@ -126,3 +126,9 @@ Rien : la migration et son nettoyage sont terminés.
 - **`/coaching` renvoie directement sur la page de vente systeme.io** (`venteUrl` des réglages, `runcare.systeme.io/748f0635`), comme `/profil-coureur` vers le test. Raison donnée par Romain : il maîtrise seul le contenu de sa page de vente. L'autre lien (`748f0635-89d03b4a`) est la page de réservation du planning, pas la page de vente.
 - **Menu et pied de page** : l'entrée « Coaching » pointe directement sur la page de vente (plus de passage par `/coaching`), ce qui permet à Umami de compter le clic (`clic-systeme-io`). Le bouton « Voir les formules de coaching » des articles coaching est retiré (le bouton principal mène déjà à la page de vente).
 - **Conservé mais plus affiché** : fiche Coaching et formules dans Keystatic, photo Nolio, bouton « Réserve ton bilan ». Si Romain veut récupérer la page un jour, elle est dans l'historique git (commit précédent). `/coaching` sort du sitemap.
+
+## 2026-10-28 — Pages systeme.io : charte et maquette, pas de modification chez eux
+
+- **Quoi** : charte graphique + recommandations en trois niveaux et maquette (page de vente avec la vidéo YouTube, page des formules en texte) pour les trois pages systeme.io. Voir `docs/charte/README.md`.
+- **Pourquoi** : offre gratuite systeme.io = un seul tunnel, donc pas de duplication pour travailler sans risque. Olivier a choisi de ne rien toucher et de leur laisser appliquer (ou de le faire pour eux s'ils valident la maquette).
+- **Écarté** : API publique et MCP systeme.io (ne modifient pas les tunnels existants, seulement création ou remplacement complet d'une page) ; refonte « site » de la page de vente (en-tête et pied de page), jugée trop sage pour un tunnel.

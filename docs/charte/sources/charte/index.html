@@ -1,0 +1,460 @@
+<title>Charte RunCare systeme.io</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Charte graphique RunCare appliquée aux pages systeme.io. Document de référence pour Romain et Lélio.
+   Thème unique (clair), volontaire : les couleurs montrées sont celles de la marque.
+   Mise en page : sommaire fixe à gauche sur grand écran, une colonne de lecture de 44rem. */
+:root {
+  --bg: #f7f6f1; --bg-2: #efeee7; --surface: #ffffff;
+  --ink: #142238; --ink-2: #4a5566; --line: #dcdad1;
+  --accent: #1f5e3a; --accent-ink: #ffffff; --accent-soft: #e2ece4;
+  --dark: #142238; --dark-ink: #f7f6f1; --argonne: #1d3a66;
+  --warn: #8a4b12; --warn-soft: #f5e6d3;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --radius: 4px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 4rem; }
+h1, h2, h3, .serif { font-family: var(--serif); font-optical-sizing: auto; font-variation-settings: 'SOFT' 30, 'WONK' 0; letter-spacing: -0.01em; line-height: 1.1; font-weight: 600; text-wrap: balance; margin: 0; }
+h1 em, h2 em { font-style: italic; }
+p { margin: 0; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+img { max-width: 100%; height: auto; display: block; }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--bg-2); padding: 0.1em 0.4em; border-radius: 3px; white-space: nowrap; }
+.layout { max-width: 72rem; margin-inline: auto; display: grid; gap: 3rem; }
+@media (min-width: 1000px) { .layout { grid-template-columns: 15rem 1fr; } }
+nav.toc { font-size: 0.92rem; }
+@media (min-width: 1000px) { nav.toc { position: sticky; top: 1.5rem; align-self: start; } }
+nav.toc ol { list-style: none; padding: 0; margin: 0.75rem 0 0; display: grid; gap: 0.4rem; }
+nav.toc a { color: var(--ink-2); text-decoration: none; }
+nav.toc a:hover { color: var(--accent); }
+nav.toc .label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+article { max-width: 46rem; min-width: 0; }
+header.top { padding-block: 2.5rem 1rem; }
+header.top h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+header.top .lead { font-size: 1.2rem; color: var(--ink-2); margin-top: 1rem; max-width: 50ch; }
+header.top .meta { font-size: 0.85rem; color: var(--ink-2); margin-top: 1.25rem; }
+section { padding-block: 2.5rem; border-top: 1px solid var(--line); }
+section h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); margin-bottom: 1rem; }
+section h3 { font-family: var(--sans); font-size: 1.15rem; font-weight: 700; letter-spacing: 0; margin: 1.75rem 0 0.6rem; }
+.eyebrow { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; }
+.stack > * + * { margin-top: 0.9rem; }
+ul.plain { padding-left: 1.2rem; margin: 0; }
+ul.plain li + li { margin-top: 0.4rem; }
+ul.plain li::marker { color: var(--accent); }
+.note { background: var(--accent-soft); border-radius: var(--radius); padding: 1rem 1.25rem; font-size: 0.98rem; }
+.note.warn { background: var(--warn-soft); color: var(--warn); }
+.note strong { font-weight: 700; }
+
+/* Avant / référence */
+.compare { display: grid; gap: 1rem; margin-top: 1.25rem; }
+@media (min-width: 640px) { .compare { grid-template-columns: 1fr 1fr; } }
+.compare figure { margin: 0; }
+.compare img { border: 1px solid var(--line); border-radius: var(--radius); width: 100%; }
+.compare figcaption { font-size: 0.85rem; color: var(--ink-2); margin-top: 0.5rem; }
+.compare figcaption strong { color: var(--ink); }
+
+/* Priorités */
+.prio { margin-top: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+.prio header { padding: 0.9rem 1.25rem; display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; align-items: baseline; border-bottom: 1px solid var(--line); }
+.prio header .lvl { font-family: var(--serif); font-size: 1.5rem; }
+.prio header .when { font-size: 0.88rem; color: var(--ink-2); }
+.prio.p1 header { background: var(--accent); color: #fff; border-color: var(--accent); }
+.prio.p1 header .when { color: rgba(255,255,255,0.8); }
+.prio.p2 header { background: var(--accent-soft); }
+.prio.p3 header { background: var(--bg-2); }
+.prio ul { list-style: none; margin: 0; padding: 0.5rem 0; }
+.prio li { display: grid; grid-template-columns: auto 1fr; gap: 0.8rem; padding: 0.7rem 1.25rem; align-items: start; border-top: 1px solid var(--bg-2); }
+.prio li:first-child { border-top: 0; }
+.prio input { width: 1.15rem; height: 1.15rem; margin-top: 0.25rem; accent-color: var(--accent); }
+.prio label { cursor: pointer; }
+.prio label small { display: block; color: var(--ink-2); font-size: 0.9rem; }
+.prio label.done { color: var(--ink-2); text-decoration: line-through; }
+
+/* Couleurs */
+.swatches { display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); margin-top: 1.25rem; }
+.sw { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); font-size: 0.88rem; }
+.sw .chip { height: 4.5rem; display: flex; align-items: flex-end; padding: 0.5rem 0.7rem; font-family: var(--mono); font-size: 0.85rem; }
+.sw .body { padding: 0.6rem 0.7rem 0.75rem; }
+.sw .body strong { display: block; font-weight: 700; }
+.sw .body span { color: var(--ink-2); }
+
+/* Typo */
+.specimen { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; margin-top: 1rem; display: grid; gap: 1rem; }
+.specimen .t1 { font-family: var(--serif); font-optical-sizing: auto; font-size: 3rem; line-height: 1.08; font-weight: 600; letter-spacing: -0.01em; }
+.specimen .t1.display { font-weight: 500; font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0; }
+.specimen .t1 em { font-style: italic; }
+.specimen .t2 { font-family: var(--serif); font-optical-sizing: auto; font-size: 2.25rem; line-height: 1.1; font-weight: 600; }
+.specimen .t3 { font-size: 1.45rem; font-weight: 700; }
+.specimen .body { font-size: 1.25rem; }
+.specimen .sur { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+.specimen .cap { font-size: 0.78rem; color: var(--ink-2); font-family: var(--mono); }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin-top: 1rem; }
+.table-wrap { overflow-x: auto; }
+th, td { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); font-weight: 700; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* Boutons */
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 1.1rem 2rem; border-radius: var(--radius); font-weight: 700; font-size: 1.15rem; line-height: 1.2; text-decoration: none; border: 2px solid transparent; }
+.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px -8px rgba(31,94,58,0.7); }
+.btn-ghost { border-color: var(--line); color: var(--ink); font-weight: 600; font-size: 1rem; padding: 0.8rem 1.4rem; }
+.btn-old { background: #deeecb; color: #0d2b1e; font-family: Roboto, Arial, sans-serif; font-weight: 400; font-size: 1.6rem; border-radius: 12px; padding: 0.7rem 1.4rem; }
+.demo { display: grid; gap: 1rem; margin-top: 1rem; }
+@media (min-width: 640px) { .demo { grid-template-columns: 1fr 1fr; } }
+.demo .box { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; background: var(--surface); display: grid; gap: 0.75rem; justify-items: start; }
+.demo .box.dark { background: var(--dark); color: var(--dark-ink); }
+.demo .box.old { background: #0d2b1e; }
+.demo .cap { font-size: 0.8rem; color: var(--ink-2); font-family: var(--mono); }
+.demo .box.dark .cap, .demo .box.old .cap { color: rgba(247,246,241,0.7); }
+.demo small { font-size: 0.9rem; color: var(--ink-2); }
+.demo .box.dark small { color: rgba(247,246,241,0.72); }
+
+/* Logos */
+.logos { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); margin-top: 1rem; }
+.logos figure { margin: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.logos .tile { padding: 1.5rem; display: grid; place-items: center; }
+.logos img { width: 75%; }
+.logos figcaption { font-size: 0.85rem; padding: 0.6rem 0.8rem; background: var(--surface); border-top: 1px solid var(--line); }
+.logos figcaption code { white-space: normal; }
+
+/* Tunnel */
+.flow { display: grid; gap: 0.6rem; margin-top: 1.25rem; }
+.flow .st { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.25rem; display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; }
+.flow .st .n { font-family: var(--serif); font-size: 1.6rem; color: var(--accent); line-height: 1; }
+.flow .st strong { display: block; }
+.flow .st span { font-size: 0.95rem; color: var(--ink-2); }
+.flow .st.ext { background: var(--bg-2); border-style: dashed; }
+.flow .arrow { text-align: center; color: var(--ink-2); line-height: 1; }
+.pages { display: grid; gap: 1rem; margin-top: 1.5rem; }
+.page-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; }
+.page-card h3 { margin-top: 0; }
+.page-card .url { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-2); margin-bottom: 0.75rem; word-break: break-all; }
+.page-card img { border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 1rem; max-height: 14rem; object-fit: cover; object-position: top; width: 100%; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="layout">
+  <nav class="toc" aria-label="Sommaire">
+    <p class="label">Sommaire</p>
+    <ol>
+      <li><a href="#constat">1. Le constat</a></li>
+      <li><a href="#priorites">2. Par où commencer</a></li>
+      <li><a href="#couleurs">3. Couleurs</a></li>
+      <li><a href="#typo">4. Polices et tailles</a></li>
+      <li><a href="#boutons">5. Boutons</a></li>
+      <li><a href="#images">6. Logo et images</a></li>
+      <li><a href="#mise-en-page">7. Mise en page</a></li>
+      <li><a href="#tunnel">8. Le tunnel, page par page</a></li>
+      <li><a href="#reglages">9. Réglages à ne pas oublier</a></li>
+      <li><a href="#editeur">10. Ce que l'éditeur sait faire</a></li>
+    </ol>
+    <p style="margin-top: 1.25rem"><a href="https://claude.ai/artifact/WUkmi7G5E3vogvUtmLKPBQ">Voir la maquette de la page de vente</a></p>
+  </nav>
+
+  <article>
+    <header class="top">
+      <p class="eyebrow">RunCare · pages systeme.io</p>
+      <h1>Une seule identité, du site au tunnel.</h1>
+      <p class="lead">Les pages systeme.io (test, page de vente du bilan, formules) doivent ressembler au site argonnekinesportsante.fr. Tout ce qui suit se règle dans l'éditeur systeme.io, sans code. Les valeurs sont à recopier telles quelles.</p>
+      <p class="meta">Document préparé le 28 octobre 2026, à partir des trois pages en ligne et de la charte du site.</p>
+    </header>
+
+    <section id="constat">
+      <h2>1. Le constat</h2>
+      <div class="stack">
+        <p>Le site et le tunnel ne racontent pas la même marque. Le tunnel est entièrement vert sombre avec du texte vert pâle, en Roboto, avec des boutons de 36 à 45 px et cinq libellés différents pour le même lien. Le site est clair, calme, avec un seul vert pour les boutons et une typographie à deux polices.</p>
+        <p>Ce qui donne au tunnel actuel son côté « ça rentre dedans », c'est le fond sombre et la taille. Mais un fond sombre partout n'attire plus l'œil nulle part, et un bouton vert pâle sur vert sombre est le moins contrasté de la page. Un tunnel efficace guide : une promesse en haut, un bouton visible sans défiler, répété après chaque argument, bien contrasté, avec une phrase de réassurance à côté.</p>
+      </div>
+      <div class="compare">
+        <figure><img src="avant-vente.jpg" alt="Haut de la page de vente actuelle : fond vert sombre, texte vert pâle, deux boutons vert pâle" width="800" height="688"><figcaption><strong>Aujourd'hui</strong> : page de vente du bilan.</figcaption></figure>
+        <figure><img src="site-accueil.jpg" alt="Haut du site argonnekinesportsante.fr : fond clair, titre en serif, bouton vert" width="800" height="956"><figcaption><strong>Référence</strong> : accueil du site.</figcaption></figure>
+      </div>
+      <p style="margin-top: 1.25rem">La <a href="https://claude.ai/artifact/WUkmi7G5E3vogvUtmLKPBQ">maquette de la page de vente</a> montre le résultat visé avec vos textes actuels, sans en changer un mot.</p>
+    </section>
+
+    <section id="priorites">
+      <h2>2. Par où commencer</h2>
+      <p>Trois niveaux. Le premier fait 80 % de l'effet en une heure de réglages. Cochez au fur et à mesure, la page s'en souvient sur votre appareil.</p>
+
+      <div class="prio p1">
+        <header><span class="lvl">Niveau 1</span><span class="when">Indispensable · environ une heure</span></header>
+        <ul>
+          <li><input type="checkbox" id="c1a"><label for="c1a">Fond de page clair <code>#F7F6F1</code>, texte <code>#142238</code>, sur toutes les sections.<small>Plus de vert sombre pleine page. Le sombre est réservé à une ou deux bandes (voir mise en page).</small></label></li>
+          <li><input type="checkbox" id="c1b"><label for="c1b">Un seul style de bouton : fond <code>#1F5E3A</code>, texte blanc, coins 4 px.<small>Le même partout, test et formules compris.</small></label></li>
+          <li><input type="checkbox" id="c1c"><label for="c1c">Polices : titres en <strong>Fraunces</strong>, texte en <strong>Instrument Sans</strong>.<small>Si l'une manque dans la liste de l'éditeur : Lora pour les titres, Inter pour le texte.</small></label></li>
+          <li><input type="checkbox" id="c1d"><label for="c1d">Tailles : titre de page 52 px, titres de section 36 px, texte 20 px, boutons 19 px. Titres en Fraunces graisse 600.<small>Puis contrôle en vue mobile : titre 36 px, texte 18 px, bouton pleine largeur.</small></label></li>
+          <li><input type="checkbox" id="c1e"><label for="c1e">Un seul libellé par action : « Je réserve mon appel gratuit » et « Voir les formules de coaching ».<small>Aujourd'hui cinq libellés mènent au même lien TidyCal.</small></label></li>
+          <li><input type="checkbox" id="c1f"><label for="c1f">Une phrase de réassurance sous chaque bouton principal : « 15 minutes avec ton kiné-coach, sans engagement. »</label></li>
+          <li><input type="checkbox" id="c1g"><label for="c1g">Titre de chaque page dans ses réglages.<small>La page de vente n'en a pas, la page du test affiche « %TITRE% » dans l'onglet.</small></label></li>
+        </ul>
+      </div>
+
+      <div class="prio p2">
+        <header><span class="lvl">Niveau 2</span><span class="when">Recommandé · une demi-journée</span></header>
+        <ul>
+          <li><input type="checkbox" id="c2a"><label for="c2a">Logo sur fond transparent à la place de la capture d'écran sur fond vert.<small>Quatre fichiers PNG fournis, voir « Logo et images ».</small></label></li>
+          <li><input type="checkbox" id="c2b"><label for="c2b">Page des formules : les deux offres en deux colonnes dans l'éditeur, plus en image.<small>L'image actuelle est illisible sur téléphone et ne se modifie pas.</small></label></li>
+          <li><input type="checkbox" id="c2c"><label for="c2c">Photo d'équipe : la version du site, sans flèches ni prénoms dessinés, en JPEG de moins de 200 Ko.</label></li>
+          <li><input type="checkbox" id="c2d"><label for="c2d">Sections alternées <code>#F7F6F1</code> / <code>#EFEEE7</code>, et un encadré vert pâle <code>#E2ECE4</code> pour « Ce bilan est fait pour toi si ».</label></li>
+          <li><input type="checkbox" id="c2e"><label for="c2e">Un surtitre court en petites capitales vertes au-dessus de chaque titre de section (« Ton parcours », « Pour qui ? », « Tarif »).</label></li>
+          <li><input type="checkbox" id="c2f"><label for="c2f">Le tarif dans un encadré blanc à bordure verte, « 90 € » en très grand, « sans engagement, sans abonnement » dessous, bouton juste en dessous.</label></li>
+          <li><input type="checkbox" id="c2g"><label for="c2g">Même traitement sur la page du test : titre en Fraunces, bouton vert à coins 4 px, plus de Roboto Slab ni de bouton rectangulaire.</label></li>
+        </ul>
+      </div>
+
+      <div class="prio p3">
+        <header><span class="lvl">Niveau 3</span><span class="when">Si vous avez le temps</span></header>
+        <ul>
+          <li><input type="checkbox" id="c3a"><label for="c3a">Bande bleu marine <code>#142238</code> pour le haut de la page de vente et pour « Pourquoi notre approche est différente ».<small>Titre blanc, bouton vert : c'est ce qui donne du punch tout en restant dans la charte.</small></label></li>
+          <li><input type="checkbox" id="c3b"><label for="c3b">Deux ou trois retours de coureurs ayant fait le bilan, avec prénom et objectif.<small>C'est l'élément qui manque le plus pour convaincre. Un avis Google se reprend mot pour mot.</small></label></li>
+          <li><input type="checkbox" id="c3c"><label for="c3c">FAQ avec l'élément « FAQ » de l'éditeur (questions dépliables) plutôt qu'en texte continu.</label></li>
+          <li><input type="checkbox" id="c3d"><label for="c3d">Phrase déontologique en bas de la page de vente et des formules, comme sur le site.<small>« Les prestations de coaching sont réalisées par des kinésithérapeutes dans le cadre d'actes hors nomenclature et ne sont pas remboursées par l'Assurance Maladie. »</small></label></li>
+          <li><input type="checkbox" id="c3e"><label for="c3e">Favicon RunCare dans les réglages de page, et page « Merci » après le test aux mêmes couleurs.</label></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="couleurs">
+      <h2>3. Couleurs</h2>
+      <p>Sept valeurs, pas une de plus. À saisir dans les sélecteurs de couleur de l'éditeur (fond de section, couleur de texte, fond de bouton).</p>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#f7f6f1;color:#142238">#F7F6F1</div><div class="body"><strong>Fond de page</strong><span>Toutes les sections par défaut.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#efeee7;color:#142238">#EFEEE7</div><div class="body"><strong>Fond alterné</strong><span>Une section sur deux, pour rythmer.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#ffffff;color:#142238;border-bottom:1px solid #dcdad1">#FFFFFF</div><div class="body"><strong>Cartes</strong><span>Étapes, encadré tarif, formules.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#142238;color:#f7f6f1">#142238</div><div class="body"><strong>Encre</strong><span>Tout le texte. Aussi le fond des bandes sombres.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#4a5566;color:#fff">#4A5566</div><div class="body"><strong>Texte secondaire</strong><span>Sous-titres, réassurance, légendes.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#1f5e3a;color:#fff">#1F5E3A</div><div class="body"><strong>Vert RunCare</strong><span>Boutons, surtitres, puces. Le seul accent.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#e2ece4;color:#142238">#E2ECE4</div><div class="body"><strong>Vert pâle</strong><span>Fond d'encadré uniquement, jamais pour du texte.</span></div></div>
+      </div>
+      <h3>Règles</h3>
+      <ul class="plain">
+        <li>Texte sombre sur fond clair presque partout. Texte clair <code>#F7F6F1</code> seulement sur les bandes bleu marine.</li>
+        <li>Le vert sert à ce qu'on doit cliquer ou repérer. S'il est partout, il ne signale plus rien.</li>
+        <li>Sur une bande sombre, le bouton reste vert <code>#1F5E3A</code> avec texte blanc. Les surtitres y passent en vert clair <code>#9FC4A8</code>.</li>
+        <li>Bordures et filets : <code>#DCDAD1</code>, 1 px.</li>
+      </ul>
+      <div class="note warn" style="margin-top: 1rem"><strong>À abandonner :</strong> le vert sombre <code>#0D2B1E</code> en fond de page, le vert pâle <code>#DEEECB</code> en couleur de texte et de bouton, le vert <code>#073D2C</code> de la page du test. Trois verts différents pour une seule marque, et aucun n'est celui du site.</div>
+    </section>
+
+    <section id="typo">
+      <h2>4. Polices et tailles</h2>
+      <p>Deux polices, disponibles dans Google Fonts, donc dans la liste de l'éditeur. <strong>Fraunces</strong> pour les titres, un serif avec du caractère, c'est la signature du site. <strong>Instrument Sans</strong> pour tout le reste. Si l'éditeur ne les propose pas : Lora et Inter, qui s'en rapprochent.</p>
+      <h3>Fraunces lisible : trois réglages</h3>
+      <div class="stack">
+        <p>Sur le site, Fraunces est utilisée dans sa version la plus contrastée, celle des très grands titres d'affiche : pleins épais, déliés très fins. C'est élégant en grand, moins lisible en petit ou sur fond sombre. Pour le tunnel, on reste dans la même police mais on change de variante, ce qu'une charte autorise.</p>
+        <ul class="plain">
+          <li><strong>Graisse 600</strong> (semi-gras) au lieu de 500. Dans l'éditeur : choisir « 600 » ou « Semi Bold » dans la graisse du texte. Les déliés s'épaississent, le titre tient sur téléphone.</li>
+          <li><strong>Taille optique automatique</strong>. Fraunces s'adapte toute seule à la taille affichée : plus solide à 36 px, plus fine à 88 px. C'est le comportement par défaut dans systeme.io, rien à régler. Le spécimen ci-dessous montre la différence avec la version « affiche » du site.</li>
+          <li><strong>Pas d'italique fantaisie</strong>. Le site utilise un italique très dessiné sur un mot clé. Dans le tunnel, l'italique reste standard, ou on s'en passe.</li>
+        </ul>
+        <p>Si, après essai, les titres restent difficiles à lire pour vous, le repli acceptable est de garder Fraunces pour le titre de page et le prix seulement, et de passer les titres de section en Instrument Sans gras. Pas d'autre police.</p>
+      </div>
+      <div class="specimen">
+        <div><p class="cap">Titre de page · Fraunces 600, taille optique automatique · 52 px (mobile 36)</p><p class="t1">Tu cours régulièrement, tu veux <em>progresser ?</em></p></div>
+        <div><p class="cap">Pour comparaison : la version « affiche » du site, Fraunces 500, déliés fins</p><p class="t1 display">Tu cours régulièrement, tu veux <em>progresser ?</em></p></div>
+        <div><p class="cap">Titre de section · Fraunces 600 · 36 px (mobile 28)</p><p class="t2">Pourquoi ça n'a pas marché ?</p></div>
+        <div><p class="cap">Sous-titre · Instrument Sans 700 · 23 px (mobile 21)</p><p class="t3">1. Une analyse de ton profil</p></div>
+        <div><p class="cap">Texte courant · Instrument Sans 400 · 20 px (mobile 18) · interligne 1,6 · 60 caractères par ligne au plus</p><p class="body">Nous croisons l'ensemble de ces informations afin d'identifier les facteurs qui limitent réellement ta progression.</p></div>
+        <div><p class="cap">Surtitre · Instrument Sans 700 · 13 px · capitales · espacement 0,14 em · vert</p><p class="sur">Qu'est-ce que ce bilan ?</p></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Rôle</th><th>Police</th><th>Graisse</th><th>Ordinateur</th><th>Mobile</th></tr></thead>
+          <tbody>
+            <tr><td>Titre de page (un seul par page)</td><td>Fraunces</td><td>600</td><td class="num">52 px</td><td class="num">36 px</td></tr>
+            <tr><td>Titre de section</td><td>Fraunces</td><td>600</td><td class="num">36 px</td><td class="num">28 px</td></tr>
+            <tr><td>Sous-titre, nom d'étape, question de FAQ</td><td>Instrument Sans</td><td>700</td><td class="num">23 px</td><td class="num">21 px</td></tr>
+            <tr><td>Texte courant</td><td>Instrument Sans</td><td>400</td><td class="num">20 px</td><td class="num">18 px</td></tr>
+            <tr><td>Réassurance sous un bouton</td><td>Instrument Sans</td><td>400</td><td class="num">17 px</td><td class="num">16 px</td></tr>
+            <tr><td>Bouton</td><td>Instrument Sans</td><td>700</td><td class="num">19 px</td><td class="num">19 px</td></tr>
+            <tr><td>Surtitre, légende</td><td>Instrument Sans</td><td>700</td><td class="num">14 px</td><td class="num">14 px</td></tr>
+            <tr><td>Prix mis en avant</td><td>Fraunces</td><td>600</td><td class="num">96 px</td><td class="num">72 px</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Sur l'envie de tout faire très gros</h3>
+      <div class="stack">
+        <p>Dans un tunnel, ce qui doit être gros, c'est la promesse et le bouton. Si tout est gros, plus rien ne l'est. Aujourd'hui les titres de section font 44 à 50 px, les boutons 36 à 45 px, et le texte courant est en Roboto 400 : l'œil ne sait pas où aller, et sur téléphone un bouton de 42 px passe sur trois lignes.</p>
+        <p>La grille ci-dessus est volontairement généreuse : 20 px de texte courant, c'est déjà plus que la plupart des sites, et le titre de page à 52 px reste très présent. Au-delà, on perd en confort ce qu'on croit gagner en lisibilité : les lignes se raccourcissent, les mots se coupent sur téléphone. Ce qui rend vraiment lisible, c'est le trio taille, interligne (1,6) et longueur de ligne (60 caractères au plus), plus le contraste entre les niveaux.</p>
+        <p>Le gras dans le texte : un ou deux mots par phrase au maximum. Les paragraphes actuels en comptent jusqu'à cinq, ce qui annule l'effet.</p>
+      </div>
+    </section>
+
+    <section id="boutons">
+      <h2>5. Boutons</h2>
+      <p>Un bouton principal, un bouton secondaire, et c'est tout. Le principal mène toujours à l'appel gratuit. Le secondaire mène aux formules. Un seul bouton principal visible à la fois à l'écran.</p>
+      <div class="demo">
+        <div class="box"><p class="cap">Principal · fond #1F5E3A · texte #FFFFFF · 19 px gras · coins 4 px · marges 18 × 34 px</p><a class="btn btn-primary" href="#boutons">Je réserve mon appel gratuit</a><small>15 minutes avec ton kiné-coach, sans engagement.</small></div>
+        <div class="box"><p class="cap">Secondaire · fond transparent · bordure #DCDAD1 2 px · texte #142238 · 17 px</p><a class="btn btn-ghost" href="#boutons">Voir les formules de coaching</a></div>
+        <div class="box dark"><p class="cap">Sur bande sombre : le principal ne change pas</p><a class="btn btn-primary" href="#boutons">Je réserve mon appel gratuit</a><small>15 minutes avec ton kiné-coach, sans engagement.</small></div>
+        <div class="box old"><p class="cap">Aujourd'hui : vert pâle sur vert sombre, Roboto 42 px, coins 3 à 13 px selon le bouton</p><a class="btn btn-old" href="#boutons">Clique ici pour réserver ton appel gratuit</a></div>
+      </div>
+      <h3>Règles</h3>
+      <ul class="plain">
+        <li>Libellés fixes : « Je réserve mon appel gratuit », « Voir les formules de coaching », « Je découvre mon profil » (page du test), « Je réserve mon bilan » (page des formules).</li>
+        <li>Largeur automatique sur ordinateur, pleine largeur sur mobile. Jamais de bouton plus large que le texte qu'il accompagne sur ordinateur.</li>
+        <li>Le bouton principal apparaît en haut (visible sans défiler), après les étapes du bilan, sous le tarif, dans la bande sombre et en fin de page. Cinq fois, même libellé, même lien.</li>
+        <li>Pas d'ombre portée forte, pas de dégradé, pas d'icône. Un léger ombrage vert sous le principal suffit.</li>
+      </ul>
+    </section>
+
+    <section id="images">
+      <h2>6. Logo et images</h2>
+      <h3>Logo</h3>
+      <p>Le logo actuel est une capture d'écran sur fond vert sombre, avec les artefacts de compression qui vont avec. Voici quatre versions sur fond transparent, prêtes à charger dans l'éditeur. Taille d'affichage : 240 px de large sur ordinateur, 180 px sur mobile, centré en haut de page.</p>
+      <div class="logos">
+        <figure><div class="tile" style="background:#f7f6f1"><img src="logo-runcare-fond-clair.png" alt="Logo RunCare bleu marine et vert" width="1253" height="348"></div><figcaption><code>logo-runcare-fond-clair.png</code> · sur fond clair, à utiliser presque partout</figcaption></figure>
+        <figure><div class="tile" style="background:#142238"><img src="logo-runcare-fond-sombre.png" alt="Logo RunCare crème et vert clair" width="1253" height="348"></div><figcaption><code>logo-runcare-fond-sombre.png</code> · sur bande bleu marine</figcaption></figure>
+        <figure><div class="tile" style="background:#ffffff"><img src="logo-runcare-marine.png" alt="Logo RunCare entièrement bleu marine" width="1253" height="348"></div><figcaption><code>logo-runcare-marine.png</code> · une seule couleur, pour les documents</figcaption></figure>
+        <figure><div class="tile" style="background:#1f5e3a"><img src="logo-runcare-blanc.png" alt="Logo RunCare entièrement blanc" width="1253" height="348"></div><figcaption><code>logo-runcare-blanc.png</code> · sur fond vert ou sur photo</figcaption></figure>
+      </div>
+      <h3>Photos</h3>
+      <ul class="plain">
+        <li>Format JPEG, 1 600 px de large au maximum, moins de 200 Ko. La photo d'équipe actuelle est un PNG de 743 Ko.</li>
+        <li>Cadrage 4:3 ou 3:2, coins 4 px, et une légère désaturation (comme sur le site) pour que les photos restent calmes à côté du vert.</li>
+        <li>Pas de texte dessiné sur les photos (prénoms, flèches). Le nom de chacun va dans la légende ou dans le texte.</li>
+        <li>Une photo par grande section au maximum. Le haut de page en a une (l'équipe), les étapes du bilan peuvent en avoir une (au cabinet, pendant un test). Le reste s'en passe.</li>
+        <li>Les photos du site sont réutilisables telles quelles : équipe, tests au cabinet, coaching.</li>
+      </ul>
+      <div class="note warn" style="margin-top: 1rem"><strong>Jamais de texte en image.</strong> La page des formules est aujourd'hui une capture d'écran du site : illisible sur téléphone, invisible pour Google, impossible à corriger sans refaire l'image. Les deux offres se reconstruisent en deux colonnes dans l'éditeur en vingt minutes.</div>
+    </section>
+
+    <section id="mise-en-page">
+      <h2>7. Mise en page</h2>
+      <ul class="plain">
+        <li><strong>Largeur</strong> : contenu centré sur 960 px au maximum. Le texte courant ne dépasse pas 60 à 65 caractères par ligne.</li>
+        <li><strong>Espacement</strong> : 64 à 96 px au-dessus et en dessous de chaque section sur ordinateur, 48 px sur mobile. Mieux vaut moins de sections, plus aérées.</li>
+        <li><strong>Rythme</strong> : fond <code>#F7F6F1</code>, puis <code>#EFEEE7</code>, en alternance. Une bande bleu marine pour le haut de page, une seconde pour « Notre approche ». Pas plus.</li>
+        <li><strong>Cartes</strong> : fond blanc, bordure 1 px <code>#DCDAD1</code>, coins 4 px, marge intérieure 24 px. Pour les étapes du bilan et les deux formules. Pas de carte autour de tout.</li>
+        <li><strong>Encadré</strong> : fond vert pâle <code>#E2ECE4</code>, sans bordure, pour un seul bloc par page (« fait pour toi si »).</li>
+        <li><strong>Listes</strong> : puces rondes vertes, un point par ligne, pas de puces tapées à la main (« • »).</li>
+        <li><strong>Alignement</strong> : texte à gauche dans les sections à deux colonnes, centré uniquement pour les titres de section courts, le tarif et l'appel final.</li>
+        <li><strong>Mobile</strong> : tout passe en une colonne, les photos sous le texte, les boutons en pleine largeur. À vérifier dans l'aperçu mobile de l'éditeur avant de publier.</li>
+      </ul>
+    </section>
+
+    <section id="tunnel">
+      <h2>8. Le tunnel, page par page</h2>
+      <p>Le parcours reste le vôtre. La règle commune : une promesse par page, un bouton principal par page, le même libellé du début à la fin.</p>
+      <div class="flow">
+        <div class="st"><span class="n">1</span><div><strong>Test « Quel coureur es-tu ? »</strong><span>Promesse, formulaire, un bouton : « Je découvre mon profil ».</span></div></div>
+        <div class="arrow">↓</div>
+        <div class="st"><span class="n">2</span><div><strong>Page de vente du bilan</strong><span>Promesse, le constat, les trois étapes, pour qui, le tarif, l'approche, la FAQ, l'appel final. Bouton : « Je réserve mon appel gratuit ».</span></div></div>
+        <div class="arrow">↓</div>
+        <div class="st"><span class="n">3</span><div><strong>Formules de coaching</strong><span>Deux colonnes, puis un seul bouton : « Je réserve mon bilan ».</span></div></div>
+        <div class="arrow">↓</div>
+        <div class="st ext"><span class="n">4</span><div><strong>Réservation TidyCal</strong><span>Hors systeme.io. Pensez à y reprendre le logo et le vert RunCare dans les réglages TidyCal.</span></div></div>
+      </div>
+
+      <div class="pages">
+        <div class="page-card">
+          <h3>Page de vente du bilan</h3>
+          <p class="url">runcare.systeme.io/748f0635</p>
+          <ul class="plain">
+            <li>Garder tous les textes. Ils sont bons, c'est la forme qui ne suit pas.</li>
+            <li>Haut de page sur bande bleu marine, tout centré : surtitre, titre 52 px, une phrase, puis <strong>votre vidéo YouTube</strong> en grand (élément Vidéo de l'éditeur, 16:9, 760 px de large au maximum), puis le bouton et la réassurance. La vidéo reste, c'est le meilleur argument de la page ; elle passe simplement sous le titre et au-dessus du bouton, pour que le clic vienne juste après l'avoir vue.</li>
+            <li>Sous le bouton du haut, trois repères courts : « Kinés du sport et coachs », « Bilan 90 €, sans abonnement », « Priorités claires en une consultation ».</li>
+            <li>La photo d'équipe descend en fin de page, au-dessus de la signature.</li>
+            <li>« Déjà essayé » et « Pourquoi ça n'a pas marché » côte à côte, puis la phrase « C'est précisément là… » seule, en grand.</li>
+            <li>Les trois étapes en trois cartes numérotées. Le bouton principal juste après.</li>
+            <li>Tarif dans un encadré, 90 € énorme, bouton dessous.</li>
+            <li>Le PDF récapitulatif : vos deux images, côte à côte, sous un titre court.</li>
+            <li>Un bloc de retours de coureurs dès que vous en avez deux ou trois.</li>
+            <li>« Notre approche » sur bande bleu marine, avec le bouton.</li>
+            <li>FAQ dépliable, appel final, signature, phrase déontologique.</li>
+          </ul>
+          <p style="margin-top: 1rem"><a href="https://claude.ai/artifact/WUkmi7G5E3vogvUtmLKPBQ">Voir la maquette complète</a></p>
+        </div>
+        <div class="page-card">
+          <h3>Page du test</h3>
+          <p class="url">runcare.systeme.io/79081d31</p>
+          <img src="avant-test.jpg" alt="Page du test aujourd'hui : titre en Roboto Slab vert, formulaire, bouton rectangulaire vert sombre" width="800" height="696">
+          <ul class="plain">
+            <li>Logo transparent, titre en Fraunces 600, 52 px, en <code>#142238</code>, plus de vert dans le titre.</li>
+            <li>Les deux lignes de présentation en 20 px, gras sur deux mots au plus.</li>
+            <li>Champs avec bordure <code>#DCDAD1</code>, coins 4 px, libellés en minuscules : « Ton prénom et ton nom », « Ton adresse e-mail ».</li>
+            <li>Bouton principal standard, libellé « Je découvre mon profil », pleine largeur sous les champs.</li>
+            <li>Sous le bouton : « Résultat immédiat. Tu recevras aussi nos conseils par e-mail, désinscription en un clic. »</li>
+            <li>Photo d'équipe du site, sans prénoms dessinés, puis la signature.</li>
+          </ul>
+        </div>
+        <div class="page-card">
+          <h3>Page des formules</h3>
+          <p class="url">runcare.systeme.io/748f0635-89d03b4a-d15dc65e</p>
+          <img src="avant-formules.jpg" alt="Page des formules aujourd'hui : fond vert sombre, image du comparatif, bouton « Je réserve ! »" width="800" height="842">
+          <ul class="plain">
+            <li>Fond clair, logo transparent, surtitre « Formules de coaching », titre « Deux formules, un même niveau d'exigence. »</li>
+            <li>La phrase « Pour tout coaching, l'accompagnement commence par le Bilan Coaching RunCare » en texte secondaire sous le titre, sans astérisque.</li>
+            <li>Deux colonnes natives : carte blanche « Gestion de charge », carte bleu marine « Accompagnement complet » (mise en avant). Nom, sous-titre, description, badge « Bilan Coaching (90 €) offert », liste à puces, prix en Fraunces 600 à 48 px, engagement.</li>
+            <li>Un seul bouton sous les deux cartes : « Je réserve mon bilan », vers TidyCal.</li>
+            <li>Phrase déontologique en bas.</li>
+          </ul>
+          <p style="margin-top: 1rem">Dans la <a href="https://claude.ai/artifact/WUkmi7G5E3vogvUtmLKPBQ">maquette</a>, le bouton « Voir les formules de coaching » ouvre cette page refaite.</p>
+          <h3>Garder une page séparée ?</h3>
+          <p>Oui, à condition qu'elle fasse plus qu'afficher une image et un bouton. Une page par offre, c'est la logique d'un tunnel : la page du bilan vend l'appel gratuit, la page des formules répond à « et après ? ». Mais elle doit porter son propre contexte (un titre, la phrase sur le bilan offert, « Comment choisir ? ») et un seul bouton principal. Si vous préférez une page de moins à entretenir, les deux colonnes se glissent telles quelles dans la page du bilan, juste avant le tarif, et le bouton « Voir les formules » devient un simple saut vers cette section.</p>
+      </div>
+    </section>
+
+    <section id="reglages">
+      <h2>9. Réglages à ne pas oublier</h2>
+      <ul class="plain">
+        <li><strong>Titre de page</strong> (réglages de la page) : « Bilan Coaching RunCare · Kinés et coachs running à Bordeaux », « Quel coureur es-tu ? · Test gratuit RunCare », « Formules de coaching RunCare ». C'est ce qui s'affiche dans l'onglet et dans un lien partagé.</li>
+        <li><strong>Description</strong> de chaque page, une phrase, pour les partages sur WhatsApp et Instagram.</li>
+        <li><strong>Favicon</strong> : le coureur du logo, en PNG carré.</li>
+        <li><strong>Vue mobile</strong> de l'éditeur : à passer sur chaque page après chaque modification. La plupart des visites viendront d'un téléphone.</li>
+        <li><strong>Badge « Réalisé avec systeme.io »</strong> : il reste tant que le compte est sur l'offre gratuite. Le placer en bas de page plutôt qu'au milieu si l'éditeur le permet.</li>
+        <li><strong>Avant de publier</strong> : ouvrir la page sur un téléphone, vérifier que le bouton principal se voit sans défiler et que chaque bouton mène au bon lien.</li>
+      </ul>
+    </section>
+
+    <section id="editeur">
+      <h2>10. Ce que l'éditeur sait faire</h2>
+      <p>La maquette est une cible, pas une copie à l'identique. Voici ce qui se reproduit tel quel dans l'éditeur systeme.io, ce qui s'en approche, et ce qui n'est pas garanti. Ce classement vient de la documentation de l'éditeur, pas d'un essai sur votre page : la première chose à faire est d'ouvrir une section dans l'éditeur et de vérifier que les réglages cités existent bien.</p>
+      <h3>Tel quel</h3>
+      <ul class="plain">
+        <li>Couleurs de fond par section, couleur et taille du texte par élément, tailles différentes sur mobile.</li>
+        <li>Polices : la liste de l'éditeur est celle de Google Fonts. Fraunces et Instrument Sans y sont ; si elles manquent, Lora et Inter.</li>
+        <li>Boutons : couleur de fond, couleur du texte, arrondi, taille, pleine largeur sur mobile, ombre légère.</li>
+        <li>Vidéo YouTube, images, listes, lignes à deux colonnes (étapes, formules, « déjà essayé » / « pourquoi »).</li>
+        <li>FAQ dépliable (élément FAQ), formulaire du test, titre et description de page, favicon.</li>
+      </ul>
+      <h3>Approché</h3>
+      <ul class="plain">
+        <li>Les cartes des étapes et des formules : une ligne à deux colonnes avec fond blanc et arrondi 4 px. La bordure fine de 1 px dépend des options de la ligne ; sans bordure, le fond blanc sur fond beige suffit.</li>
+        <li>Le grand chiffre vert devant chaque étape : un élément texte en Fraunces 36 px dans la colonne de gauche.</li>
+        <li>L'encadré tarif à bordure verte : une ligne à fond blanc, arrondi 4 px, bordure verte si l'option existe, sinon sans bordure.</li>
+        <li>Le titre en italique partiel (« freinent ta progression ? ») : l'italique standard de Fraunces, sans le dessin spécial du site.</li>
+      </ul>
+      <h3>Pas garanti</h3>
+      <ul class="plain">
+        <li>La barre avec le bouton qui reste collée en bas de l'écran sur mobile. L'éditeur n'a pas d'élément « fixe » à notre connaissance ; on s'en passe, le bouton est déjà répété cinq fois.</li>
+        <li>L'effet de survol des boutons et l'ombre colorée : détails sans importance.</li>
+        <li>La désaturation légère des photos : à faire sur la photo elle-même avant de la charger, pas dans l'éditeur.</li>
+      </ul>
+      <div class="note" style="margin-top: 1rem">Avant de tout refaire, testez le niveau 1 sur une seule section de la page de vente (fond, police, bouton). Si les réglages sont là, le reste suit. Si un réglage manque, dites-le-nous et on adapte la cible plutôt que de forcer.</div>
+    </section>
+  </article>
+</div>
+
+<script>
+(function () {
+  var KEY = 'runcare-charte-coches';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+  var boxes = document.querySelectorAll('.prio input[type=checkbox]');
+  Array.prototype.forEach.call(boxes, function (b) {
+    var label = b.nextElementSibling;
+    if (state[b.id]) { b.checked = true; label.classList.add('done'); }
+    b.addEventListener('change', function () {
+      label.classList.toggle('done', b.checked);
+      state[b.id] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    });
+  });
+})();
+</script>

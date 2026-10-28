@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Formules de coaching RunCare</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Maquette de la page des formules (étape 3 du tunnel). Mêmes tokens que la page de vente. */
+:root {
+  --bg: #f7f6f1; --bg-2: #efeee7; --surface: #ffffff;
+  --ink: #142238; --ink-2: #4a5566; --line: #dcdad1;
+  --accent: #1f5e3a; --accent-hover: #27754a; --accent-ink: #ffffff; --accent-soft: #e2ece4;
+  --dark: #142238; --dark-ink: #f7f6f1;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --radius: 4px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1.25rem; line-height: 1.6; -webkit-font-smoothing: antialiased; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 4rem; }
+@media (max-width: 699px) { body { font-size: 1.125rem; } }
+h1, h2, h3, .serif { font-family: var(--serif); font-optical-sizing: auto; font-variation-settings: 'SOFT' 30, 'WONK' 0; letter-spacing: -0.01em; line-height: 1.1; font-weight: 600; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+img { max-width: 100%; height: auto; display: block; }
+.container { width: min(100% - 2rem, 60rem); margin-inline: auto; }
+.narrow { max-width: 38rem; margin-inline: auto; }
+.center { text-align: center; }
+.muted { color: var(--ink-2); }
+.eyebrow { font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0; }
+.notice { background: var(--ink-2); color: #fff; font-size: 0.85rem; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))) calc(-1 * max(16px, env(safe-area-inset-right, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+.notice .container { display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: center; justify-content: space-between; padding-block: 0.55rem; }
+.notice a { color: #fff; }
+.logo-bar { display: flex; justify-content: center; padding-block: 1.5rem 0.5rem; }
+.logo-bar img { height: 48px; width: auto; }
+h1 { font-size: clamp(2.3rem, 5.6vw, 3.6rem); margin-top: 0.75rem; }
+.lead { margin-top: 1.25rem; max-width: 46ch; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 1.15rem 2.1rem; border-radius: var(--radius); font-weight: 700; font-size: 1.2rem; line-height: 1.2; text-decoration: none; border: 2px solid transparent; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 18px -8px rgba(31,94,58,0.7); }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-ghost { border-color: var(--line); color: var(--ink); font-weight: 600; font-size: 1.05rem; padding: 0.8rem 1.4rem; }
+.cta { display: grid; gap: 0.6rem; justify-items: center; margin-top: 2.5rem; }
+.cta .btn { width: 100%; max-width: 30rem; }
+.cta small { font-size: 1rem; color: var(--ink-2); }
+
+/* Les deux formules : une ligne à deux colonnes dans l'éditeur. */
+.plans { display: grid; gap: 1.25rem; margin-top: 2.5rem; align-items: stretch; }
+@media (min-width: 760px) { .plans { grid-template-columns: 1fr 1fr; } }
+.plan { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.5rem, 3vw, 2.25rem); display: grid; gap: 1.25rem; align-content: start; }
+.plan.featured { background: var(--dark); color: var(--dark-ink); border-color: var(--dark); }
+.plan .sub { font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+.plan.featured .sub { color: #9fc4a8; }
+.plan h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); margin-top: 0.4rem; }
+.plan .desc { color: var(--ink-2); font-size: 1.05rem; }
+.plan.featured .desc { color: color-mix(in srgb, var(--dark-ink) 75%, transparent); }
+.badge { display: inline-block; background: var(--accent-soft); color: var(--accent); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.5rem 0.8rem; border-radius: var(--radius); justify-self: start; }
+.plan.featured .badge { background: color-mix(in srgb, #9fc4a8 25%, transparent); color: #cfe3d4; }
+.plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; font-size: 1.05rem; }
+.plan li { position: relative; padding-left: 1.7rem; }
+.plan li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+.plan.featured li::before { color: #9fc4a8; }
+.plan .price { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line); }
+.plan.featured .price { border-color: color-mix(in srgb, var(--dark-ink) 20%, transparent); }
+.plan .price .amount { font-family: var(--serif); font-optical-sizing: auto; font-weight: 600; font-size: clamp(2.4rem, 4.5vw, 3rem); line-height: 1; letter-spacing: -0.02em; }
+.plan .price .amount small { font-family: var(--sans); font-weight: 400; font-size: 1.05rem; letter-spacing: 0; color: var(--ink-2); }
+.plan.featured .price .amount small { color: color-mix(in srgb, var(--dark-ink) 75%, transparent); }
+.plan .price .eng { font-size: 1rem; color: var(--ink-2); margin-top: 0.3rem; }
+.plan.featured .price .eng { color: color-mix(in srgb, var(--dark-ink) 75%, transparent); }
+.ideal { font-size: 1rem; color: var(--ink-2); border-left: 2px solid var(--accent); padding-left: 0.9rem; }
+.plan.featured .ideal { color: color-mix(in srgb, var(--dark-ink) 80%, transparent); border-color: #9fc4a8; }
+.choose { background: var(--accent-soft); border-radius: var(--radius); padding: clamp(1.5rem, 3vw, 2.25rem); margin-top: 2.5rem; }
+.choose h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0.4rem 0 0.9rem; }
+.choose p + p { margin-top: 0.8rem; }
+.deonto { font-size: 0.95rem; color: var(--ink-2); max-width: 64ch; margin: 3rem auto 0; text-align: center; }
+.back { text-align: center; margin-top: 1.5rem; font-size: 1rem; }
+.back a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="notice">
+  <div class="container">
+    <span><strong>Maquette</strong> de la page des formules. Les deux offres en texte modifiable, plus en image.</span>
+    <a href="https://runcare.systeme.io/748f0635-89d03b4a-d15dc65e" rel="noopener">Voir la page actuelle</a>
+  </div>
+</div>
+
+<main class="container">
+  <div class="logo-bar"><img src="logo-runcare-fond-clair.png" alt="RunCare, kiné et coach" width="1253" height="348"></div>
+
+  <div class="center narrow" style="margin-top: 1.5rem">
+    <p class="eyebrow">Formules de coaching RunCare</p>
+    <h1>Deux formules, un même niveau d'exigence.</h1>
+    <p class="lead muted" style="margin-inline: auto">Pour tout coaching, l'accompagnement commence par le Bilan Coaching RunCare. Il est offert dans les deux formules.</p>
+  </div>
+
+  <div class="plans">
+    <section class="plan">
+      <div>
+        <p class="sub">Essentiel</p>
+        <h2>Gestion de charge</h2>
+      </div>
+      <p class="desc">Tu bénéficies d'un plan d'entraînement personnalisé et d'un débrief avec ajustement tous les 15 jours.</p>
+      <span class="badge">Bilan Coaching (90 €) offert</span>
+      <ul>
+        <li>Planification individualisée de l'entraînement</li>
+        <li>Conseils personnalisés en fonction de ta progression</li>
+        <li>Suivi digital sur Nolio</li>
+        <li>Fiches éducatives</li>
+        <li>Suivi et débrief tous les 15 jours</li>
+      </ul>
+      <p class="ideal">Idéal si tu as besoin d'un plan individualisé, construit à partir des objectifs identifiés lors du bilan, pour mieux gérer ta charge d'entraînement, avec des conseils d'experts pour ajuster ton programme au fil de ta préparation.</p>
+      <div class="price">
+        <p class="amount">60 € <small>par mois</small></p>
+        <p class="eng">Engagement 6 mois · à distance</p>
+      </div>
+    </section>
+
+    <section class="plan featured">
+      <div>
+        <p class="sub">Premium</p>
+        <h2>Accompagnement complet</h2>
+      </div>
+      <p class="desc">La même qualité de planification, avec un accompagnement beaucoup plus rapproché : suivi hebdomadaire, briefing chaque semaine, renforcement musculaire et échanges WhatsApp avec ton coach.</p>
+      <span class="badge">Bilan Coaching (90 €) offert</span>
+      <ul>
+        <li>Planification individualisée de l'entraînement</li>
+        <li>Conseils personnalisés en fonction de ta progression</li>
+        <li>Suivi digital sur Nolio</li>
+        <li>Fiches éducatives</li>
+        <li>Suivi hebdomadaire et briefing chaque semaine</li>
+        <li>Échanges WhatsApp avec ton coach, réponse sous 48 h</li>
+        <li>Programme de préparation physique avec renforcement musculaire</li>
+      </ul>
+      <p class="ideal">Idéal si tu cherches un accompagnement complet, répondant à l'ensemble des objectifs identifiés lors de ton bilan, avec un accès direct à ton kiné-coach quand ta situation demande un conseil ou une adaptation.</p>
+      <div class="price">
+        <p class="amount">120 € <small>par mois</small></p>
+        <p class="eng">Engagement 3 mois · à distance</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="choose">
+    <p class="eyebrow">Comment choisir ?</p>
+    <h2>La différence n'est pas dans le plan, mais dans le suivi.</h2>
+    <p>Dans les deux formules, la planification de ton entraînement est réalisée avec le même niveau d'exigence et de personnalisation. La différence se situe dans le niveau de suivi et la disponibilité du coach.</p>
+    <p>Tu hésites encore ? Le bilan, inclus dans chaque formule, permet justement d'identifier ce dont tu as besoin.</p>
+  </div>
+
+  <div class="cta">
+    <a class="btn btn-primary" href="https://tidycal.com/team/runcare/bilan-diagnostic-runcare" rel="noopener">Je réserve mon bilan</a>
+    <small>90 €, offert si tu poursuis avec une formule. Sans engagement.</small>
+    <a class="btn btn-ghost" href="https://tidycal.com/team/runcare/appel-gratuit" rel="noopener">Je préfère un appel gratuit d'abord</a>
+  </div>
+  <p class="back"><a href="index.html">← Retour à la page du bilan</a></p>
+
+  <p class="deonto">RunCare : actes de prévention et d'accompagnement du coureur. Les prestations de coaching sont réalisées par des kinésithérapeutes dans le cadre d'actes hors nomenclature et ne sont pas remboursées par l'Assurance Maladie.</p>
+</main>
+</body>
+</html>

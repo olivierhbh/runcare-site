@@ -1,0 +1,20 @@
+Salut Romain, salut Lélio,
+
+Puisqu'on a accès à votre systeme.io, on a regardé vos trois pages (le test, la page de vente du bilan, les formules) pour les mettre aux couleurs du site. Rien n'a été touché dans votre compte, tout est en proposition.
+
+*1. La charte et les recommandations*
+Les couleurs, polices, tailles et boutons à régler dans l'éditeur systeme.io, classés en trois niveaux. Le niveau 1 se fait en une heure et fait 80 % du résultat.
+https://claude.ai/artifact/LgJX8USZ945oKjYpEKHM8c
+
+*2. La maquette de la page de vente*
+Vos textes actuels, sans en changer un mot, et votre vidéo en haut de page, dans la mise en page visée. Le bouton « Voir les formules de coaching » ouvre aussi la page des formules refaite.
+https://claude.ai/artifact/WUkmi7G5E3vogvUtmLKPBQ
+
+*3. Le logo*
+Quatre versions du logo RunCare sur fond transparent, à charger à la place de la capture d'écran actuelle. Je vous les envoie à la suite.
+
+*Deux questions*
+- Si la version vous plaît, on peut faire les modifications nous-mêmes dans votre systeme.io, puis vous reprenez la main pour la suite. Ou vous suivez la charte à votre rythme. Dites-nous ce que vous préférez.
+- La page des formules est aujourd'hui une image : illisible sur téléphone et impossible à modifier sans la refaire. Comment la mettez-vous à jour ? On propose de la reconstruire en texte dans l'éditeur (c'est ce que montre la maquette), ou de l'intégrer à la page du bilan pour avoir une page de moins à entretenir.
+
+Regardez d'abord sur votre téléphone, c'est là que vos coureurs arriveront.
