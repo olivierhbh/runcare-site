@@ -1,0 +1,25 @@
+Salut Romain,
+
+Petit point sur le test « Profil du coureur » (le lead magnet) : on l'a mis aux couleurs du site, comme les pages du tunnel. Pour l'instant rien n'a changé pour vos coureurs, on a tout fait sur des copies.
+
+*CE QU'ON A FAIT*
+- Une copie de l'outil Lovable de Lélio, rangée dans son espace Lovable : « Lead Magnet (charte RunCare) ». L'outil actuel n'a pas bougé.
+- Mêmes questions, mêmes réponses, même calcul des scores. Seul l'habillage change : polices, couleurs, logo, boutons.
+- La copie est branchée sur la copie du tunnel systeme.io. La page s'ajuste maintenant à la hauteur de chaque question (fini le grand vide blanc), et le bouton final ouvre la page de vente en entier (avant, elle s'ouvrait à l'intérieur du test).
+
+*POUR COMPARER*
+Avant : https://dessinetonprofil.lovable.app
+Après : https://profil-coureur-runcare.lovable.app
+Dans le tunnel : https://runcare.systeme.io/8f413eb4-bf97a13e
+
+*COMMENT ÇA MARCHE*
+- L'outil reste dans Lovable et vous gardez la main : Lélio peut le modifier par le chat, comme avant, mais dans la copie : https://lovable.dev/projects/ac83ad55-e983-45fd-833f-51dadcda12a1
+- Les deux versions sont indépendantes. Pour changer une question ou le calcul, c'est dans la copie qu'il faut le faire. L'ancienne ne servira plus après la bascule, donc évitez d'y toucher d'ici là.
+- Dans systeme.io, la page « Lead magnet » affiche l'outil dans un cadre, avec un petit script juste en dessous qui règle la hauteur. Si vous modifiez ce bloc, gardez le script.
+- Le projet est à mon nom dans l'espace de Lélio : je peux le lui transférer quand vous voulez.
+
+*À DÉCIDER*
+- L'outil parle du « Bilan Diagnostic RunCare », la page de vente du « Bilan Coaching RunCare ». On garde lequel ?
+- Si ça vous va, on bascule tout d'un coup : le nouveau tunnel remplace l'ancien, avec le nouveau test.
+
+Regardez d'abord sur votre téléphone, c'est là que vos coureurs le feront.

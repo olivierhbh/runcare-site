@@ -1,0 +1,16 @@
+<iframe id="rc-profil" src="https://profil-coureur-runcare.lovable.app/" title="Profil du coureur RunCare" width="100%" height="2200" style="border: none; width: 100%; display: block;"></iframe>
+<script>
+/* Outil Profil Coureur (Lovable) : il envoie la hauteur de son contenu, le cadre s'ajuste ;
+   à chaque nouvel écran, on remonte en haut du cadre s'il est sorti de l'écran. */
+(function () {
+  var f = document.getElementById('rc-profil');
+  window.addEventListener('message', function (e) {
+    if (!f || e.source !== f.contentWindow || !e.data) return;
+    if (e.data.type === 'runcare-profil:height') f.style.height = Math.ceil(e.data.height) + 'px';
+    if (e.data.type === 'runcare-profil:step') {
+      var top = f.getBoundingClientRect().top;
+      if (top < 0) window.scrollBy({ top: top, behavior: 'smooth' });
+    }
+  });
+})();
+</script>

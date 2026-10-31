@@ -1,0 +1,127 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-hover: var(--brand-hover);
+  --color-dark: var(--dark);
+  --color-dark-foreground: var(--dark-foreground);
+  --color-charge: var(--charge);
+  --color-recup: var(--recup);
+  --color-biomec: var(--biomec);
+  --color-sapin: var(--sapin);
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Charte RunCare (la même que les pages du tunnel systeme.io) : fond crème, texte bleu marine, vert d'accent. */
+:root {
+  --radius: 4px;
+  --background: #f7f6f1;
+  --foreground: #142238;
+  --card: #ffffff;
+  --card-foreground: #142238;
+  --popover: #ffffff;
+  --popover-foreground: #142238;
+  --primary: #1f5e3a;
+  --primary-foreground: #ffffff;
+  --secondary: #efeee7;
+  --secondary-foreground: #142238;
+  --muted: #efeee7;
+  --muted-foreground: #4a5566;
+  --accent: #e2ece4;
+  --accent-foreground: #142238;
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: #dcdad1;
+  --input: #dcdad1;
+  --ring: #1f5e3a;
+  --brand: #1f5e3a;
+  --brand-foreground: #ffffff;
+  --brand-soft: #e2ece4;
+  --brand-hover: #27754a;
+  --dark: #142238;
+  --dark-foreground: #f7f6f1;
+  /* Couleurs des trois piliers : bleu marine, vert, ocre. */
+  --charge: #142238;
+  --recup: #1f5e3a;
+  --biomec: #a8681a;
+  --sapin: #1f5e3a;
+  color-scheme: light;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  h1 em, h2 em, h3 em { font-style: italic; }
+}
+
+@layer components {
+  .rc-eyebrow { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.85rem; }
+
+  /* Bouton principal, comme sur les pages du tunnel. */
+  .rc-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 1.05rem 2rem; border-radius: var(--radius);
+    background: var(--brand); color: var(--brand-foreground);
+    font-weight: 700; line-height: 1.25; text-align: center; text-decoration: none;
+    box-shadow: 0 6px 18px -8px rgba(31, 94, 58, 0.7);
+    transition: transform .15s ease, background-color .15s ease, opacity .15s ease;
+  }
+  .rc-btn:hover:not(:disabled) { background: var(--brand-hover); transform: translateY(-1px); }
+  .rc-btn:focus-visible, .rc-btn-ghost:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+  .rc-btn:disabled { opacity: 0.4; box-shadow: none; cursor: not-allowed; }
+
+  .rc-btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.75rem 1rem; border-radius: var(--radius);
+    color: var(--muted-foreground); font-weight: 600;
+  }
+  .rc-btn-ghost:hover:not(:disabled) { color: var(--foreground); }
+  .rc-btn-ghost:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rc-btn { transition: none; }
+    .rc-btn:hover:not(:disabled) { transform: none; }
+  }
+}
