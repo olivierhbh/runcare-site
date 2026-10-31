@@ -2,7 +2,7 @@
 // Prérequis : rc-builder.js chargé dans l'onglet de l'éditeur. FORMULES = page des formules de la copie.
 (() => {
   const { C, sec, row, col, box, h, t, eyebrow, small, btn, img, vid, list, faq, hidden, keep, TIDY_APPEL } = RC;
-  const FORMULES = 'https://runcare.systeme.io/748f0635-89d03b4a-d15dc65e-18d80b1a';
+  const FORMULES = 'https://runcare.systeme.io/748f0635-89d03b4a-d15dc65e';
   const old = RC.begin();
   const rawPdf = Object.values(old).find((e) => e.type === 'RawHtml');
   const S = [];

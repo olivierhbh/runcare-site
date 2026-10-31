@@ -1,7 +1,7 @@
 // Pages de réservation de la copie du tunnel : « Différentes réservations » (46161773), « Agenda » (46161775),
 // « Stripe agenda commun » (46161774, logo seul). Liens et calendrier repris de la page existante.
 // Prérequis : rc-builder.js chargé dans l'onglet de l'éditeur de la page concernée.
-const FORMULES = 'https://runcare.systeme.io/748f0635-89d03b4a-d15dc65e-18d80b1a';
+const FORMULES = 'https://runcare.systeme.io/748f0635-89d03b4a-d15dc65e';
 const logoSec = () => RC.sec({ pt: 24, pb: 8, mpt: 20, mpb: 8 }, [RC.img('logo', { width: 240, mwidth: 180, alt: 'RunCare, kiné et coach' })]);
 const note = (txt) => RC.box([RC.t(txt, { size: 17, msize: 16, lh: 1.5, mb: 0 })], { bg: RC.C.accentSoft, pad: RC.p(18, 22), mpad: RC.p(16, 16) });
 

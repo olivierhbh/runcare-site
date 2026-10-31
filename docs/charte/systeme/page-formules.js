@@ -2,7 +2,7 @@
 // Remplace l'image du comparatif par du texte. Prérequis : rc-builder.js chargé.
 window.__formules = () => {
   const { C, sec, row, col, box, h, t, eyebrow, small, btn, img, list, TIDY_APPEL, TIDY_BILAN } = RC;
-  const VENTE = 'https://runcare.systeme.io/748f0635-9fb2da99';
+  const VENTE = 'https://runcare.systeme.io/748f0635';
   RC.begin();
   const S = [];
   S.push(sec({ pt: 24, pb: 8, mpt: 20, mpb: 8 }, [img('logo', { width: 240, mwidth: 180, alt: 'RunCare, kiné et coach' })]));

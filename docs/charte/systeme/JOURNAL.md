@@ -136,3 +136,71 @@ Romain a tout validé (tunnel copié et lead magnet refait). Prochaine étape : 
 État des liens au 31/10 : le site pointe encore sur le tunnel d'origine (`site/src/content/settings.yaml` :
 `venteUrl` = /748f0635, `leadMagnetUrl` = /79081d31 ; `coaching.mdoc` : `ctaUrl` = /748f0635). La copie vit sur des
 chemins rallongés (capture /79081d31-b845847e, vente /748f0635-9fb2da99) et l'outil de la copie vise /748f0635-9fb2da99.
+
+## 6. Bascule : comparaison des deux tunnels (31/10, lecture seule)
+
+Tunnel d'origine 7382683 « Diagnostic du coureur », copie 7750323 « Diagnostic du coureur (copy) », même domaine
+`runcare.systeme.io`, mêmes 8 étapes dans le même ordre.
+
+| Étape | Origine | Copie |
+|---|---|---|
+| Capture | /79081d31 | /79081d31-b845847e |
+| Remerciements | /1c70f1a3 | /1c70f1a3-e04b5b62 |
+| Lead magnet | /8f413eb4 (cadre dessinetonprofil.lovable.app) | /8f413eb4-bf97a13e (cadre profil-coureur-runcare.lovable.app) |
+| Vente | /748f0635 | /748f0635-9fb2da99 |
+| Différentes réservations | /748f0635-89d03b4a | /748f0635-89d03b4a-b9c04b1f |
+| Stripe agenda commun | /748f0635-89d03b4a-11a03860 | /748f0635-89d03b4a-11a03860-16b24a1b |
+| Agenda | /d38d75ca-bfedb687 | /d38d75ca-bfedb687-9bac6eb7 |
+| Formules | /748f0635-89d03b4a-d15dc65e | /748f0635-89d03b4a-d15dc65e-18d80b1a |
+
+Identique dans les deux : formulaires (prénom + e-mail, dans la page et dans la popup), aucune offre ni moyen de paiement
+sur les étapes (les paiements passent par TidyCal), aucun produit, liens TidyCal / Doctolib / PDF
+`bilan-diagnostic-runcare.lovable.app`, pixel systeme.io, titres d'onglet (« %TITRE% » sur capture et agenda, vides ailleurs).
+
+Ce que la copie n'a pas repris :
+- **La règle d'automatisation** (la seule du compte) : origine = inscription sur la page de capture → abonnement à la
+  « Campagne bilan coureur » (5 e-mails : J0 « Ton profil coureur est accessible ici », J+1, J+3, J+5, J+8 ; 29 contacts
+  encore en cours). La copie n'en a aucune : un inscrit sur la copie ne reçoit aucun e-mail.
+
+Entrées vers le tunnel d'origine :
+- Site : `venteUrl` /748f0635 (menu, pied de page, /coaching en 301, équipe, articles), `leadMagnetUrl` /79081d31
+  (menu, pied de page, accueil, /profil-coureur en 301), `coaching.mdoc` `ctaUrl` /748f0635 (non affiché).
+- Campagne : 15 liens vers /748f0635 dans les 5 e-mails ; l'e-mail J0 vise directement `dessinetonprofil.lovable.app`
+  (l'ancien outil : à changer avant toute dépublication).
+- Liens codés en dur dans la copie : vente → formules, formules → vente, agenda → formules (chemins longs) ; l'outil
+  Lovable de la copie → vente /748f0635-9fb2da99. Le bouton des remerciements est « étape suivante » (suit le tunnel).
+- Divers : workflow « Mail lien du Bilan » inactif ; la page « Différentes réservations » n'est liée par aucune page.
+
+## 7. Bascule faite (31/10, option A : échange des chemins)
+
+Fait :
+- Préparé sur la copie avant l'échange (aucun visiteur dessus) : liens en dur passés sur les chemins courts (vente →
+  formules, formules → vente, agenda → formules, pages enregistrées) ; outil Lovable de la copie : `VENTE_URL` =
+  https://runcare.systeme.io/748f0635, republié ; règle d'automatisation recréée sur la capture de la copie
+  (inscription → « Campagne bilan coureur »).
+- Échange des chemins (API des étapes, corps `{name, page: {path}}`) : les 8 pages de l'ancien tunnel portent
+  maintenant le suffixe `-ancien` (ex. /79081d31-ancien, /748f0635-ancien) ; la copie a repris les chemins courts
+  (/79081d31, /1c70f1a3, /8f413eb4, /748f0635, /748f0635-89d03b4a, /748f0635-89d03b4a-11a03860, /d38d75ca-bfedb687,
+  /748f0635-89d03b4a-d15dc65e). Les chemins longs de la copie n'existent plus. Coupure de quelques secondes par page.
+- Tunnels renommés : la copie s'appelle « Diagnostic du coureur », l'ancien « Diagnostic du coureur (archive, avant
+  charte) ». L'ancienne règle d'automatisation reste en place (plus personne n'arrive sur l'ancienne capture).
+- E-mail J0 « Ton profil coureur est accessible ici » : bouton « Détermine ton profil ! » repointé de
+  dessinetonprofil.lovable.app vers https://runcare.systeme.io/8f413eb4 (page lead magnet du tunnel).
+- Site : rien à changer (`settings.yaml` et `coaching.mdoc` gardent les chemins courts, qui servent la nouvelle version).
+- Vérifié sur ordinateur : site (menu « Découvre ton profil », /profil-coureur, /coaching) → capture → envoi du
+  formulaire (contact de test olivier.huibonhoa+runcare@gmail.com) → remerciements → lead magnet → 8 questions →
+  résultat → page de vente en pleine page → formules → TidyCal (sans réserver). E-mail J0 reçu, son bouton mène à la
+  nouvelle page lead magnet. Sur téléphone (cadre 390 px) : les 8 pages s'affichent sans débordement, questionnaire OK.
+
+- Titres d'onglet des 8 pages posés et vérifiés publiés : « Découvre ton profil de coureur · RunCare » (capture),
+  « Vérifie ta boîte mail · RunCare », « Ton profil de coureur · RunCare » (lead magnet), « Bilan Coaching RunCare ·
+  Bordeaux » (vente), « Réserve ton bilan · RunCare », « RunCare » (Stripe agenda commun), « Agenda · RunCare »,
+  « Formules de coaching · RunCare ».
+- Ancien outil dessinetonprofil.lovable.app dépublié (projet conservé, republiable à tout moment depuis Publish).
+
+Reste :
+- Contact de test « Test bascule » (olivier.huibonhoa+runcare@gmail.com) à supprimer dans systeme.io : il est inscrit
+  à la campagne.
+- Copie Lovable : propriétaire Olivier, déjà dans l'espace de Lélio. Transfert (réglages du projet, « Transfer
+  ownership ») seulement si Olivier le demande.
+- Toujours ouverts : nom de l'offre (laissé tel quel), témoignages masqués, popup de la capture non restylée.

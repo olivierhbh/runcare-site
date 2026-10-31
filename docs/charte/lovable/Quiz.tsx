@@ -6,7 +6,7 @@ import romainLelio from "@/assets/romain-lelio.png.asset.json";
 // Logo RunCare (fond clair) : le même fichier que sur les pages du tunnel systeme.io, hébergé sur le site.
 const LOGO_URL = "https://argonnekinesportsante.fr/charte/logo-runcare-fond-clair.png";
 // Page de vente du tunnel.
-const VENTE_URL = "https://runcare.systeme.io/748f0635-9fb2da99";
+const VENTE_URL = "https://runcare.systeme.io/748f0635";
 
 /*__QUESTIONS__*/
 const PILLAR_STYLE: Record<string, string> = {
