@@ -203,4 +203,9 @@ Reste :
   à la campagne.
 - Copie Lovable : propriétaire Olivier, déjà dans l'espace de Lélio. Transfert (réglages du projet, « Transfer
   ownership ») seulement si Olivier le demande.
-- Toujours ouverts : nom de l'offre (laissé tel quel), témoignages masqués, popup de la capture non restylée.
+- Toujours ouverts : nom de l'offre (laissé tel quel), témoignages masqués.
+- Popup de la page de capture : inutilisée (ouverture automatique coupée sur ordinateur et mobile, aucun bouton ne
+  l'ouvre, déjà le cas dans l'ancien tunnel) ; invisible des visiteurs, donc rien à restyler.
+- Message envoyé à Romain (version simplifiée par Olivier) : `docs/charte/message-whatsapp-2026-10-31.txt`. L'offre payante
+  (29/10) a été prise à la demande d'Olivier uniquement pour avoir la place de dupliquer le tunnel : une fois l'ancien
+  supprimé, Romain peut repasser au plan gratuit.

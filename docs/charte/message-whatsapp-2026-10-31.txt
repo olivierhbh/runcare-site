@@ -1,26 +1,17 @@
-Salut Romain,
+Hello, tout est en ligne.
 
-C'est fait : le nouveau tunnel et le nouveau test « Profil du coureur » sont en ligne pour tout le monde depuis aujourd'hui.
-
-*CE QUI A CHANGÉ POUR VOS COUREURS*
-- Les adresses restent les mêmes : tous les liens existants (site, e-mails déjà envoyés, Instagram, pubs…) mènent maintenant aux nouvelles pages. Rien à mettre à jour de ton côté.
-- Capture : https://runcare.systeme.io/79081d31
-- Page de vente : https://runcare.systeme.io/748f0635
-- Test du profil : https://runcare.systeme.io/8f413eb4
-- J'ai testé tout le parcours sur ordinateur et sur téléphone, jusqu'à la réservation TidyCal : inscription, e-mail de bienvenue reçu, test, page de vente, formules.
+Finalement j’ai réussi à conserver les adresses existantes, donc rien à mettre à jour sur votre linktree :).
 
 *DANS SYSTEME.IO*
-- Le tunnel « Diagnostic du coureur » est maintenant le nouveau. L'ancien est rangé sous le nom « Diagnostic du coureur (archive, avant charte) », sur des adresses qui finissent par -ancien. Personne n'y arrive plus, gardez-le juste en archive.
-- Les inscrits reçoivent toujours la « Campagne bilan coureur » (les 5 e-mails), rien n'a changé là-dessus.
-- Dans le premier e-mail (« Ton profil coureur est accessible ici »), le bouton « Détermine ton profil ! » mène maintenant au nouveau test.
-- Les pages ont maintenant un titre d'onglet (avant, certaines affichaient « %TITRE% »). Vous pouvez les changer dans les paramètres de chaque page, partie SEO.
-- J'ai laissé un contact de test « Test bascule » : supprime-le quand tu veux.
+- Le tunnel « Diagnostic du coureur » est maintenant le nouveau. L'ancien est rangé sous le nom « Diagnostic du coureur (archive, avant charte) », sur des adresses qui finissent par -ancien. Personne n'y arrive plus, gardez-le juste en archive. Si tout fonctionne, quand vous êtes serein, vous pourrez le supprimer et repasser sur le plan gratuit.
+- Je me suis permis de choisir un titre d'onglet là où vous n'aviez rien renseigné et où ça affichait “%TITRE%”. Vous pouvez les changer dans les paramètres de chaque page, partie SEO.
 
 *LOVABLE*
 - L'ancien test (dessinetonprofil.lovable.app) est dépublié. Le projet existe toujours et peut être republié en un clic s'il le faut.
 - Pour modifier le test, c'est dans la nouvelle version : https://lovable.dev/projects/ac83ad55-e983-45fd-833f-51dadcda12a1
 
 *ENCORE À DÉCIDER*
-- Le nom de l'offre : « Bilan Diagnostic RunCare » dans le test, « Bilan Coaching RunCare » sur la page de vente. On garde lequel ?
+- Le nom de l'offre : « Bilan Diagnostic RunCare » dans le test, « Bilan Coaching RunCare » sur la page de vente. On garde les deux ?
 - Les témoignages de la page de vente sont prêts mais masqués : dès que vous avez de vrais retours de coureurs, envoyez-les et on les affiche.
-- La popup de la page de capture n'a pas encore été mise aux couleurs.
+
+Hésitez pas à refaire les parcours en entier pour être sûr que c’est ok. Je l’ai fait a priori mais on sait jamais.
