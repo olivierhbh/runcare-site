@@ -209,3 +209,23 @@ Reste :
 - Message envoyé à Romain (version simplifiée par Olivier) : `docs/charte/message-whatsapp-2026-10-31.txt`. L'offre payante
   (29/10) a été prise à la demande d'Olivier uniquement pour avoir la place de dupliquer le tunnel : une fois l'ancien
   supprimé, Romain peut repasser au plan gratuit.
+
+## 8. Nom de l'offre : « Bilan Coaching RunCare » partout (31/10, décision de Romain)
+
+Fait (« Bilan Diagnostic » → « Bilan Coaching » ; « diagnostic » au sens médical et adresses `bilan-diagnostic-runcare`
+laissés tels quels) :
+- Campagne « Bilan coureur » : les 5 e-mails (14 mentions, dont le bouton J+3 « Je fais mon bilan coaching »),
+  enregistrés et revérifiés ; liens intacts.
+- Tunnel : page agenda (titre « Réserve ton Bilan Coaching RunCare », tarifs, texte du calendrier) et titre du cadre du
+  récapitulatif sur la page de vente ; « 2. Établir ton diagnostic » gardé (nom d'une étape).
+- Outil Lovable de la copie : 2 mentions (texte « La prochaine étape » et bouton final), republié et vérifié en ligne.
+- Site : bouton et encadrés des articles, fiche Coaching (texte et description SEO, « Runcare » → « RunCare »),
+  deux formules ; compilation vérifiée.
+
+À transmettre :
+- Récapitulatif PDF de la page de vente (projet Lovable de Lélio « RunCare Insight Animation »,
+  bilan-diagnostic-runcare.lovable.app) : le titre « BILAN DIAGNOSTIC RUNCARE » est dans les deux images des pages ;
+  Lélio doit regénérer ces images. L'adresse peut rester.
+- Liens TidyCal (`.../bilan-diagnostic-runcare`) : adresse inchangée pour ne rien casser ; le nom affiché dans TidyCal
+  est déjà « Bilan coaching RunCare ».
+- Témoignages : viendront d'une fiche Google dédiée que Romain doit créer ; ensuite on les affiche sur la page de vente.

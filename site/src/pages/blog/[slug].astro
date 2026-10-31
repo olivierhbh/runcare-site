@@ -14,9 +14,9 @@ const { Content } = await render(entry);
 const d = entry.data;
 const date = d.publishedDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 const others = (await getCollection('articles')).filter((a) => a.id !== entry.id).slice(0, 3);
-const vente = { label: 'Découvrir le Bilan Diagnostic RunCare', href: settings.venteUrl };
+const vente = { label: 'Découvrir le Bilan Coaching RunCare', href: settings.venteUrl };
 const ctaByService: Record<string, { text: string; primary: { label: string; href: string }; secondary?: { label: string; href: string } }> = {
-  'reeducation': { text: 'Une douleur qui persiste ? Prends rendez-vous au cabinet, ou fais le point sur ta situation avec un bilan.', primary: { label: 'Prendre rendez-vous sur Doctolib', href: settings.doctolibLelio }, secondary: { label: 'Le Bilan Diagnostic RunCare', href: settings.venteUrl } },
+  'reeducation': { text: 'Une douleur qui persiste ? Prends rendez-vous au cabinet, ou fais le point sur ta situation avec un bilan.', primary: { label: 'Prendre rendez-vous sur Doctolib', href: settings.doctolibLelio }, secondary: { label: 'Le Bilan Coaching RunCare', href: settings.venteUrl } },
   'bilan-runcare': { text: 'Pour comprendre ce qui se joue dans ton cas, le bilan croise ton historique, ton entraînement et tes capacités.', primary: vente },
   'coaching': { text: 'Chaque accompagnement commence par un bilan, offert avec chaque formule de coaching.', primary: vente },
 };

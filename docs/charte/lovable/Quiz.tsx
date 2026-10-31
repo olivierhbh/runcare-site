@@ -251,7 +251,7 @@ function Results({
         <h3 className="text-2xl text-foreground">La prochaine étape</h3>
         <p className="mt-3 text-lg leading-relaxed text-foreground/85">
           Si tu veux analyser et objectiver ce qui aura le plus d'impact sur ta progression, clique sur le bouton
-          ci-dessous pour en savoir plus sur le <strong className="font-bold text-brand">Bilan Diagnostic RunCare</strong>.
+          ci-dessous pour en savoir plus sur le <strong className="font-bold text-brand">Bilan Coaching RunCare</strong>.
         </p>
       </div>
 
@@ -263,7 +263,7 @@ function Results({
         </div>
         <a href={VENTE_URL} target="_top" className="rc-btn mt-2 w-full py-5 text-lg sm:text-xl">
           <span>
-            👉 Découvrir le <strong>Bilan Diagnostic RunCare</strong>
+            👉 Découvrir le <strong>Bilan Coaching RunCare</strong>
           </span>
         </a>
       </div>
