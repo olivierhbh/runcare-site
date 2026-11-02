@@ -1,0 +1,42 @@
+Salut Romain,
+
+Comme tu m'as dit « Bilan Coaching RunCare partout », j'ai remplacé « Bilan Diagnostic » par « Bilan Coaching » partout où on le voyait. Voici le détail, pour que tu puisses vérifier. Si un endroit ne te va pas, dis-le-moi et je le remets comme avant.
+
+*1. LES E-MAILS DE LA CAMPAGNE « BILAN COUREUR »*
+Dans les 5 e-mails, « Bilan Diagnostic (RunCare) » devient « Bilan Coaching (RunCare) », sans rien changer d'autre au texte :
+- J0 « Ton profil coureur est accessible ici » : 1 fois (« Tu veux en savoir plus sur le Bilan Coaching ? »)
+- J+1 « Connais-tu ces 3 principes ? » : 5 fois
+- J+3 « Tu fais probablement cette erreur » : 3 fois, plus le bouton « Je fais mon bilan diagnostic », devenu « Je fais mon bilan coaching »
+- J+5 « Plan d'entrainement = une bonne idée ? » : 2 fois
+- J+8 « Il s'entraîne même blessé » : 1 fois
+Rappel : dans l'e-mail J0, le bouton « Détermine ton profil ! » mène depuis aujourd'hui au nouveau test.
+
+*2. LA PAGE AGENDA DU TUNNEL*
+https://runcare.systeme.io/d38d75ca-bfedb687
+- Titre : « Réserve ton Bilan Diagnostic RunCare » devient « Réserve ton Bilan Coaching RunCare »
+- Tarifs : « Bilan Diagnostic seul : 90 € » devient « Bilan Coaching seul : 90 € »
+- « Le Bilan Diagnostic est offert s'il est suivi… » devient « Le Bilan Coaching est offert s'il est suivi… »
+- Texte du calendrier : « …avec le lien du Bilan Diagnostic RunCare » devient « …du Bilan Coaching RunCare »
+Les autres pages du tunnel disaient déjà « Bilan Coaching ».
+
+*3. LE TEST « PROFIL DU COUREUR »*
+Sur l'écran des résultats :
+- « …pour en savoir plus sur le Bilan Diagnostic RunCare » devient « …sur le Bilan Coaching RunCare »
+- Bouton « Découvrir le Bilan Diagnostic RunCare » devient « Découvrir le Bilan Coaching RunCare »
+
+*4. LE SITE*
+- Articles du blog : le bouton « Découvrir le Bilan Diagnostic RunCare » en bas des articles, et le lien « Le Bilan Diagnostic RunCare » dans l'encadré rééducation, deviennent « Bilan Coaching RunCare ».
+- Dans Keystatic, sur la fiche Coaching et les deux formules (pas affichées sur le site en ce moment, puisque /coaching renvoie vers la page de vente) :
+  - « Le Bilan Diagnostic RunCare, inclus à chaque formule… » devient « Le Bilan Coaching RunCare… »
+  - « bilan diagnostic offert » (description pour Google) devient « bilan coaching offert »
+  - « Bilan Diagnostic inclus » et « Bilan diagnostic RunCare inclus » deviennent « Bilan Coaching (RunCare) inclus »
+  - « Bilan Coaching Runcare » devient « Bilan Coaching RunCare » (juste la majuscule)
+
+*CE QU'ON A GARDÉ*
+- Le mot « diagnostic » au sens médical : « Le diagnostic était assez clair » (e-mail J+8), l'étape « 2. Établir ton diagnostic » sur la page de vente, « Poser un diagnostic » dans un article.
+- Les adresses qui contiennent « bilan-diagnostic », pour ne casser aucun lien : la réservation TidyCal https://tidycal.com/team/runcare/bilan-diagnostic-runcare (le nom affiché dans TidyCal est déjà « Bilan coaching RunCare ») et le récapitulatif de la page de vente https://bilan-diagnostic-runcare.lovable.app
+
+*À FAIRE PAR LÉLIO*
+Le récapitulatif PDF de la page de vente affiche encore « BILAN DIAGNOSTIC RUNCARE » en titre. Ce titre est dans les images des deux pages du PDF (projet Lovable « RunCare Insight Animation »). Il faut refaire ces deux images avec le nouveau nom. L'adresse peut rester la même.
+
+Pour les témoignages, on attend ta fiche Google, et on les affiche ensuite.
